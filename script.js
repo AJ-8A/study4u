@@ -290,7 +290,7 @@ store.js → save and load progress`,
     }
   },
   {
-    title: "Complete Web Project",
+    title: "Complete Web Project.",
     subject: "Programming",
     level: "Grandmaster",
     icon: "🏆",
@@ -448,7 +448,6 @@ function renderLessons() {
   const completed = getCompletedLessons();
 
   materialGrid.innerHTML = lessons.map((lesson, index) => {
-    const complete = completed.includes(index);
     const unlocked = isUnlocked(index, completed);
     const visible = activeFilter === "All" || activeFilter === lesson.level;
 
@@ -464,21 +463,12 @@ function renderLessons() {
         <button class="complete-button lesson-open" data-index="${index}" ${unlocked ? "" : "disabled"}>
           ${unlocked ? "Open lesson" : "🔒 Complete the previous topic"}
         </button>
-
-        <button class="complete-button mark-read ${complete ? "completed" : ""}"
-          data-index="${index}" ${!unlocked || complete || !currentUser ? "disabled" : ""}>
-          ${complete ? `✓ Read · +${xpPerLesson} XP` : currentUser ? "Mark as read" : "Log in to mark as read"}
-        </button>
       </article>
     `;
   }).join("");
 
   document.querySelectorAll(".lesson-open").forEach(button => {
     button.addEventListener("click", () => showLesson(Number(button.dataset.index)));
-  });
-
-  document.querySelectorAll(".mark-read").forEach(button => {
-    button.addEventListener("click", () => completeLesson(Number(button.dataset.index)));
   });
 
   updateProgress();
