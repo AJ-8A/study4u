@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPath</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="#">Study<span>Path</span></a>
+
+      <div class="nav-links">
+        <a href="#account">Sign in</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#progress">Progress</a>
+      </div>
+
+      <button id="logoutButton" class="logout-button hidden">Log out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <p class="eyebrow">Learn at your own pace</p>
+        <h1>Build skills.<br><span>Reach your goals.</span></h1>
+        <p class="hero-text">
+          Follow a simple learning path, complete lessons, and track your progress
+          from beginner to grandmaster.
+        </p>
+        <a class="button" href="#account">Sign in to start</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-icon">📚</div>
+        <h2>Your learning journey</h2>
+        <p>Complete each lesson to unlock the next step in your path.</p>
+        <div class="progress-bar">
+          <span id="heroProgressBar"></span>
+        </div>
+        <p id="progressText">0 of 7 lessons completed</p>
+      </div>
+    </section>
+
+    <section id="account" class="account-section">
+      <div class="section-heading">
+        <p class="eyebrow" id="accountEyebrow">Your account</p>
+        <h2 id="accountTitle">Create an account</h2>
+        <p id="accountDescription">Save your learning progress across visits.</p>
+      </div>
+
+      <form id="accountForm" class="account-form">
+        <label for="username">Username</label>
+        <input id="username" type="text" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+
+        <button id="accountSubmit" class="button" type="submit">
+          Create account
+        </button>
+      </form>
+
+      <p id="accountMessage" class="account-message"></p>
+
+      <button id="switchAccountMode" class="text-button" type="button">
+        Already have an account? Log in
+      </button>
+    </section>
+
+    <section id="progress" class="container progress-section">
+      <div>
+        <p class="eyebrow">Your progress</p>
+        <h2>Keep moving forward</h2>
+        <p id="welcomeText">Create an account to save your progress.</p>
+      </div>
+
+      <div class="clock-box">
+        <span>Current status</span>
+        <strong id="statusText">Not signed in</strong>
+      </div>
+    </section>
+
+    <section id="lessons" class="section container">
+      <div class="section-heading">
+        <p class="eyebrow">Study materials</p>
+        <h2>Learning path</h2>
+        <p>Finish lessons in order to unlock new topics.</p>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="filter-button active" data-filter="All">All</button>
+        <button class="filter-button" data-filter="Beginner">Beginner</button>
+        <button class="filter-button" data-filter="Novice">Novice</button>
+        <button class="filter-button" data-filter="Intermediate">Intermediate</button>
+        <button class="filter-button" data-filter="Advanced">Advanced</button>
+        <button class="filter-button" data-filter="Expert">Expert</button>
+        <button class="filter-button" data-filter="Master">Master</button>
+        <button class="filter-button" data-filter="Grandmaster">Grandmaster</button>
+      </div>
+
+      <div id="materialGrid" class="material-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 StudyPath. Keep learning, one step at a time.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
