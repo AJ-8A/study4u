@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>StudyHub Admin Analytics</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f5f7fb;color:#182033}main{max-width:1000px;margin:40px auto;padding:20px}.card{background:#fff;border:1px solid #e4e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.06)}input,button{font:inherit;padding:11px 14px;border-radius:10px;border:1px solid #ccd3df}button{cursor:pointer;background:#182033;color:#fff}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{text-align:left;padding:12px;border-bottom:1px solid #edf0f5}.muted{color:#697386}.error{color:#c62828}.stats{display:flex;gap:18px;margin-top:18px;flex-wrap:wrap}.stat{background:#f7f9fc;padding:14px 18px;border-radius:12px}
+</style></head>
+<body><main><div class="card"><h1>StudyHub Analytics</h1><p class="muted">Private visitor log. Enter your admin token to load it.</p>
+<form id="login"><input id="token" type="password" placeholder="Admin token" autocomplete="current-password" required><button>Load visitors</button></form>
+<p id="message" class="muted"></p><div id="stats" class="stats"></div>
+<table><thead><tr><th>Username</th><th>Viewed at</th></tr></thead><tbody id="rows"></tbody></table>
+</div></main>
+<script>
+const WORKER_URL="https://study4u-api.study4u-aj.workers.dev";
+const form=document.getElementById("login"), tokenInput=document.getElementById("token"), message=document.getElementById("message"), rows=document.getElementById("rows"), stats=document.getElementById("stats");
+form.addEventListener("submit",async e=>{e.preventDefault();const token=tokenInput.value.trim();if(!token)return;message.textContent="Loading…";message.className="muted";
+try{const r=await fetch(WORKER_URL+"/api/admin/visitors",{headers:{Authorization:"Bearer "+token},cache:"no-store"});const data=await r.json();if(!r.ok)throw new Error(data.error||"Request failed");
+stats.innerHTML='<div class="stat"><strong>Total views:</strong> '+data.totalViews+'</div><div class="stat"><strong>Logged visitors:</strong> '+data.visitors.length+'</div>';
+rows.innerHTML=data.visitors.map(v=>'<tr><td>'+escapeHtml(v.username||"Guest")+'</td><td>'+escapeHtml(v.viewed_at)+'</td></tr>').join("");message.textContent="Loaded successfully";
+}catch(err){rows.innerHTML="";stats.innerHTML="";message.textContent=err.message;message.className="error"}});
+function escapeHtml(v){return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+</script></body></html>
