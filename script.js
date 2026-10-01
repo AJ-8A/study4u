@@ -447,29 +447,31 @@ function showLesson(index) {
 function renderLessons() {
   const completed = getCompletedLessons();
 
-  materialGrid.innerHTML = lessons.map((lesson, index) => {
-    const unlocked = isUnlocked(index, completed);
-    const visible = activeFilter === "All" || activeFilter === lesson.level;
+  if (materialGrid) {
+    materialGrid.innerHTML = lessons.map((lesson, index) => {
+      const unlocked = isUnlocked(index, completed);
+      const visible = activeFilter === "All" || activeFilter === lesson.level;
 
-    if (!visible) return "";
+      if (!visible) return "";
 
-    return `
-      <article class="material-card ${unlocked ? "" : "locked"}">
-        <div class="material-icon ${lesson.color}">${lesson.icon}</div>
-        <span class="level">${escapeHtml(lesson.level)} · ${escapeHtml(lesson.subject)}</span>
-        <h3>${escapeHtml(lesson.title)}</h3>
-        <p>${escapeHtml(lesson.description)}</p>
+      return `
+        <article class="material-card ${unlocked ? "" : "locked"}">
+          <div class="material-icon ${lesson.color}">${lesson.icon}</div>
+          <span class="level">${escapeHtml(lesson.level)} · ${escapeHtml(lesson.subject)}</span>
+          <h3>${escapeHtml(lesson.title)}</h3>
+          <p>${escapeHtml(lesson.description)}</p>
 
-        <button class="complete-button lesson-open" data-index="${index}" ${unlocked ? "" : "disabled"}>
-          ${unlocked ? "Open lesson" : "🔒 Complete the previous topic"}
-        </button>
-      </article>
-    `;
-  }).join("");
+          <button class="complete-button lesson-open" data-index="${index}" ${unlocked ? "" : "disabled"}>
+            ${unlocked ? "Open lesson" : "🔒 Complete the previous topic"}
+          </button>
+        </article>
+      `;
+    }).join("");
 
-  document.querySelectorAll(".lesson-open").forEach(button => {
-    button.addEventListener("click", () => showLesson(Number(button.dataset.index)));
-  });
+    document.querySelectorAll(".lesson-open").forEach(button => {
+      button.addEventListener("click", () => showLesson(Number(button.dataset.index)));
+    });
+  }
 
   updateProgress();
 }
@@ -479,7 +481,7 @@ function completeLesson(index) {
 
   if (!user) {
     showMessage("Please log in before marking a lesson as read.", true);
-    document.getElementById("account").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("account")?.scrollIntoView({ behavior: "smooth" });
     return;
   }
 
@@ -505,15 +507,22 @@ function updateProgress() {
   const completed = getCompletedLessons().length;
   const percentage = lessons.length ? (completed / lessons.length) * 100 : 0;
 
-  document.getElementById("heroProgressBar").style.width = `${percentage}%`;
-  document.getElementById("progressText").textContent =
-    `${completed} of ${lessons.length} topics completed · ${getXP()} XP`;
+  const heroBar = document.getElementById("heroProgressBar");
+  if (heroBar) heroBar.style.width = `${percentage}%`;
 
-  document.getElementById("statusText").textContent = !currentUser
-    ? "Not signed in"
-    : completed === lessons.length
-      ? `Grandmaster · ${getXP()} XP 🎉`
-      : `${getXP()} XP · Learning`;
+  const progressText = document.getElementById("progressText");
+  if (progressText) {
+    progressText.textContent = `${completed} of ${lessons.length} topics completed · ${getXP()} XP`;
+  }
+
+  const statusText = document.getElementById("statusText");
+  if (statusText) {
+    statusText.textContent = !currentUser
+      ? "Not signed in"
+      : completed === lessons.length
+        ? `Grandmaster · ${getXP()} XP 🎉`
+        : `${getXP()} XP · Learning`;
+  }
 }
 
 function updateAccountView() {
@@ -523,82 +532,91 @@ function updateAccountView() {
   const welcome = document.getElementById("welcomeText");
 
   if (currentUser && users[currentUser]) {
-    eyebrow.textContent = "Welcome back";
-    title.textContent = currentUser;
-    description.textContent = `Your progress is saved automatically. XP: ${getXP()}`;
-    welcome.textContent = `Keep going, ${currentUser}!`;
-    logoutButton.classList.remove("hidden");
-    accountForm.classList.add("hidden");
-    switchAccountMode.classList.add("hidden");
+    if (eyebrow) eyebrow.textContent = "Welcome back";
+    if (title) title.textContent = currentUser;
+    if (description) description.textContent = `Your progress is saved automatically. XP: ${getXP()}`;
+    if (welcome) welcome.textContent = `Keep going, ${currentUser}!`;
+    if (logoutButton) logoutButton.classList.remove("hidden");
+    if (accountForm) accountForm.classList.add("hidden");
+    if (switchAccountMode) switchAccountMode.classList.add("hidden");
   } else {
     currentUser = null;
-    eyebrow.textContent = "Your account";
-    title.textContent = loginMode ? "Log in" : "Create an account";
-    description.textContent = "Save your learning progress across visits.";
-    welcome.textContent = "Create an account to save your progress.";
-    logoutButton.classList.add("hidden");
-    accountForm.classList.remove("hidden");
-    switchAccountMode.classList.remove("hidden");
-    document.getElementById("accountSubmit").textContent =
-      loginMode ? "Log in" : "Create account";
-    switchAccountMode.textContent =
-      loginMode ? "Need an account? Create one" : "Already have an account? Log in";
+    if (eyebrow) eyebrow.textContent = "Your account";
+    if (title) title.textContent = loginMode ? "Log in" : "Create an account";
+    if (description) description.textContent = "Save your learning progress across visits.";
+    if (welcome) welcome.textContent = "Create an account to save your progress.";
+    if (logoutButton) logoutButton.classList.add("hidden");
+    if (accountForm) accountForm.classList.remove("hidden");
+    if (switchAccountMode) switchAccountMode.classList.remove("hidden");
+
+    const accountSubmit = document.getElementById("accountSubmit");
+    if (accountSubmit) accountSubmit.textContent = loginMode ? "Log in" : "Create account";
+    if (switchAccountMode) {
+      switchAccountMode.textContent = loginMode ? "Need an account? Create one" : "Already have an account? Log in";
+    }
   }
 }
 
 function showMessage(message, error = false) {
+  if (!accountMessage) return;
   accountMessage.textContent = message;
   accountMessage.style.color = error ? "#d64545" : "#2f9e62";
 }
 
-accountForm.addEventListener("submit", event => {
-  event.preventDefault();
+if (accountForm) {
+  accountForm.addEventListener("submit", event => {
+    event.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
 
-  if (username.length < 3 || password.length < 4) {
-    showMessage("Use at least 3 characters for the username and 4 for the password.", true);
-    return;
-  }
-
-  if (loginMode) {
-    if (!users[username] || users[username].password !== password) {
-      showMessage("Incorrect username or password.", true);
-      return;
-    }
-  } else {
-    if (users[username]) {
-      showMessage("That username already exists. Please log in.", true);
+    if (username.length < 3 || password.length < 4) {
+      showMessage("Use at least 3 characters for the username and 4 for the password.", true);
       return;
     }
 
-    users[username] = { password, completed: [] };
-    saveUsers();
-  }
+    if (loginMode) {
+      if (!users[username] || users[username].password !== password) {
+        showMessage("Incorrect username or password.", true);
+        return;
+      }
+    } else {
+      if (users[username]) {
+        showMessage("That username already exists. Please log in.", true);
+        return;
+      }
 
-  currentUser = username;
-  localStorage.setItem(currentUserKey, currentUser);
-  accountForm.reset();
-  showMessage(loginMode ? "Logged in successfully." : "Account created successfully.");
-  renderLessons();
-  updateAccountView();
-});
+      users[username] = { password, completed: [] };
+      saveUsers();
+    }
 
-switchAccountMode.addEventListener("click", () => {
-  loginMode = !loginMode;
-  accountMessage.textContent = "";
-  updateAccountView();
-});
+    currentUser = username;
+    localStorage.setItem(currentUserKey, currentUser);
+    accountForm.reset();
+    showMessage(loginMode ? "Logged in successfully." : "Account created successfully.");
+    renderLessons();
+    updateAccountView();
+  });
+}
 
-logoutButton.addEventListener("click", () => {
-  currentUser = null;
-  localStorage.removeItem(currentUserKey);
-  loginMode = true;
-  showMessage("You have been logged out.");
-  renderLessons();
-  updateAccountView();
-});
+if (switchAccountMode) {
+  switchAccountMode.addEventListener("click", () => {
+    loginMode = !loginMode;
+    if (accountMessage) accountMessage.textContent = "";
+    updateAccountView();
+  });
+}
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", () => {
+    currentUser = null;
+    localStorage.removeItem(currentUserKey);
+    loginMode = true;
+    showMessage("You have been logged out.");
+    renderLessons();
+    updateAccountView();
+  });
+}
 
 document.querySelectorAll(".filter-button").forEach(button => {
   button.addEventListener("click", () => {
@@ -612,11 +630,9 @@ document.querySelectorAll(".filter-button").forEach(button => {
   });
 });
 
-renderLessons();
-updateAccountView();
+// --- CLOUDFLARE WORKER STATS INTEGRATION ---
 const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev/api/stats";
 
-// Load views & stars on page load (and increment view count)
 async function loadAndIncrementStats() {
   try {
     const response = await fetch(WORKER_URL, {
@@ -633,14 +649,16 @@ async function loadAndIncrementStats() {
       data = await getRes.json();
     }
 
-    if (data.views !== undefined) document.getElementById("viewsCount").textContent = data.views;
-    if (data.stars !== undefined) document.getElementById("starsCount").textContent = data.stars;
+    const viewsEl = document.getElementById("viewsCount");
+    const starsEl = document.getElementById("starsCount");
+
+    if (viewsEl && data.views !== undefined) viewsEl.textContent = data.views;
+    if (starsEl && data.stars !== undefined) starsEl.textContent = data.stars;
   } catch (error) {
     console.error("Error fetching stats:", error);
   }
 }
 
-// Add a star on button click
 async function addStar() {
   try {
     const response = await fetch(WORKER_URL, {
@@ -650,16 +668,19 @@ async function addStar() {
     });
     
     const data = await response.json();
-    if (data.stars !== undefined) {
-      document.getElementById("starsCount").textContent = data.stars;
+    const starsEl = document.getElementById("starsCount");
+    if (starsEl && data.stars !== undefined) {
+      starsEl.textContent = data.stars;
     }
   } catch (error) {
     console.error("Error updating star count:", error);
   }
 }
 
-// Attach listener once page loads
+// Initial UI Setup & Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
+  renderLessons();
+  updateAccountView();
   loadAndIncrementStats();
 
   const starBtn = document.getElementById("starButton");
