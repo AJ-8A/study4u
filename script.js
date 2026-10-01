@@ -614,3 +614,56 @@ document.querySelectorAll(".filter-button").forEach(button => {
 
 renderLessons();
 updateAccountView();
+const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev/api/stats";
+
+// Load views & stars on page load (and increment view count)
+async function loadAndIncrementStats() {
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "view" })
+    });
+    
+    let data;
+    if (response.ok) {
+      data = await response.json();
+    } else {
+      const getRes = await fetch(WORKER_URL);
+      data = await getRes.json();
+    }
+
+    if (data.views !== undefined) document.getElementById("viewsCount").textContent = data.views;
+    if (data.stars !== undefined) document.getElementById("starsCount").textContent = data.stars;
+  } catch (error) {
+    console.error("Error fetching stats:", error);
+  }
+}
+
+// Add a star on button click
+async function addStar() {
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "star" })
+    });
+    
+    const data = await response.json();
+    if (data.stars !== undefined) {
+      document.getElementById("starsCount").textContent = data.stars;
+    }
+  } catch (error) {
+    console.error("Error updating star count:", error);
+  }
+}
+
+// Attach listener once page loads
+document.addEventListener("DOMContentLoaded", () => {
+  loadAndIncrementStats();
+
+  const starBtn = document.getElementById("starButton");
+  if (starBtn) {
+    starBtn.addEventListener("click", addStar);
+  }
+});
