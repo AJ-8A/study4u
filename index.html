@@ -12,11 +12,19 @@
       <a class="logo" href="#">Study<span>Path</span></a>
 
       <!-- Stats Display Badge -->
-      <div class="stats-badge" style="display: flex; gap: 15px; align-items: center; font-weight: bold;">
-        <span id="viewCounter" title="Total Views">👀 <span id="viewsCount">...</span></span>
-        <button id="starButton" style="background: none; border: none; cursor: pointer; font-size: 1rem; font-weight: bold;" title="Click to Star">
-          ⭐ <span id="starsCount">...</span>
+      <div class="stats-badge" aria-label="StudyHub live stats">
+        <span class="stat-item" id="viewCounter" title="Total views">
+          <span aria-hidden="true">👀</span>
+          <span class="stat-label">Views</span>
+          <strong id="viewsCount">…</strong>
+        </span>
+        <button id="starButton" class="stat-item stat-button" type="button"
+          aria-label="Star StudyHub" aria-pressed="false" title="Click to star StudyHub">
+          <span aria-hidden="true">⭐</span>
+          <span class="stat-label">Stars</span>
+          <strong id="starsCount">…</strong>
         </button>
+        <span id="statsStatus" class="stats-status" aria-live="polite">Connecting…</span>
       </div>
 
       <div class="nav-links">
