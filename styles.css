@@ -61,6 +61,74 @@ body {
   color: var(--primary);
 }
 
+.stats-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 28px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 5px 18px rgba(38, 50, 80, 0.06);
+}
+
+.stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 0 9px;
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stat-item strong {
+  color: var(--text);
+  font-size: 0.78rem;
+}
+
+.stat-button {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.stat-button:hover {
+  background: #fff6d9;
+  color: #8a6500;
+  transform: translateY(-1px);
+}
+
+.stat-button.starred {
+  background: #fff4c9;
+  color: #8a6500;
+}
+
+.stat-button.loading {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.stat-button:disabled {
+  cursor: wait;
+}
+
+.stats-status {
+  padding: 0 7px;
+  color: #2f9e62;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -538,6 +606,16 @@ h1 span {
 
 @media (max-width: 760px) {
   .nav-links {
+    display: none;
+  }
+
+  .stats-badge {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  .stat-label,
+  .stats-status {
     display: none;
   }
 
