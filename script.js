@@ -631,49 +631,91 @@ document.querySelectorAll(".filter-button").forEach(button => {
 });
 
 // --- CLOUDFLARE WORKER STATS INTEGRATION ---
-const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev/api/stats";
+const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev";
+const STARRED_KEY = "studyhub_starred";
+
+function setStats(views, stars) {
+  const viewsEl = document.getElementById("viewsCount");
+  const starsEl = document.getElementById("starsCount");
+  if (viewsEl && views !== undefined) viewsEl.textContent = views;
+  if (starsEl && stars !== undefined) starsEl.textContent = stars;
+}
+
+function setStatsStatus(message) {
+  const statusEl = document.getElementById("statsStatus");
+  if (statusEl) statusEl.textContent = message;
+}
+
+function restoreStarState() {
+  const starBtn = document.getElementById("starButton");
+  if (!starBtn) return;
+  const starred = localStorage.getItem(STARRED_KEY) === "true";
+  if (starred) {
+    starBtn.classList.add("starred");
+    starBtn.setAttribute("aria-pressed", "true");
+    starBtn.title = "You already starred StudyHub";
+  }
+}
 
 async function loadAndIncrementStats() {
   try {
-    const response = await fetch(WORKER_URL, {
+    setStatsStatus("Updating…");
+    const response = await fetch(`${WORKER_URL}/api/view`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "view" })
+      cache: "no-store"
     });
-    
-    let data;
-    if (response.ok) {
-      data = await response.json();
-    } else {
-      const getRes = await fetch(WORKER_URL);
-      data = await getRes.json();
-    }
-
-    const viewsEl = document.getElementById("viewsCount");
-    const starsEl = document.getElementById("starsCount");
-
-    if (viewsEl && data.views !== undefined) viewsEl.textContent = data.views;
-    if (starsEl && data.stars !== undefined) starsEl.textContent = data.stars;
+    if (!response.ok) throw new Error(`View request failed: ${response.status}`);
+    const data = await response.json();
+    setStats(data.views, data.stars);
+    setStatsStatus("Live");
   } catch (error) {
-    console.error("Error fetching stats:", error);
+    console.error("Error updating view count:", error);
+    try {
+      const response = await fetch(`${WORKER_URL}/api/stats`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Stats request failed: ${response.status}`);
+      const data = await response.json();
+      setStats(data.views, data.stars);
+      setStatsStatus("Live");
+    } catch (fallbackError) {
+      console.error("Error loading stats:", fallbackError);
+      setStatsStatus("Offline");
+    }
   }
 }
 
 async function addStar() {
+  const starBtn = document.getElementById("starButton");
+  const starsEl = document.getElementById("starsCount");
+  if (!starBtn || localStorage.getItem(STARRED_KEY) === "true") return;
+
   try {
-    const response = await fetch(WORKER_URL, {
+    starBtn.disabled = true;
+    starBtn.classList.add("loading");
+    starBtn.setAttribute("aria-busy", "true");
+    starBtn.title = "Adding your star…";
+
+    const response = await fetch(`${WORKER_URL}/api/star`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "star" })
+      cache: "no-store"
     });
-    
+    if (!response.ok) throw new Error(`Star request failed: ${response.status}`);
     const data = await response.json();
-    const starsEl = document.getElementById("starsCount");
-    if (starsEl && data.stars !== undefined) {
-      starsEl.textContent = data.stars;
-    }
+    if (data.stars !== undefined && starsEl) starsEl.textContent = data.stars;
+
+    localStorage.setItem(STARRED_KEY, "true");
+    starBtn.classList.remove("loading");
+    starBtn.classList.add("starred");
+    starBtn.setAttribute("aria-pressed", "true");
+    starBtn.setAttribute("aria-busy", "false");
+    starBtn.title = "Thanks for starring StudyHub ⭐";
   } catch (error) {
     console.error("Error updating star count:", error);
+    starBtn.disabled = false;
+    starBtn.classList.remove("loading");
+    starBtn.setAttribute("aria-busy", "false");
+    starBtn.title = "Click to try again";
   }
 }
 
@@ -682,6 +724,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLessons();
   updateAccountView();
   loadAndIncrementStats();
+  restoreStarState();
 
   const starBtn = document.getElementById("starButton");
   if (starBtn) {
