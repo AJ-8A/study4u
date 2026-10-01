@@ -660,9 +660,11 @@ function restoreStarState() {
 async function loadAndIncrementStats() {
   try {
     setStatsStatus("Updating…");
+    const visitorUsername = currentUser || "Guest";
     const response = await fetch(`${WORKER_URL}/api/view`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: visitorUsername }),
       cache: "no-store"
     });
     if (!response.ok) throw new Error(`View request failed: ${response.status}`);
