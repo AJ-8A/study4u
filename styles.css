@@ -667,3 +667,38 @@ h1 span {
 .account-form input::placeholder{color:#6f7c95}
 .account-form input:focus{background:#101a2b!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+/* EXTREME VISUAL MODE */
+body{overflow-x:hidden;position:relative;background:#04060d!important}
+body::before,body::after{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none}
+body::before{background:conic-gradient(from 0deg,rgba(124,131,255,.18),transparent 18%,rgba(0,229,255,.10) 35%,transparent 55%,rgba(168,85,247,.14) 75%,transparent 90%);filter:blur(70px);animation:cosmicSpin 18s linear infinite}
+body::after{z-index:-1;background-image:radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1.5px),radial-gradient(circle,rgba(124,131,255,.55) 1px,transparent 1.5px);background-size:90px 90px,150px 150px;background-position:10px 20px,60px 80px;opacity:.18;animation:starsDrift 25s linear infinite}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(4,6,13,.72)!important;border-bottom:1px solid rgba(124,131,255,.22)!important;box-shadow:0 8px 40px rgba(0,0,0,.28)}
+.logo{filter:drop-shadow(0 0 12px rgba(124,131,255,.55))}
+.hero{position:relative}
+.hero::before{content:"";position:absolute;width:380px;height:380px;left:-180px;top:10px;border-radius:50%;background:radial-gradient(circle,rgba(124,131,255,.20),transparent 68%);filter:blur(12px);animation:orb 7s ease-in-out infinite;pointer-events:none}
+h1{text-shadow:0 0 35px rgba(124,131,255,.18)}
+h1 span{background:linear-gradient(90deg,#7c83ff,#00e5ff,#c084fc,#7c83ff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientFlow 5s linear infinite}
+.hero-card,.account-section,.progress-section,.material-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(16,23,37,.92),rgba(8,13,24,.88))!important;border-color:rgba(124,131,255,.22)!important;box-shadow:0 25px 70px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.06)!important}
+.hero-card::before,.account-section::before,.progress-section::before,.material-card::before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent 20%,rgba(124,131,255,.35),transparent 45%);transform:translateX(-120%);animation:shine 5s ease-in-out infinite;pointer-events:none}
+.material-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s!important}
+.material-card:hover{transform:translateY(-12px) scale(1.025)!important;border-color:rgba(124,131,255,.6)!important;box-shadow:0 25px 55px rgba(0,0,0,.5),0 0 35px rgba(124,131,255,.14)!important}
+.card-icon,.material-icon{box-shadow:0 0 30px rgba(124,131,255,.18);animation:iconFloat 3s ease-in-out infinite}
+.button{position:relative;overflow:hidden;background:linear-gradient(90deg,#6269ff,#7c83ff,#00cfff)!important;background-size:200% 100%;animation:buttonFlow 3s linear infinite;box-shadow:0 10px 35px rgba(124,131,255,.32)!important}
+.button::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%);animation:buttonShine 2.7s infinite}
+.button:hover{transform:translateY(-4px) scale(1.025)!important;box-shadow:0 15px 45px rgba(124,131,255,.48)!important}
+.stats-badge{box-shadow:0 0 25px rgba(124,131,255,.12),inset 0 1px rgba(255,255,255,.05)!important}
+.progress-bar{box-shadow:0 0 18px rgba(124,131,255,.12)}
+.progress-bar span{background:linear-gradient(90deg,#6269ff,#00e5ff,#c084fc)!important;background-size:200% 100%;animation:gradientFlow 3s linear infinite;box-shadow:0 0 18px rgba(0,229,255,.35)}
+.account-form input{border-color:rgba(124,131,255,.24)!important;box-shadow:inset 0 0 20px rgba(0,0,0,.15);transition:.25s}
+.account-form input:focus{transform:translateY(-2px);border-color:#7c83ff!important;box-shadow:0 0 0 4px rgba(124,131,255,.12),0 0 30px rgba(124,131,255,.12)!important}
+@keyframes cosmicSpin{to{transform:rotate(360deg)}}
+@keyframes starsDrift{to{transform:translate3d(80px,120px,0)}}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,40px) scale(1.18)}}
+@keyframes gradientFlow{to{background-position:300% 0}}
+@keyframes shine{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+@keyframes iconFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(2deg)}}
+@keyframes buttonFlow{to{background-position:200% 0}}
+@keyframes buttonShine{0%,35%{transform:translateX(-120%)}65%,100%{transform:translateX(120%)}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,*{animation:none!important;transition:none!important}}
