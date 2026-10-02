@@ -970,3 +970,64 @@ h1{
   background:linear-gradient(90deg,transparent,var(--lux-gold2),transparent);
 }
 .master-quote .quote-line:last-child{margin:30px auto 0}
+
+
+/* PREMIUM FOOTER + GITHUB CTA */
+.site-footer{
+  padding:72px 24px 55px!important;
+  background:linear-gradient(180deg,#030303,#010101)!important;
+  border-top:1px solid rgba(229,204,145,.18);
+  text-align:center;
+}
+.footer-inner{
+  width:min(760px,100%);
+  margin:auto;
+}
+.footer-brand{
+  color:#eee8dc;
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.5rem;
+}
+.footer-tagline{
+  margin-top:8px;
+  color:var(--lux-gold2);
+  font-size:.65rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+.footer-copy{
+  max-width:520px;
+  margin:20px auto 28px;
+  color:#817b72;
+  font-size:.82rem;
+  line-height:1.8;
+}
+.github-follow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  min-width:235px;
+  padding:14px 24px;
+  border:1px solid rgba(229,204,145,.4);
+  color:#e8d6a7;
+  background:rgba(200,169,107,.035);
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1.8px;
+  font-size:.65rem;
+  font-weight:700;
+  transition:all .4s ease;
+}
+.github-follow span:last-child{
+  font-size:1rem;
+  transition:transform .4s ease;
+}
+.github-follow:hover{
+  background:linear-gradient(135deg,#a9854d,#d8bd7e);
+  border-color:#d8bd7e;
+  color:#080705;
+  transform:translateY(-3px);
+  box-shadow:0 14px 35px rgba(200,169,107,.16);
+}
+.github-follow:hover span:last-child{transform:translate(3px,-3px)}
