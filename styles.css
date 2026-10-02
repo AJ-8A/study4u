@@ -748,3 +748,38 @@ h1 span{background:linear-gradient(100deg,#9f824c,#f0d99a,#b89457,#f0d99a);backg
 @keyframes luxBreath{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 @keyframes goldFlow{to{background-position:250% center}}
 @keyframes luxShine{0%,65%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+
+
+/* CHERRY BLOSSOM LUXURY BACKDROP */
+body{
+  background:
+    linear-gradient(180deg,rgba(3,3,3,.48),rgba(3,3,3,.82) 70%,#050505 100%),
+    url("https://images.unsplash.com/photo-1712239451066-ebdd7e341948?auto=format&fit=crop&fm=jpg&q=82&w=2400") center top/cover fixed no-repeat!important;
+}
+body::before{
+  inset:0!important;
+  background:
+    radial-gradient(circle at 72% 22%,rgba(200,169,107,.10),transparent 24%),
+    linear-gradient(90deg,rgba(0,0,0,.58),transparent 48%,rgba(0,0,0,.42))!important;
+  filter:none!important;
+  animation:luxBackdrop 10s ease-in-out infinite!important;
+}
+body::after{
+  inset:0!important;
+  background-image:
+    radial-gradient(circle at 12% 28%,rgba(245,170,190,.5) 0 2px,transparent 3px),
+    radial-gradient(circle at 78% 18%,rgba(245,170,190,.4) 0 2px,transparent 3px),
+    radial-gradient(circle at 42% 62%,rgba(245,170,190,.32) 0 1.5px,transparent 3px),
+    radial-gradient(circle at 88% 70%,rgba(245,170,190,.38) 0 2px,transparent 3px)!important;
+  background-size:320px 420px,410px 520px,280px 360px,500px 600px!important;
+  opacity:.42!important;
+  animation:petalDrift 16s linear infinite!important;
+}
+.hero{min-height:590px}
+.hero-card{backdrop-filter:blur(8px)}
+@keyframes luxBackdrop{0%,100%{opacity:.82}50%{opacity:1}}
+@keyframes petalDrift{0%{transform:translate3d(0,-10px,0)}50%{transform:translate3d(-18px,35px,0)}100%{transform:translate3d(12px,80px,0)}}
+@media(max-width:760px){
+  body{background-position:58% top!important;background-attachment:scroll!important}
+  .hero{min-height:auto}
+}
