@@ -938,3 +938,35 @@ h1{
   .nav-links{display:none}
   .stats-badge{margin-left:auto}
 }
+
+
+/* MASTER QUOTE */
+.master-quote{
+  padding:95px 20px 105px;
+  text-align:center;
+}
+.master-quote blockquote{
+  max-width:900px;
+  margin:0 auto;
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(2rem,4.5vw,4rem);
+  line-height:1.15;
+  font-weight:400;
+  font-style:italic;
+  color:#eee8dc;
+  letter-spacing:-.025em;
+}
+.master-quote p{
+  margin-top:22px;
+  color:#a79e90;
+  font-size:.65rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+.quote-line{
+  width:70px;
+  height:1px;
+  margin:0 auto 30px;
+  background:linear-gradient(90deg,transparent,var(--lux-gold2),transparent);
+}
+.master-quote .quote-line:last-child{margin:30px auto 0}
