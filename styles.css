@@ -651,3 +651,19 @@ h1 span {
     padding: 28px 20px;
   }
 }
+
+
+/* Smooth dark-theme motion */
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes floatGlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(124,131,255,.0)}50%{box-shadow:0 0 28px rgba(124,131,255,.16)}}
+.hero,.section,.progress-section,.account-section{animation:pageIn .65s ease both}
+.hero-card{animation:floatGlow 5s ease-in-out infinite,pulseGlow 4s ease-in-out infinite}
+.material-card{animation:pageIn .55s ease both}
+.material-card:nth-child(2){animation-delay:.06s}.material-card:nth-child(3){animation-delay:.12s}.material-card:nth-child(4){animation-delay:.18s}
+.button,.filter-button,.complete-button,.logout-button,.stat-button{transition:transform .2s ease,box-shadow .2s ease,background .2s ease,filter .2s ease}
+.button:hover{box-shadow:0 10px 30px rgba(124,131,255,.28)}
+.account-form input{background:#0c1321!important;color:#edf2ff!important;color-scheme:dark}
+.account-form input::placeholder{color:#6f7c95}
+.account-form input:focus{background:#101a2b!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
