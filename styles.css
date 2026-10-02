@@ -1273,3 +1273,362 @@ html,body{max-width:100%;overflow-x:hidden!important}
   .github-promo p{font-size:.76rem!important}
   .github-promo-button{min-width:220px!important}
 }
+
+
+/* =========================================================
+   MOBILE-FIRST POLISH — FINAL RESPONSIVE PASS
+   ========================================================= */
+@media (max-width: 760px){
+  html,body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden!important;
+  }
+
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+
+  .navbar{
+    width:100%!important;
+    min-height:68px!important;
+    padding:0 16px!important;
+    gap:10px!important;
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    flex:0 0 auto;
+    font-size:1.35rem!important;
+  }
+
+  .logo::after{bottom:-5px}
+
+  .stats-badge{
+    order:2;
+    margin:0 0 0 auto!important;
+    padding:0!important;
+    border-left:0!important;
+    gap:2px!important;
+    max-width:58%;
+    overflow:hidden;
+  }
+
+  .stat-item{
+    min-height:30px!important;
+    padding:0 5px!important;
+    gap:3px!important;
+    font-size:.65rem!important;
+  }
+
+  .stat-label{display:none}
+
+  .stats-status{
+    display:none!important;
+  }
+
+  .nav-links{
+    display:none!important;
+  }
+
+  .logout-button{
+    position:absolute;
+    top:76px;
+    right:16px;
+    z-index:20;
+  }
+
+  .container{
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+  }
+
+  .hero{
+    width:calc(100% - 28px)!important;
+    min-height:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:42px!important;
+    padding:68px 0 65px!important;
+  }
+
+  .hero::after{display:none}
+
+  .eyebrow{
+    margin-bottom:10px!important;
+    font-size:.56rem!important;
+    letter-spacing:2.2px!important;
+    gap:9px!important;
+  }
+
+  .eyebrow::before{
+    width:24px!important;
+  }
+
+  h1{
+    max-width:100%!important;
+    margin-top:12px!important;
+    font-size:clamp(3.05rem,14vw,4.6rem)!important;
+    line-height:.93!important;
+    letter-spacing:-.055em!important;
+    overflow-wrap:break-word;
+  }
+
+  .hero-text{
+    max-width:100%!important;
+    margin:25px 0 28px!important;
+    font-size:.86rem!important;
+    line-height:1.8!important;
+  }
+
+  .button{
+    width:100%!important;
+    min-width:0!important;
+    padding:15px 18px!important;
+    text-align:center!important;
+  }
+
+  .hero-card{
+    width:100%!important;
+    min-height:0!important;
+    padding:30px 24px!important;
+  }
+
+  .hero-card::after{
+    inset:8px!important;
+  }
+
+  .hero-card h2{
+    font-size:1.55rem!important;
+  }
+
+  .hero-card p{
+    font-size:.82rem!important;
+  }
+
+  .master-quote{
+    width:calc(100% - 28px)!important;
+    padding:62px 8px 72px!important;
+  }
+
+  .master-quote blockquote{
+    font-size:clamp(1.8rem,9vw,2.8rem)!important;
+    line-height:1.12!important;
+  }
+
+  .master-quote p{
+    font-size:.54rem!important;
+    letter-spacing:2px!important;
+  }
+
+  .account-section{
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+    margin:10px auto 60px!important;
+    padding:30px 20px!important;
+  }
+
+  .account-section .section-heading h2,
+  .section-heading h2,
+  .progress-section h2{
+    font-size:clamp(2rem,9vw,2.8rem)!important;
+    line-height:1.05!important;
+  }
+
+  .account-form{
+    margin-top:22px!important;
+  }
+
+  .account-form input{
+    padding:13px 14px!important;
+    font-size:.9rem!important;
+  }
+
+  .progress-section{
+    width:calc(100% - 28px)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:25px!important;
+    margin-bottom:50px!important;
+    padding:27px 21px!important;
+  }
+
+  .clock-box{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  .section{
+    width:calc(100% - 28px)!important;
+    padding:35px 0 65px!important;
+  }
+
+  .section-heading{
+    margin-bottom:20px!important;
+  }
+
+  .filter-buttons{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+    margin-bottom:22px!important;
+  }
+
+  .filter-button{
+    width:100%!important;
+    min-width:0!important;
+    padding:9px 6px!important;
+    font-size:.64rem!important;
+    border-radius:2px!important;
+  }
+
+  .material-grid{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+  }
+
+  .material-card{
+    min-height:0!important;
+    padding:24px 20px!important;
+  }
+
+  .material-card h3{
+    font-size:1.35rem!important;
+  }
+
+  .material-card p{
+    font-size:.82rem!important;
+  }
+
+  .complete-button{
+    padding:11px!important;
+  }
+
+  .github-promo{
+    width:calc(100% - 28px)!important;
+    margin:5px auto 0!important;
+  }
+
+  .github-promo-inner{
+    min-height:0!important;
+    padding:58px 18px 62px!important;
+  }
+
+  .github-promo-kicker{
+    font-size:.5rem!important;
+    letter-spacing:3px!important;
+  }
+
+  .github-promo-rule{
+    margin-bottom:22px!important;
+  }
+
+  .github-promo h2{
+    max-width:100%!important;
+    font-size:clamp(2.45rem,13vw,4rem)!important;
+    line-height:.97!important;
+  }
+
+  .github-promo p{
+    max-width:330px!important;
+    margin:20px auto 26px!important;
+    font-size:.76rem!important;
+    line-height:1.75!important;
+  }
+
+  .github-promo-button{
+    width:100%!important;
+    min-width:0!important;
+    padding:15px 12px!important;
+    gap:11px!important;
+    font-size:.56rem!important;
+    letter-spacing:1.5px!important;
+  }
+
+  .site-footer{
+    padding:43px 18px 48px!important;
+  }
+
+  .site-footer .footer-brand{
+    font-size:1.18rem!important;
+  }
+
+  .site-footer .footer-tagline{
+    font-size:.52rem!important;
+    letter-spacing:2.4px!important;
+  }
+
+  .site-footer .footer-copy{
+    max-width:330px!important;
+    font-size:.7rem!important;
+  }
+
+  .lesson-modal{
+    padding:12px!important;
+  }
+
+  .lesson-window{
+    width:100%!important;
+    max-height:88vh!important;
+    padding:24px 18px!important;
+    border-radius:4px!important;
+  }
+
+  .lesson-window pre{
+    font-size:.76rem!important;
+  }
+}
+
+@media (max-width: 420px){
+  .navbar{
+    padding:0 12px!important;
+  }
+
+  .logo{
+    font-size:1.2rem!important;
+  }
+
+  .stats-badge{
+    max-width:62%!important;
+  }
+
+  .stat-item{
+    font-size:.58rem!important;
+    padding:0 3px!important;
+  }
+
+  .hero{
+    padding-top:55px!important;
+  }
+
+  h1{
+    font-size:clamp(2.85rem,14.5vw,3.8rem)!important;
+  }
+
+  .hero-card{
+    padding:26px 20px!important;
+  }
+
+  .account-section,
+  .progress-section{
+    padding-left:17px!important;
+    padding-right:17px!important;
+  }
+
+  .github-promo-inner{
+    padding:50px 15px 54px!important;
+  }
+
+  .github-promo h2{
+    font-size:clamp(2.25rem,13vw,3.3rem)!important;
+  }
+
+  .github-promo-button{
+    font-size:.52rem!important;
+    letter-spacing:1.2px!important;
+  }
+}
