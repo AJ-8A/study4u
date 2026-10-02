@@ -1031,3 +1031,99 @@ h1{
   box-shadow:0 14px 35px rgba(200,169,107,.16);
 }
 .github-follow:hover span:last-child{transform:translate(3px,-3px)}
+
+
+/* CINEMATIC GITHUB FOLLOW PROMO */
+.github-promo{
+  position:relative;
+  width:min(1120px,calc(100% - 40px));
+  margin:55px auto 0;
+  padding:1px;
+  overflow:hidden;
+  background:linear-gradient(120deg,rgba(229,204,145,.08),rgba(229,204,145,.5),rgba(255,255,255,.08),rgba(229,204,145,.28));
+}
+.github-promo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 50%,rgba(229,190,116,.12),transparent 30%),
+    radial-gradient(circle at 85% 30%,rgba(255,214,166,.07),transparent 28%);
+  pointer-events:none;
+}
+.github-promo-content{
+  position:relative;
+  z-index:1;
+  padding:72px 28px 76px;
+  text-align:center;
+  background:
+    linear-gradient(135deg,rgba(18,15,11,.98),rgba(5,5,5,.98)),
+    #050505;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.github-promo-kicker{
+  display:block;
+  margin-bottom:18px;
+  color:var(--lux-gold2);
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+.github-promo h2{
+  margin:0;
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(2.4rem,5vw,4.8rem);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:-.035em;
+  color:#f1eadf;
+}
+.github-promo p{
+  max-width:570px;
+  margin:22px auto 30px;
+  color:#91897e;
+  font-size:.9rem;
+  line-height:1.8;
+}
+.github-promo-button{
+  display:inline-flex;
+  align-items:center;
+  gap:13px;
+  padding:15px 25px;
+  border:1px solid rgba(229,204,145,.48);
+  background:linear-gradient(135deg,rgba(205,174,111,.13),rgba(255,255,255,.025));
+  color:#ead7aa;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1.7px;
+  font-size:.63rem;
+  font-weight:700;
+  box-shadow:0 0 0 1px rgba(255,255,255,.015),0 18px 45px rgba(0,0,0,.35);
+  transition:transform .45s ease,box-shadow .45s ease,background .45s ease,color .45s ease;
+}
+.github-mark{
+  width:23px;
+  height:23px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(229,204,145,.35);
+  border-radius:50%;
+  font-size:.75rem;
+}
+.github-promo-button span:last-child{
+  font-size:1rem;
+  transition:transform .45s ease;
+}
+.github-promo-button:hover{
+  transform:translateY(-4px);
+  background:linear-gradient(135deg,#b18b50,#e1c584);
+  color:#090806;
+  box-shadow:0 20px 55px rgba(205,174,111,.2);
+}
+.github-promo-button:hover span:last-child{transform:translate(4px,-3px)}
+@media(max-width:600px){
+  .github-promo{width:calc(100% - 28px);margin-top:38px}
+  .github-promo-content{padding:55px 20px 58px}
+  .github-promo p{font-size:.82rem}
+}
