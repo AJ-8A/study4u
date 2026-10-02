@@ -702,3 +702,49 @@ h1 span{background:linear-gradient(90deg,#7c83ff,#00e5ff,#c084fc,#7c83ff);backgr
 @keyframes buttonFlow{to{background-position:200% 0}}
 @keyframes buttonShine{0%,35%{transform:translateX(-120%)}65%,100%{transform:translateX(120%)}}
 @media(prefers-reduced-motion:reduce){body::before,body::after,*{animation:none!important;transition:none!important}}
+
+
+/* LUXURY CINEMATIC MODE */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap');
+:root{--lux-black:#050505;--lux-panel:#0c0c0b;--lux-gold:#c8a96b;--lux-gold2:#f0d99a;--lux-line:rgba(200,169,107,.24)}
+body{background:radial-gradient(circle at 50% 0,rgba(200,169,107,.08),transparent 34%),#050505!important;color:#f4f0e7;letter-spacing:.01em}
+body::before{background:radial-gradient(circle at 50% 20%,rgba(200,169,107,.10),transparent 28%)!important;filter:blur(80px)!important;animation:luxBreath 9s ease-in-out infinite!important}
+body::after{background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px)!important;background-size:70px 70px!important;opacity:.35!important;animation:none!important}
+.site-header{background:rgba(5,5,5,.82)!important;border-bottom:1px solid var(--lux-line)!important}
+.logo{font-family:'DM Serif Display',serif;font-size:1.55rem;letter-spacing:.02em;filter:none}
+.logo span{color:var(--lux-gold)}
+.nav-links a{color:#aaa39a!important;transition:.35s}
+.nav-links a:hover{color:var(--lux-gold)!important}
+.stats-badge{border-color:var(--lux-line)!important;background:rgba(12,12,11,.8)!important}
+.eyebrow,.level{color:var(--lux-gold)!important;letter-spacing:2.4px}
+h1{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(3.2rem,7vw,6.7rem);letter-spacing:-.035em;line-height:.98;text-shadow:none}
+h1 span{background:linear-gradient(100deg,#9f824c,#f0d99a,#b89457,#f0d99a);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:goldFlow 7s linear infinite}
+.hero-text{color:#aaa39a!important;font-size:1.08rem;max-width:550px}
+.button{background:linear-gradient(135deg,#a9854d,#d8bd7e,#a9854d)!important;background-size:200% 100%!important;color:#080705!important;border-radius:3px!important;padding:15px 28px!important;letter-spacing:.05em;text-transform:uppercase;font-size:.75rem;box-shadow:0 12px 35px rgba(200,169,107,.16)!important;animation:none}
+.button:hover{background-position:100% 0!important;transform:translateY(-3px)!important;box-shadow:0 18px 45px rgba(200,169,107,.25)!important}
+.hero-card,.progress-section,.account-section,.material-card{background:linear-gradient(145deg,#11110f,#090908)!important;border-color:var(--lux-line)!important;border-radius:3px!important;box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.035)!important}
+.hero-card{padding:38px}
+.hero-card::before,.account-section::before,.progress-section::before,.material-card::before{background:linear-gradient(90deg,transparent,rgba(200,169,107,.16),transparent)!important;animation:luxShine 8s ease-in-out infinite!important}
+.card-icon,.material-icon{background:rgba(200,169,107,.08)!important;border:1px solid var(--lux-line);border-radius:2px!important;box-shadow:none!important}
+.material-grid{gap:24px}
+.material-card{transition:transform .55s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s!important}
+.material-card:hover{transform:translateY(-8px)!important;border-color:rgba(240,217,154,.55)!important;box-shadow:0 30px 70px rgba(0,0,0,.65),0 0 35px rgba(200,169,107,.08)!important}
+.filter-button{background:#090908!important;border-color:var(--lux-line)!important;border-radius:2px!important}
+.filter-button.active,.filter-button:hover{background:var(--lux-gold)!important;border-color:var(--lux-gold)!important;color:#080705!important}
+.progress-bar{background:#1a1814!important;height:5px}
+.progress-bar span{background:linear-gradient(90deg,#8f713f,#f0d99a)!important;box-shadow:0 0 18px rgba(200,169,107,.22)!important}
+.clock-box{background:#0a0a09!important;border:1px solid var(--lux-line);border-radius:2px}
+.clock-box strong{color:var(--lux-gold)!important}
+.account-section .section-heading h2,.section-heading h2,.progress-section h2{font-family:'DM Serif Display',serif;font-weight:400}
+.account-form input{background:#080807!important;border-color:rgba(200,169,107,.2)!important;color:#f4f0e7!important;border-radius:2px!important}
+.account-form input:focus{border-color:var(--lux-gold)!important;box-shadow:0 0 0 3px rgba(200,169,107,.08)!important}
+.complete-button{background:#0a0a09!important;color:var(--lux-gold)!important;border-color:var(--lux-line)!important;border-radius:2px!important}
+.complete-button:hover,.complete-button.completed{background:var(--lux-gold)!important;color:#080705!important}
+.site-footer{background:#030303!important;border-top:1px solid var(--lux-line);color:#777168}
+.lesson-window{background:#0d0d0c!important;color:#f4f0e7;border:1px solid var(--lux-line);border-radius:3px}
+.lesson-window h3,.lesson-window summary{color:var(--lux-gold)!important}
+.lesson-window details{background:#151411!important}
+.lesson-window pre{background:#030303!important}
+@keyframes luxBreath{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes goldFlow{to{background-position:250% center}}
+@keyframes luxShine{0%,65%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
