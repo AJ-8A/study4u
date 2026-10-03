@@ -600,6 +600,9 @@ Testing    = fewer bugs`,
   }
 
 ];
+
+// Expand the curriculum with the extended learning library.
+lessons.push(...EXTRA_LESSONS);
 const usersKey = "studyhub_users";
 const currentUserKey = "studyhub_current_user";
 const xpPerLesson = 100;
