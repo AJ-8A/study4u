@@ -60,6 +60,15 @@
       </div>
     </section>
 
+    <section class="achievements-section container">
+      <div class="section-heading">
+        <p class="eyebrow">Milestones</p>
+        <h2>Achievements</h2>
+        <p>Small wins become a serious learning habit.</p>
+      </div>
+      <div id="achievementGrid" class="achievement-grid"></div>
+    </section>
+
     <section class="master-quote container" aria-label="Learning inspiration">
       <div class="quote-line"></div>
       <blockquote>“Every master was once a beginner.”</blockquote>
@@ -99,18 +108,66 @@
         <h2>Keep moving forward</h2>
         <p id="welcomeText">Create an account to save your progress.</p>
       </div>
-
       <div class="clock-box">
         <span>Current status</span>
         <strong id="statusText">Not signed in</strong>
       </div>
     </section>
 
+    <section class="learning-dashboard container" aria-label="Learning dashboard">
+      <div class="dashboard-heading">
+        <div>
+          <p class="eyebrow">Your journey</p>
+          <h2>Learn. Track. Level up.</h2>
+        </div>
+        <button id="themeButton" class="mini-action" type="button">☼ Bright mode</button>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dashboard-card dashboard-main">
+          <span class="dashboard-label">Current level</span>
+          <strong id="dashLevel">Beginner</strong>
+          <div class="dashboard-progress"><span id="dashProgressBar"></span></div>
+          <div class="dashboard-meta"><span id="dashProgress">0%</span><span id="dashLessons">0/0</span></div>
+        </div>
+        <div class="dashboard-card"><span class="dashboard-icon">✦</span><span class="dashboard-label">Experience</span><strong id="dashXp">0 XP</strong><small>100 XP per completed lesson</small></div>
+        <div class="dashboard-card"><span class="dashboard-icon">🔥</span><span class="dashboard-label">Study streak</span><strong id="dashStreak">0 days</strong><small>Return tomorrow to keep it alive.</small></div>
+      </div>
+    </section>
+
+    <section class="continue-section container">
+      <div class="continue-card">
+        <div>
+          <p class="eyebrow">Continue learning</p>
+          <h2 id="continueTitle">Start your first lesson</h2>
+          <p id="continueMeta">Open the learning path and begin your journey.</p>
+        </div>
+        <button id="continueButton" class="button" type="button">Continue learning →</button>
+      </div>
+    </section>
+
+    <section class="challenge-section container">
+      <div class="challenge-card">
+        <div class="challenge-number">01</div>
+        <div class="challenge-copy">
+          <p class="eyebrow">Daily challenge</p>
+          <h2 id="challengeTitle">Today's challenge</h2>
+          <p id="challengeText">A new challenge is waiting for you.</p>
+        </div>
+        <button id="challengeButton" class="outline-button" type="button">Take challenge</button>
+      </div>
+    </section>
+
     <section id="lessons" class="section container">
-      <div class="section-heading">
-        <p class="eyebrow">Study materials</p>
-        <h2>Learning path</h2>
-        <p>Finish lessons in order to unlock new topics.</p>
+      <div class="section-heading lessons-heading">
+        <div>
+          <p class="eyebrow">Study materials</p>
+          <h2>Learning path</h2>
+          <p>Finish lessons in order to unlock new topics.</p>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="lessonSearch" type="search" placeholder="Search lessons, subjects..." autocomplete="off">
+        </label>
       </div>
 
       <div class="filter-buttons">
@@ -124,6 +181,7 @@
         <button class="filter-button" data-filter="Grandmaster">Grandmaster</button>
       </div>
 
+      <p id="searchEmpty" class="search-empty" hidden>No lessons match your search. Try another topic.</p>
       <div id="materialGrid" class="material-grid"></div>
     </section>
   </main>
