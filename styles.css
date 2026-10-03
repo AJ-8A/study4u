@@ -1632,3 +1632,104 @@ html,body{max-width:100%;overflow-x:hidden!important}
     letter-spacing:1.2px!important;
   }
 }
+
+
+/* =========================================================
+   STUDYHUB EXPANSION — DASHBOARD / SEARCH / ACHIEVEMENTS
+   ========================================================= */
+.learning-dashboard,.continue-section,.challenge-section,.achievements-section{
+  width:min(1120px,92%);
+  margin:0 auto;
+}
+.learning-dashboard{padding:30px 0 55px}
+.dashboard-heading{
+  display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:24px;
+}
+.dashboard-heading h2,.continue-card h2,.challenge-card h2{
+  margin:8px 0 0;font-family:'DM Serif Display',Georgia,serif;font-weight:400;
+  font-size:clamp(2rem,4vw,3.3rem);line-height:1;
+}
+.mini-action,.outline-button{
+  border:1px solid rgba(229,204,145,.38);background:rgba(229,204,145,.04);color:#ead7aa;
+  padding:12px 16px;text-transform:uppercase;letter-spacing:1.5px;font-size:.58rem;font-weight:700;cursor:pointer;
+}
+.mini-action:hover,.outline-button:hover{background:rgba(229,204,145,.12);border-color:#e5cc91}
+.dashboard-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:14px}
+.dashboard-card{
+  min-height:170px;padding:27px;border:1px solid rgba(229,204,145,.2);
+  background:linear-gradient(145deg,rgba(25,22,17,.72),rgba(5,5,4,.8));display:flex;flex-direction:column;justify-content:center;
+}
+.dashboard-main{justify-content:space-between}
+.dashboard-label{font-size:.57rem;letter-spacing:2.5px;text-transform:uppercase;color:#a9a092}
+.dashboard-card strong{margin-top:8px;font-family:'DM Serif Display',Georgia,serif;font-size:2rem;font-weight:400;color:#f6f0e4}
+.dashboard-card small{margin-top:9px;color:#888176;font-size:.7rem;line-height:1.5}
+.dashboard-icon{font-size:1.15rem;margin-bottom:14px;color:#e5cc91}
+.dashboard-progress{height:3px;background:rgba(255,255,255,.08);margin-top:22px;overflow:hidden}
+.dashboard-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#a9854d,#f0d898);transition:width .7s ease}
+.dashboard-meta{display:flex;justify-content:space-between;margin-top:10px;color:#bdb4a6;font-size:.65rem;letter-spacing:1px}
+.continue-section{padding:5px 0 40px}
+.continue-card{
+  display:flex;align-items:center;justify-content:space-between;gap:35px;padding:38px;
+  border:1px solid rgba(229,204,145,.28);
+  background:linear-gradient(100deg,rgba(229,204,145,.09),rgba(8,8,7,.88));
+}
+.continue-card p:not(.eyebrow),.challenge-card p:not(.eyebrow){color:#a9a195;font-size:.84rem;line-height:1.7}
+.challenge-section{padding:0 0 80px}
+.challenge-card{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;
+  padding:30px;border-top:1px solid rgba(229,204,145,.2);border-bottom:1px solid rgba(229,204,145,.2);
+}
+.challenge-number{font-family:'DM Serif Display',serif;font-size:2.4rem;color:#6f5a38}
+.challenge-copy h2{font-size:2rem}
+.lessons-heading{display:flex;align-items:end;justify-content:space-between;gap:30px}
+.search-box{
+  display:flex;align-items:center;gap:10px;width:min(330px,100%);height:44px;
+  border:1px solid rgba(229,204,145,.28);background:rgba(255,255,255,.025);padding:0 13px;color:#cdb77e;
+}
+.search-box input{width:100%;border:0;outline:0;background:transparent;color:#f4efe5;font:inherit;font-size:.72rem}
+.search-box input::placeholder{color:#716b62}
+.search-empty{text-align:center;color:#928a7f;padding:35px 0}
+.achievements-section{padding:25px 0 90px}
+.achievement-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.achievement{
+  min-height:145px;padding:18px 12px;text-align:center;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.018);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  opacity:.48;filter:grayscale(.7);transition:.35s ease;
+}
+.achievement.earned{opacity:1;filter:none;border-color:rgba(229,204,145,.34);background:rgba(229,204,145,.06)}
+.achievement span{font-size:1.55rem}.achievement b{font-size:.68rem;letter-spacing:.5px}.achievement small{font-size:.55rem;color:#8e877d}
+.bright-mode{
+  --lux-gold:#e9c977!important;--lux-gold2:#f7df9f!important;
+}
+body.bright-mode{
+  background:
+    radial-gradient(circle at 12% 20%,rgba(235,194,139,.16),transparent 30%),
+    radial-gradient(circle at 84% 28%,rgba(242,171,196,.13),transparent 28%),
+    linear-gradient(rgba(7,6,5,.67),rgba(7,6,5,.78)),
+    url("https://images.unsplash.com/photo-1712239451066-ebdd7e341948?auto=format&fit=crop&fm=jpg&q=82&w=2400") center/cover fixed!important;
+}
+body.bright-mode .hero-card,body.bright-mode .material-card,body.bright-mode .dashboard-card{
+  background:linear-gradient(145deg,rgba(31,27,21,.88),rgba(10,9,8,.82))!important;
+  border-color:rgba(247,223,159,.38)!important;
+}
+body.bright-mode .hero-text,body.bright-mode .material-card p{color:#d2c9bb!important}
+body.bright-mode .stats-badge{color:#f7df9f!important}
+@media(max-width:900px){
+  .dashboard-grid{grid-template-columns:1fr 1fr}
+  .dashboard-main{grid-column:1/-1}
+  .achievement-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:760px){
+  .learning-dashboard,.continue-section,.challenge-section,.achievements-section{width:calc(100% - 28px)!important}
+  .dashboard-heading,.lessons-heading,.continue-card{display:flex;flex-direction:column;align-items:stretch}
+  .dashboard-grid{grid-template-columns:1fr}
+  .dashboard-main{grid-column:auto}
+  .dashboard-card{min-height:135px}
+  .continue-card{padding:27px 22px;gap:25px}
+  .challenge-card{grid-template-columns:1fr;gap:15px;padding:25px 4px}
+  .challenge-number{font-size:1.7rem}
+  .lessons-heading{gap:20px}
+  .search-box{width:100%}
+  .achievement-grid{grid-template-columns:repeat(2,1fr)}
+  .achievement{min-height:125px}
+}
