@@ -661,7 +661,7 @@ function updateStreak(){
   if(last===today) return;
   if(!last){ u.stats.streak=1; }
   else { const a=new Date(last+"T00:00:00"), b=new Date(today+"T00:00:00"); const diff=Math.round((b-a)/86400000); u.stats.streak=diff===1?(u.stats.streak||0)+1:1; }
-  u.stats.lastStudyDate=today; saveUsers();
+  u.stats.lastStudyDate=today; u.stats.bestStreak=Math.max(u.stats.bestStreak||0,u.stats.streak||0); saveUsers();
 }
 function updateAchievements(){
   const u = getCurrentUserData(); if (!u) return;
@@ -677,6 +677,18 @@ function updateAchievements(){
   ];
   for (const [id] of candidates) if (id && candidates.find(x=>x[0]===id)[4] && !u.achievements.includes(id)) u.achievements.push(id);
   saveUsers();
+}
+function updateStreakUI(){
+  const u=getCurrentUserData();
+  const streak=u?.stats?.streak||0, best=u?.stats?.bestStreak||streak;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set("streakBig",streak); set("bestStreak",best); set("todayStatus",u?.stats?.lastStudyDate===todayKey()?"Done ✓":"Start");
+  const weeklyStart=(()=>{const d=new Date(); const day=d.getDay(); const diff=day===0?-6:1-day; d.setDate(d.getDate()+diff); d.setHours(0,0,0,0); return d;})();
+  const completed=u?.completed||[];
+  let count=0;
+  completed.forEach(i=>{ const stamp=u?.completionDates?.[i]; if(stamp && new Date(stamp)>=weeklyStart) count++; });
+  set("weeklyCount",Math.min(count,3)+"/3");
+  set("weeklyText",count>=3?"Weekly mission complete. Keep the rhythm going!":"Complete "+(3-count)+" more lesson"+(3-count===1?"":"s")+" this week.");
 }
 function renderDashboard(){
   const u = getCurrentUserData(), completed = getCompletedLessons(), xp = getXP();
@@ -748,7 +760,8 @@ function completeLesson(index){
   if(!user){showMessage("Please log in before marking a lesson as read.",true);document.getElementById("account")?.scrollIntoView({behavior:"smooth"});return;}
   if(!lessons[index]||!isUnlocked(index,user.completed)||user.completed.includes(index))return;
   user.completed.push(index); user.completed.sort((a,b)=>a-b); user.stats.dailyXp=(user.stats.dailyDate===todayKey()?user.stats.dailyXp:0)+xpPerLesson; user.stats.dailyDate=todayKey();
-  updateStreak(); saveUsers(); renderLessons(); updateAccountView();
+  if(!user.completionDates) user.completionDates={}; user.completionDates[index]=new Date().toISOString();
+  updateStreak(); saveUsers(); renderLessons(); updateAccountView(); updateStreakUI();
   showMessage(index===lessons.length-1?"Congratulations! You completed StudyHub with "+getXP()+" XP 🎉":"Lesson completed! You earned "+xpPerLesson+" XP.",false);
 }
 function updateProgress(){
@@ -782,6 +795,7 @@ if(accountForm)accountForm.addEventListener("submit",event=>{
 if(switchAccountMode)switchAccountMode.addEventListener("click",()=>{loginMode=!loginMode;if(accountMessage)accountMessage.textContent="";updateAccountView();});
 if(logoutButton)logoutButton.addEventListener("click",()=>{currentUser=null;localStorage.removeItem(currentUserKey);loginMode=true;showMessage("You have been logged out.");renderLessons();updateAccountView();});
 document.querySelectorAll(".filter-button").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));button.classList.add("active");activeFilter=button.dataset.filter;renderLessons();}));
+document.querySelectorAll(".subject-card").forEach(button=>button.addEventListener("click",()=>{searchTerm=button.dataset.subject;const input=document.getElementById("lessonSearch");if(input)input.value=searchTerm;document.getElementById("lessons")?.scrollIntoView({behavior:"smooth"});renderLessons();}));
 const searchInput=document.getElementById("lessonSearch");
 if(searchInput)searchInput.addEventListener("input",()=>{searchTerm=searchInput.value.trim();renderLessons();});
 const continueButton=document.getElementById("continueButton");
@@ -803,4 +817,4 @@ async function addStar(){
   try{b.disabled=true;const r=await fetch(WORKER_URL+"/api/star",{method:"POST",cache:"no-store"});if(!r.ok)throw new Error("Star request failed");const d=await r.json();if(s)s.textContent=d.stars;localStorage.setItem(STARRED_KEY,"true");b.classList.add("starred");b.setAttribute("aria-pressed","true");b.title="Thanks for starring StudyHub ⭐";}
   catch{b.disabled=false;b.title="Click to try again";}
 }
-document.addEventListener("DOMContentLoaded",()=>{restoreTheme();renderLessons();updateAccountView();dailyChallenge();loadAndIncrementStats();restoreStarState();});
+document.addEventListener("DOMContentLoaded",()=>{restoreTheme();renderLessons();updateAccountView();updateStreakUI();dailyChallenge();loadAndIncrementStats();restoreStarState();});
