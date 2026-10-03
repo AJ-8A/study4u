@@ -476,6 +476,128 @@ Testing    = fewer bugs`,
       answer: "Define the goal, requirements, and small milestones."
     }
   }
+,
+
+  {
+    title: "Python Lists & Dictionaries", subject: "Python", level: "Intermediate", icon: "🧠", color: "green",
+    description: "Store collections of data with lists, tuples, sets, and dictionaries.",
+    content: {
+      learn: "Lists keep ordered collections and can be changed. Tuples are ordered but immutable. Sets store unique values. Dictionaries store key-value pairs. Choosing the right structure makes programs clearer.",
+      example: 'student = {"name": "AJ", "score": 92}\nprint(student["name"])\n\nscores = [80, 91, 76]\nprint(max(scores))',
+      practice: "Create a dictionary for a student and a list containing five subject scores.",
+      quiz: "Which Python structure stores key-value pairs?", answer: "A dictionary."
+    }
+  },
+  {
+    title: "Python File Handling", subject: "Python", level: "Advanced", icon: "📁", color: "green",
+    description: "Read and write text files safely using Python.",
+    content: {
+      learn: "Python can read and write files with open(). The with statement automatically closes a file. Common modes include r for reading, w for writing, and a for appending.",
+      example: 'with open("notes.txt", "w") as file:\n    file.write("Keep learning!")',
+      practice: "Create a notes program that saves three lines and reads them back.",
+      quiz: "Why is with useful when opening files?", answer: "It manages the file context and closes the file automatically."
+    }
+  },
+  {
+    title: "JavaScript Arrays & Objects", subject: "JavaScript", level: "Intermediate", icon: "🧱", color: "orange",
+    description: "Organize application data with arrays and objects.",
+    content: {
+      learn: "Arrays store ordered values. Objects store named properties. Modern JavaScript provides map, filter, find, and other methods for transforming and searching data.",
+      example: 'const lessons = [{title:"HTML", done:true}, {title:"CSS", done:false}];\nconst done = lessons.filter(item => item.done);',
+      practice: "Create an array of five lessons and filter it to show only completed lessons.",
+      quiz: "Which method creates a new array containing matching items?", answer: "filter()"
+    }
+  },
+  {
+    title: "JavaScript Async & Fetch", subject: "JavaScript", level: "Expert", icon: "🌐", color: "orange",
+    description: "Load remote data with promises, async/await, and fetch.",
+    content: {
+      learn: "Network requests take time, so JavaScript handles them asynchronously. fetch() returns a Promise. async/await makes asynchronous code easier to read. Always check response status and handle failures.",
+      example: 'async function loadData() {\n  const response = await fetch("/api/data");\n  if (!response.ok) throw new Error("Request failed");\n  return response.json();\n}',
+      practice: "Fetch JSON from an API and display a loading state, result, and error state.",
+      quiz: "What does await do inside an async function?", answer: "It waits for a Promise to settle before continuing that function."
+    }
+  },
+  {
+    title: "CSS Animations", subject: "CSS", level: "Advanced", icon: "✨", color: "purple",
+    description: "Create polished motion with transitions and keyframes.",
+    content: {
+      learn: "Transitions animate changes between states. @keyframes defines multi-step animations. Keep motion subtle and respect prefers-reduced-motion for users who request less animation.",
+      example: '.card { transition: transform .3s ease; }\n.card:hover { transform: translateY(-4px); }',
+      practice: "Animate a card lift and button hover without making the interface distracting.",
+      quiz: "Which CSS feature defines named animation steps?", answer: "@keyframes"
+    }
+  },
+  {
+    title: "CSS Variables & Themes", subject: "CSS", level: "Expert", icon: "🎛️", color: "purple",
+    description: "Build maintainable color systems and theme switches.",
+    content: {
+      learn: "CSS custom properties store reusable values. Define them on :root and override them on another class such as .bright-mode. This keeps themes consistent and easier to maintain.",
+      example: ':root { --gold: #d8b86a; }\n.bright-mode { --gold: #f0cf7b; }\n.button { color: var(--gold); }',
+      practice: "Create a light and dark theme using at least five shared CSS variables.",
+      quiz: "Which syntax reads a CSS custom property?", answer: "var(--property-name)"
+    }
+  },
+  {
+    title: "SQL Joins", subject: "Databases", level: "Advanced", icon: "🔗", color: "purple",
+    description: "Combine related information from multiple database tables.",
+    content: {
+      learn: "A JOIN combines rows from related tables. INNER JOIN returns matching rows. LEFT JOIN keeps every row from the left table and adds matching data when available. Good table design makes relationships explicit.",
+      example: 'SELECT students.name, courses.title\nFROM students\nJOIN enrollments ON enrollments.student_id = students.id\nJOIN courses ON courses.id = enrollments.course_id;',
+      practice: "Design students and courses tables, then query the courses taken by each student.",
+      quiz: "What does an INNER JOIN return?", answer: "Rows with matching records in both joined tables."
+    }
+  },
+  {
+    title: "Git Branches & Pull Requests", subject: "Tools", level: "Intermediate", icon: "🌿", color: "dark",
+    description: "Work safely on features with branches and code review.",
+    content: {
+      learn: "Branches let you work on changes without disturbing the main branch. A pull request proposes changes for review. Small commits and clear descriptions make collaboration easier.",
+      example: 'git switch -c feature/search\ngit add .\ngit commit -m "Add lesson search"\ngit push -u origin feature/search',
+      practice: "Create a feature branch, make one focused change, and describe it in a pull request.",
+      quiz: "Why use a feature branch?", answer: "To isolate work until it is ready to integrate."
+    }
+  },
+  {
+    title: "Testing Web Apps", subject: "Programming", level: "Master", icon: "🧪", color: "pink",
+    description: "Check behavior systematically before releasing software.",
+    content: {
+      learn: "Testing verifies that software behaves as expected. Test normal cases, edge cases, invalid input, responsive layouts, and important user journeys. Automated tests can repeat checks quickly, while manual testing catches visual and usability problems.",
+      example: 'Input: empty username\nExpected: validation message\nInput: valid username\nExpected: account created',
+      practice: "Write ten test cases for a login form, including invalid and boundary inputs.",
+      quiz: "What is an edge case?", answer: "An unusual or boundary input that can reveal hidden bugs."
+    }
+  },
+  {
+    title: "Deployment & Performance", subject: "Web", level: "Master", icon: "🚀", color: "blue",
+    description: "Prepare a website for real users with speed and reliability in mind.",
+    content: {
+      learn: "Deployment makes your application available to users. Performance improves through optimized images, efficient CSS and JavaScript, caching, and minimizing unnecessary network work. Always test the deployed version, not only local files.",
+      example: 'Build → Test → Deploy → Monitor → Improve',
+      practice: "Audit a page and identify three opportunities to reduce load time without hurting usability.",
+      quiz: "Why test the deployed site separately?", answer: "Production hosting, paths, caching, APIs, and configuration can behave differently from local development."
+    }
+  },
+  {
+    title: "Study Skills: Active Recall", subject: "Study Skills", level: "Beginner", icon: "🧠", color: "pink",
+    description: "Remember more by retrieving knowledge instead of only rereading.",
+    content: {
+      learn: "Active recall means trying to retrieve information from memory. Close your notes and answer questions, explain a concept aloud, or write what you remember before checking the answer. Short repeated sessions are useful for long-term learning.",
+      example: "Read → Close notes → Recall → Check → Correct → Repeat",
+      practice: "After today's lesson, write five questions and answer them without looking at your notes.",
+      quiz: "What is active recall?", answer: "Practicing retrieval of information from memory."
+    }
+  },
+  {
+    title: "Study Skills: Spaced Practice", subject: "Study Skills", level: "Novice", icon: "📅", color: "pink",
+    description: "Plan review sessions over time instead of cramming.",
+    content: {
+      learn: "Spaced practice distributes review across multiple sessions. A simple plan can review new material today, again tomorrow, several days later, and again the following week. Combine spacing with active recall.",
+      example: "Day 1 → Learn\nDay 2 → Recall\nDay 4 → Practice\nDay 7 → Review",
+      practice: "Choose one topic and schedule four short review sessions over the next week.",
+      quiz: "What does spaced practice change?", answer: "It distributes learning and review over time."
+    }
+  }
 
 ];
 const usersKey = "studyhub_users";
@@ -532,20 +654,14 @@ function getLevel(){
   return "Beginner";
 }
 function isUnlocked(index, completed){ return index === 0 || completed.includes(index - 1); }
-function todayKey(){ return new Date().toISOString().slice(0,10); }
+function todayKey(){ const d=new Date(); const y=d.getFullYear(); const m=String(d.getMonth()+1).padStart(2,"0"); const day=String(d.getDate()).padStart(2,"0"); return `${y}-${m}-${day}`; }
 function updateStreak(){
-  const u = getCurrentUserData();
-  if (!u) return;
-  const today = todayKey(), last = u.stats.lastStudyDate;
-  if (last === today) return;
-  if (last) {
-    const d = new Date(last + "T00:00:00");
-    const now = new Date(today + "T00:00:00");
-    const diff = Math.round((now-d)/86400000);
-    u.stats.streak = diff === 1 ? (u.stats.streak || 0) + 1 : 1;
-  } else u.stats.streak = 1;
-  u.stats.lastStudyDate = today;
-  saveUsers();
+  const u=getCurrentUserData(); if(!u) return;
+  const today=todayKey(), last=u.stats.lastStudyDate;
+  if(last===today) return;
+  if(!last){ u.stats.streak=1; }
+  else { const a=new Date(last+"T00:00:00"), b=new Date(today+"T00:00:00"); const diff=Math.round((b-a)/86400000); u.stats.streak=diff===1?(u.stats.streak||0)+1:1; }
+  u.stats.lastStudyDate=today; saveUsers();
 }
 function updateAchievements(){
   const u = getCurrentUserData(); if (!u) return;
@@ -687,4 +803,4 @@ async function addStar(){
   try{b.disabled=true;const r=await fetch(WORKER_URL+"/api/star",{method:"POST",cache:"no-store"});if(!r.ok)throw new Error("Star request failed");const d=await r.json();if(s)s.textContent=d.stars;localStorage.setItem(STARRED_KEY,"true");b.classList.add("starred");b.setAttribute("aria-pressed","true");b.title="Thanks for starring StudyHub ⭐";}
   catch{b.disabled=false;b.title="Click to try again";}
 }
-document.addEventListener("DOMContentLoaded",()=>{restoreTheme();updateStreak();renderLessons();updateAccountView();dailyChallenge();loadAndIncrementStats();restoreStarState();});
+document.addEventListener("DOMContentLoaded",()=>{restoreTheme();renderLessons();updateAccountView();dailyChallenge();loadAndIncrementStats();restoreStarState();});
