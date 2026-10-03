@@ -309,43 +309,196 @@ Testing    = fewer bugs`,
       quiz: "What should you do before publishing a web project?",
       answer: "Test it on different screens, fix errors, and check accessibility."
     }
-  }
-];
+  },
 
+  {
+    title: "Python Fundamentals",
+    subject: "Python",
+    level: "Beginner",
+    icon: "🐍",
+    color: "green",
+    description: "Learn variables, types, input, output, and basic Python syntax.",
+    content: {
+      learn: "Python is a beginner-friendly programming language. Variables store values, strings hold text, numbers represent quantities, and input() reads user input. Use print() to display results.",
+      example: 'name = input("Your name: ")\nprint("Hello,", name)',
+      practice: "Ask the user for their name and age, then print a friendly introduction.",
+      quiz: "Which Python function displays text?",
+      answer: "print()"
+    }
+  },
+  {
+    title: "Python Conditions",
+    subject: "Python",
+    level: "Novice",
+    icon: "🔀",
+    color: "green",
+    description: "Make decisions with if, elif, and else.",
+    content: {
+      learn: "Conditional statements let a program choose what to do. if checks a condition, elif checks another possibility, and else handles everything that remains.",
+      example: 'score = 72\nif score >= 90:\n    print("Excellent")\nelif score >= 60:\n    print("Passed")\nelse:\n    print("Keep practicing")',
+      practice: "Write a program that checks whether a number is positive, negative, or zero.",
+      quiz: "Which keyword handles the fallback branch?",
+      answer: "else"
+    }
+  },
+  {
+    title: "Python Loops",
+    subject: "Python",
+    level: "Intermediate",
+    icon: "🔁",
+    color: "green",
+    description: "Repeat work efficiently with for and while loops.",
+    content: {
+      learn: "Loops repeat instructions. A for loop is useful when iterating through a sequence or a known range. A while loop repeats while a condition remains true. Avoid accidental infinite loops.",
+      example: 'for number in range(1, 6):\n    print(number)',
+      practice: "Print the numbers from 1 to 20 and calculate their total.",
+      quiz: "Which loop is commonly used with range()?",
+      answer: "for"
+    }
+  },
+  {
+    title: "Python Functions",
+    subject: "Python",
+    level: "Advanced",
+    icon: "🧩",
+    color: "green",
+    description: "Build reusable logic with parameters and return values.",
+    content: {
+      learn: "Functions package reusable behavior. Parameters receive input and return sends a result back to the caller. Good functions usually have one clear responsibility.",
+      example: 'def add(a, b):\n    return a + b\n\nresult = add(4, 7)',
+      practice: "Create a function that receives a list of numbers and returns the largest value.",
+      quiz: "Which keyword creates a function in Python?",
+      answer: "def"
+    }
+  },
+  {
+    title: "Git and GitHub Basics",
+    subject: "Tools",
+    level: "Beginner",
+    icon: "🌿",
+    color: "dark",
+    description: "Track code changes and collaborate with repositories.",
+    content: {
+      learn: "Git is a version-control system. A repository stores project history. Common commands include git status, git add, git commit, git pull, and git push. GitHub hosts repositories and supports collaboration.",
+      example: 'git status\ngit add .\ngit commit -m "Update lesson"\ngit push',
+      practice: "Create a small repository, make a change, commit it with a clear message, and push it.",
+      quiz: "Which command records staged changes in Git history?",
+      answer: "git commit"
+    }
+  },
+  {
+    title: "SQL Foundations",
+    subject: "Databases",
+    level: "Novice",
+    icon: "🗄️",
+    color: "purple",
+    description: "Read and change structured data with SQL.",
+    content: {
+      learn: "SQL is used to work with relational databases. SELECT reads data, INSERT adds rows, UPDATE changes rows, and DELETE removes rows. WHERE limits which rows are affected.",
+      example: 'SELECT name, score\nFROM students\nWHERE score >= 80\nORDER BY score DESC;',
+      practice: "Create a students table and write a query that returns students with scores above 75.",
+      quiz: "Which SQL keyword filters rows?",
+      answer: "WHERE"
+    }
+  },
+  {
+    title: "APIs and JSON",
+    subject: "Web",
+    level: "Intermediate",
+    icon: "🔌",
+    color: "blue",
+    description: "Understand how websites exchange data with APIs.",
+    content: {
+      learn: "An API provides a defined way for software to communicate. Web APIs commonly use HTTP requests and JSON data. GET usually reads information while POST commonly sends new data.",
+      example: 'fetch("/api/stats")\n  .then(response => response.json())\n  .then(data => console.log(data));',
+      practice: "Call a public JSON API and display one field on a webpage.",
+      quiz: "What format is commonly used to exchange structured web data?",
+      answer: "JSON"
+    }
+  },
+  {
+    title: "Web Security Essentials",
+    subject: "Security",
+    level: "Advanced",
+    icon: "🛡️",
+    color: "orange",
+    description: "Learn practical habits for safer websites and accounts.",
+    content: {
+      learn: "Use HTTPS, validate input, escape untrusted content, protect secrets on the server, and avoid placing API keys or passwords in frontend JavaScript. Authentication and authorization should be designed deliberately.",
+      example: 'const safe = escapeHtml(userInput);\n// Keep private secrets on the server, not in browser code.',
+      practice: "Review a small form and list three places where untrusted input could enter the application.",
+      quiz: "Where should a private API secret normally be kept?",
+      answer: "On a trusted server or secret-management system, not in frontend code."
+    }
+  },
+  {
+    title: "Debugging Like a Developer",
+    subject: "Programming",
+    level: "Expert",
+    icon: "🔎",
+    color: "orange",
+    description: "Find bugs systematically using logs, tests, and small experiments.",
+    content: {
+      learn: "Good debugging starts by reproducing the problem, reading the exact error, isolating the smallest failing part, testing a hypothesis, and verifying the fix. Browser DevTools and console logs are useful tools.",
+      example: 'console.log("value:", value);\n// Reproduce → isolate → inspect → fix → retest',
+      practice: "Take a small broken program and write down the reproduction steps, suspected cause, fix, and verification.",
+      quiz: "What should you do first when a bug is unclear?",
+      answer: "Reproduce it reliably and observe the exact failure."
+    }
+  },
+  {
+    title: "Responsive UI Engineering",
+    subject: "Design",
+    level: "Master",
+    icon: "📱",
+    color: "pink",
+    description: "Create interfaces that work beautifully from phone to desktop.",
+    content: {
+      learn: "Responsive design combines flexible layouts, relative sizing, readable typography, touch-friendly controls, and media queries. Design for the smallest useful screen, then enhance for larger displays.",
+      example: '.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n}\n@media (max-width: 700px) {\n  .grid { grid-template-columns: 1fr; }\n}',
+      practice: "Make a three-card layout comfortable on a 360px-wide phone without horizontal scrolling.",
+      quiz: "What CSS tool is commonly used for breakpoint-specific rules?",
+      answer: "@media"
+    }
+  },
+  {
+    title: "Capstone: Build a Study App",
+    subject: "Project",
+    level: "Grandmaster",
+    icon: "🚀",
+    color: "green",
+    description: "Build a complete learning app with lessons, progress, search, and persistence.",
+    content: {
+      learn: "A capstone project combines planning, semantic HTML, responsive CSS, JavaScript state, local persistence, accessibility, testing, and deployment. Break the work into small milestones and ship a usable version before polishing it.",
+      example: 'Plan → Data → UI → Events → Storage → Test → Deploy\n\nStart small. Measure progress. Improve.',
+      practice: "Build your own mini StudyHub with five lessons, a progress bar, a search box, and a completion system.",
+      quiz: "What is a useful first step before writing a large project?",
+      answer: "Define the goal, requirements, and small milestones."
+    }
+  }
+
+];
 const usersKey = "studyhub_users";
 const currentUserKey = "studyhub_current_user";
 const xpPerLesson = 100;
 
 function readStorage(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch {
-    return fallback;
-  }
+  try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
+  catch { return fallback; }
 }
-
 function writeStorage(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    showMessage("Progress could not be saved in this browser.", true);
-  }
+  try { localStorage.setItem(key, JSON.stringify(value)); }
+  catch { showMessage("Progress could not be saved in this browser.", true); }
 }
-
 function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
 let users = readStorage(usersKey, {});
 let currentUser = localStorage.getItem(currentUserKey);
 let loginMode = false;
 let activeFilter = "All";
+let searchTerm = "";
 
 const materialGrid = document.getElementById("materialGrid");
 const accountForm = document.getElementById("accountForm");
@@ -357,379 +510,181 @@ document.title = "StudyHub";
 const logo = document.querySelector(".logo");
 if (logo) logo.innerHTML = "Study<span>Hub</span>";
 
-function saveUsers() {
-  writeStorage(usersKey, users);
-}
-
-function getCurrentUserData() {
+function saveUsers(){ writeStorage(usersKey, users); }
+function getCurrentUserData(){
   if (!currentUser || !users[currentUser]) return null;
-
-  if (!Array.isArray(users[currentUser].completed)) {
-    users[currentUser].completed = [];
-    saveUsers();
-  }
-
-  return users[currentUser];
+  const u = users[currentUser];
+  if (!Array.isArray(u.completed)) u.completed = [];
+  if (!u.stats) u.stats = { lastStudyDate:null, streak:0, dailyXp:0, dailyDate:null };
+  if (!Array.isArray(u.achievements)) u.achievements = [];
+  return u;
 }
-
-function getCompletedLessons() {
-  return getCurrentUserData()?.completed || [];
+function getCompletedLessons(){ return getCurrentUserData()?.completed || []; }
+function getXP(){ return getCompletedLessons().length * xpPerLesson; }
+function getLevel(){
+  const xp = getXP();
+  if (xp >= 2500) return "Grandmaster";
+  if (xp >= 1800) return "Master";
+  if (xp >= 1200) return "Expert";
+  if (xp >= 700) return "Advanced";
+  if (xp >= 300) return "Intermediate";
+  if (xp >= 100) return "Novice";
+  return "Beginner";
 }
-
-function getXP() {
-  return getCompletedLessons().length * xpPerLesson;
-}
-
-function isUnlocked(index, completed) {
-  return index === 0 || completed.includes(index - 1);
-}
-
-function showLesson(index) {
-  const lesson = lessons[index];
-  const completed = getCompletedLessons();
-
-  if (!lesson || !isUnlocked(index, completed)) return;
-
-  document.getElementById("lessonModal")?.remove();
-
-  const modal = document.createElement("div");
-  modal.id = "lessonModal";
-  modal.className = "lesson-modal";
-  modal.setAttribute("role", "dialog");
-  modal.setAttribute("aria-modal", "true");
-
-  modal.innerHTML = `
-    <div class="lesson-window">
-      <button class="lesson-close" type="button" aria-label="Close lesson">×</button>
-      <span class="level">${escapeHtml(lesson.level)} · ${escapeHtml(lesson.subject)}</span>
-      <h2>${escapeHtml(lesson.icon)} ${escapeHtml(lesson.title)}</h2>
-
-      <div class="lesson-content">
-        <h3>📖 Learn</h3>
-        <p class="lesson-text">${escapeHtml(lesson.content.learn)}</p>
-
-        <h3>💡 Example</h3>
-        <pre><code>${escapeHtml(lesson.content.example)}</code></pre>
-
-        <h3>✍️ Practice</h3>
-        <p>${escapeHtml(lesson.content.practice)}</p>
-
-        <h3>❓ Quiz</h3>
-        <p>${escapeHtml(lesson.content.quiz)}</p>
-
-        <details>
-          <summary>Show answer</summary>
-          <p>${escapeHtml(lesson.content.answer)}</p>
-        </details>
-      </div>
-
-      <button class="button modal-complete" type="button" data-index="${index}">
-        ${completed.includes(index) ? "✓ Already completed" : "Mark as read"}
-      </button>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  const close = () => modal.remove();
-  modal.querySelector(".lesson-close").addEventListener("click", close);
-
-  modal.addEventListener("click", event => {
-    if (event.target === modal) close();
-  });
-
-  modal.querySelector(".modal-complete").addEventListener("click", () => {
-    completeLesson(index);
-    close();
-  });
-}
-
-function renderLessons() {
-  const completed = getCompletedLessons();
-
-  if (materialGrid) {
-    materialGrid.innerHTML = lessons.map((lesson, index) => {
-      const unlocked = isUnlocked(index, completed);
-      const visible = activeFilter === "All" || activeFilter === lesson.level;
-
-      if (!visible) return "";
-
-      return `
-        <article class="material-card ${unlocked ? "" : "locked"}">
-          <div class="material-icon ${lesson.color}">${lesson.icon}</div>
-          <span class="level">${escapeHtml(lesson.level)} · ${escapeHtml(lesson.subject)}</span>
-          <h3>${escapeHtml(lesson.title)}</h3>
-          <p>${escapeHtml(lesson.description)}</p>
-
-          <button class="complete-button lesson-open" data-index="${index}" ${unlocked ? "" : "disabled"}>
-            ${unlocked ? "Open lesson" : "🔒 Complete the previous topic"}
-          </button>
-        </article>
-      `;
-    }).join("");
-
-    document.querySelectorAll(".lesson-open").forEach(button => {
-      button.addEventListener("click", () => showLesson(Number(button.dataset.index)));
-    });
-  }
-
-  updateProgress();
-}
-
-function completeLesson(index) {
-  const user = getCurrentUserData();
-
-  if (!user) {
-    showMessage("Please log in before marking a lesson as read.", true);
-    document.getElementById("account")?.scrollIntoView({ behavior: "smooth" });
-    return;
-  }
-
-  if (!lessons[index] || !isUnlocked(index, user.completed)) return;
-  if (user.completed.includes(index)) return;
-
-  user.completed.push(index);
-  user.completed.sort((a, b) => a - b);
+function isUnlocked(index, completed){ return index === 0 || completed.includes(index - 1); }
+function todayKey(){ return new Date().toISOString().slice(0,10); }
+function updateStreak(){
+  const u = getCurrentUserData();
+  if (!u) return;
+  const today = todayKey(), last = u.stats.lastStudyDate;
+  if (last === today) return;
+  if (last) {
+    const d = new Date(last + "T00:00:00");
+    const now = new Date(today + "T00:00:00");
+    const diff = Math.round((now-d)/86400000);
+    u.stats.streak = diff === 1 ? (u.stats.streak || 0) + 1 : 1;
+  } else u.stats.streak = 1;
+  u.stats.lastStudyDate = today;
   saveUsers();
-
-  renderLessons();
-  updateAccountView();
-
-  showMessage(
-    index === lessons.length - 1
-      ? `Congratulations! You completed StudyHub with ${getXP()} XP 🎉`
-      : `Lesson completed! You earned ${xpPerLesson} XP.`,
-    false
-  );
 }
-
-function updateProgress() {
-  const completed = getCompletedLessons().length;
-  const percentage = lessons.length ? (completed / lessons.length) * 100 : 0;
-
-  const heroBar = document.getElementById("heroProgressBar");
-  if (heroBar) heroBar.style.width = `${percentage}%`;
-
-  const progressText = document.getElementById("progressText");
-  if (progressText) {
-    progressText.textContent = `${completed} of ${lessons.length} topics completed · ${getXP()} XP`;
-  }
-
-  const statusText = document.getElementById("statusText");
-  if (statusText) {
-    statusText.textContent = !currentUser
-      ? "Not signed in"
-      : completed === lessons.length
-        ? `Grandmaster · ${getXP()} XP 🎉`
-        : `${getXP()} XP · Learning`;
-  }
+function updateAchievements(){
+  const u = getCurrentUserData(); if (!u) return;
+  const completed = u.completed.length;
+  const candidates = [
+    ["first","First Step","Complete your first lesson.","🌱",completed>=1],
+    ["five","Five Strong","Complete 5 lessons.","🔥",completed>=5],
+    ["ten","Ten Deep","Complete 10 lessons.","⚡",completed>=10],
+    ["streak3","On a Roll","Study for 3 days in a row.","📅",(u.stats.streak||0)>=3],
+    ["half","Halfway","Complete half of the curriculum.","🏅",completed>=Math.ceil(lessons.length/2)],
+    ["master","Master Path","Reach Master level.","👑",getLevel()==="Master"||getLevel()==="Grandmaster"],
+    ["all","Grand Finish","Complete every lesson.","🏆",completed===lessons.length]
+  ];
+  for (const [id] of candidates) if (id && candidates.find(x=>x[0]===id)[4] && !u.achievements.includes(id)) u.achievements.push(id);
+  saveUsers();
 }
-
-function updateAccountView() {
-  const title = document.getElementById("accountTitle");
-  const description = document.getElementById("accountDescription");
-  const eyebrow = document.getElementById("accountEyebrow");
-  const welcome = document.getElementById("welcomeText");
-
-  if (currentUser && users[currentUser]) {
-    if (eyebrow) eyebrow.textContent = "Welcome back";
-    if (title) title.textContent = currentUser;
-    if (description) description.textContent = `Your progress is saved automatically. XP: ${getXP()}`;
-    if (welcome) welcome.textContent = `Keep going, ${currentUser}!`;
-    if (logoutButton) logoutButton.classList.remove("hidden");
-    if (accountForm) accountForm.classList.add("hidden");
-    if (switchAccountMode) switchAccountMode.classList.add("hidden");
-  } else {
-    currentUser = null;
-    if (eyebrow) eyebrow.textContent = "Your account";
-    if (title) title.textContent = loginMode ? "Log in" : "Create an account";
-    if (description) description.textContent = "Save your learning progress across visits.";
-    if (welcome) welcome.textContent = "Create an account to save your progress.";
-    if (logoutButton) logoutButton.classList.add("hidden");
-    if (accountForm) accountForm.classList.remove("hidden");
-    if (switchAccountMode) switchAccountMode.classList.remove("hidden");
-
-    const accountSubmit = document.getElementById("accountSubmit");
-    if (accountSubmit) accountSubmit.textContent = loginMode ? "Log in" : "Create account";
-    if (switchAccountMode) {
-      switchAccountMode.textContent = loginMode ? "Need an account? Create one" : "Already have an account? Log in";
-    }
+function renderDashboard(){
+  const u = getCurrentUserData(), completed = getCompletedLessons(), xp = getXP();
+  const pct = lessons.length ? Math.round(completed.length/lessons.length*100) : 0;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set("dashLevel", getLevel());
+  set("dashXp", xp + " XP");
+  set("dashProgress", pct + "%");
+  set("dashStreak", (u?.stats.streak||0) + " days");
+  set("dashLessons", completed.length + "/" + lessons.length);
+  const fill=document.getElementById("dashProgressBar"); if(fill) fill.style.width=pct+"%";
+  const nextIndex=lessons.findIndex((_,i)=>!completed.includes(i));
+  const next=nextIndex>=0?lessons[nextIndex]:null;
+  const cont=document.getElementById("continueTitle");
+  const contMeta=document.getElementById("continueMeta");
+  const contBtn=document.getElementById("continueButton");
+  if(cont) cont.textContent=next ? next.title : "Curriculum complete";
+  if(contMeta) contMeta.textContent=next ? next.level+" · "+next.subject+" · +"+xpPerLesson+" XP" : "You finished every lesson. Amazing work.";
+  if(contBtn){ contBtn.disabled=!next; contBtn.dataset.index=nextIndex; contBtn.textContent=next?"Continue learning →":"All complete ✓"; }
+  const ach=document.getElementById("achievementGrid");
+  if(ach){
+    const defs=[
+      ["first","🌱","First Step"],["five","🔥","Five Strong"],["ten","⚡","Ten Deep"],
+      ["streak3","📅","On a Roll"],["half","🏅","Halfway"],["master","👑","Master Path"],["all","🏆","Grand Finish"]
+    ];
+    ach.innerHTML=defs.map(([id,icon,name])=>'<div class="achievement '+((u?.achievements||[]).includes(id)?"earned":"")+'"><span>'+icon+'</span><b>'+name+'</b><small>'+((u?.achievements||[]).includes(id)?"Unlocked":"Locked")+'</small></div>').join("");
   }
 }
-
-function showMessage(message, error = false) {
-  if (!accountMessage) return;
-  accountMessage.textContent = message;
-  accountMessage.style.color = error ? "#d64545" : "#2f9e62";
+function dailyChallenge(){
+  const idx = new Date().getDate() % lessons.length;
+  const l=lessons[idx];
+  const title=document.getElementById("challengeTitle"); const text=document.getElementById("challengeText");
+  if(title) title.textContent=l.title;
+  if(text) text.textContent=l.content.practice+" · Reward: +50 XP";
+  const btn=document.getElementById("challengeButton");
+  if(btn){btn.dataset.index=idx; btn.onclick=()=>showLesson(idx);}
 }
 
-if (accountForm) {
-  accountForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (username.length < 3 || password.length < 4) {
-      showMessage("Use at least 3 characters for the username and 4 for the password.", true);
-      return;
-    }
-
-    if (loginMode) {
-      if (!users[username] || users[username].password !== password) {
-        showMessage("Incorrect username or password.", true);
-        return;
-      }
-    } else {
-      if (users[username]) {
-        showMessage("That username already exists. Please log in.", true);
-        return;
-      }
-
-      users[username] = { password, completed: [] };
-      saveUsers();
-    }
-
-    currentUser = username;
-    localStorage.setItem(currentUserKey, currentUser);
-    accountForm.reset();
-    showMessage(loginMode ? "Logged in successfully." : "Account created successfully.");
-    renderLessons();
-    updateAccountView();
-  });
+function showLesson(index){
+  const lesson=lessons[index], completed=getCompletedLessons();
+  if(!lesson || !isUnlocked(index,completed)) return;
+  document.getElementById("lessonModal")?.remove();
+  const modal=document.createElement("div");
+  modal.id="lessonModal"; modal.className="lesson-modal"; modal.setAttribute("role","dialog"); modal.setAttribute("aria-modal","true");
+  modal.innerHTML='<div class="lesson-window"><button class="lesson-close" type="button" aria-label="Close lesson">×</button><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h2>'+escapeHtml(lesson.icon)+' '+escapeHtml(lesson.title)+'</h2><div class="lesson-content"><h3>📖 Learn</h3><p class="lesson-text">'+escapeHtml(lesson.content.learn)+'</p><h3>💡 Example</h3><pre><code>'+escapeHtml(lesson.content.example)+'</code></pre><h3>✍️ Practice</h3><p>'+escapeHtml(lesson.content.practice)+'</p><h3>❓ Quiz</h3><p>'+escapeHtml(lesson.content.quiz)+'</p><details><summary>Show answer</summary><p>'+escapeHtml(lesson.content.answer)+'</p></details></div><button class="button modal-complete" type="button" data-index="'+index+'">'+(completed.includes(index)?"✓ Already completed":"Mark as read")+'</button></div>';
+  document.body.appendChild(modal);
+  const close=()=>modal.remove();
+  modal.querySelector(".lesson-close").addEventListener("click",close);
+  modal.addEventListener("click",e=>{if(e.target===modal)close();});
+  modal.querySelector(".modal-complete").addEventListener("click",()=>{completeLesson(index);close();});
 }
 
-if (switchAccountMode) {
-  switchAccountMode.addEventListener("click", () => {
-    loginMode = !loginMode;
-    if (accountMessage) accountMessage.textContent = "";
-    updateAccountView();
-  });
+function renderLessons(){
+  const completed=getCompletedLessons(), term=searchTerm.toLowerCase();
+  if(!materialGrid)return;
+  materialGrid.innerHTML=lessons.map((lesson,index)=>{
+    const unlocked=isUnlocked(index,completed);
+    const visible=(activeFilter==="All"||activeFilter===lesson.level) &&
+      (!term || [lesson.title,lesson.subject,lesson.level,lesson.description].join(" ").toLowerCase().includes(term));
+    if(!visible)return "";
+    return '<article class="material-card '+(unlocked?"":"locked")+'"><div class="material-icon '+lesson.color+'">'+lesson.icon+'</div><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h3>'+escapeHtml(lesson.title)+'</h3><p>'+escapeHtml(lesson.description)+'</p><button class="complete-button lesson-open" data-index="'+index+'" '+(unlocked?"":"disabled")+'>'+ (unlocked?"Open lesson":"🔒 Complete the previous topic") +'</button></article>';
+  }).join("");
+  document.querySelectorAll(".lesson-open").forEach(b=>b.addEventListener("click",()=>showLesson(Number(b.dataset.index))));
+  const empty=document.getElementById("searchEmpty"); if(empty) empty.hidden=materialGrid.children.length!==0;
+  updateProgress(); renderDashboard(); updateAchievements();
 }
-
-if (logoutButton) {
-  logoutButton.addEventListener("click", () => {
-    currentUser = null;
-    localStorage.removeItem(currentUserKey);
-    loginMode = true;
-    showMessage("You have been logged out.");
-    renderLessons();
-    updateAccountView();
-  });
+function completeLesson(index){
+  const user=getCurrentUserData();
+  if(!user){showMessage("Please log in before marking a lesson as read.",true);document.getElementById("account")?.scrollIntoView({behavior:"smooth"});return;}
+  if(!lessons[index]||!isUnlocked(index,user.completed)||user.completed.includes(index))return;
+  user.completed.push(index); user.completed.sort((a,b)=>a-b); user.stats.dailyXp=(user.stats.dailyDate===todayKey()?user.stats.dailyXp:0)+xpPerLesson; user.stats.dailyDate=todayKey();
+  updateStreak(); saveUsers(); renderLessons(); updateAccountView();
+  showMessage(index===lessons.length-1?"Congratulations! You completed StudyHub with "+getXP()+" XP 🎉":"Lesson completed! You earned "+xpPerLesson+" XP.",false);
 }
+function updateProgress(){
+  const completed=getCompletedLessons().length, percentage=lessons.length?(completed/lessons.length)*100:0;
+  const bar=document.getElementById("heroProgressBar");if(bar)bar.style.width=percentage+"%";
+  const pt=document.getElementById("progressText");if(pt)pt.textContent=completed+" of "+lessons.length+" topics completed · "+getXP()+" XP";
+  const st=document.getElementById("statusText");if(st)st.textContent=!currentUser?"Not signed in":completed===lessons.length?"Grandmaster · "+getXP()+" XP 🎉":getLevel()+" · "+getXP()+" XP";
+}
+function updateAccountView(){
+  const title=document.getElementById("accountTitle"),desc=document.getElementById("accountDescription"),eyebrow=document.getElementById("accountEyebrow"),welcome=document.getElementById("welcomeText");
+  if(currentUser&&users[currentUser]){
+    if(eyebrow)eyebrow.textContent="Welcome back"; if(title)title.textContent=currentUser;
+    if(desc)desc.textContent="Your progress is saved automatically. XP: "+getXP()+" · "+getLevel();
+    if(welcome)welcome.textContent="Keep going, "+currentUser+"!"; if(logoutButton)logoutButton.classList.remove("hidden");
+    if(accountForm)accountForm.classList.add("hidden"); if(switchAccountMode)switchAccountMode.classList.add("hidden");
+  }else{
+    currentUser=null;if(eyebrow)eyebrow.textContent="Your account";if(title)title.textContent=loginMode?"Log in":"Create an account";if(desc)desc.textContent="Save your learning progress across visits.";if(welcome)welcome.textContent="Create an account to save your progress.";if(logoutButton)logoutButton.classList.add("hidden");if(accountForm)accountForm.classList.remove("hidden");if(switchAccountMode)switchAccountMode.classList.remove("hidden");
+    const submit=document.getElementById("accountSubmit");if(submit)submit.textContent=loginMode?"Log in":"Create account";
+    if(switchAccountMode)switchAccountMode.textContent=loginMode?"Need an account? Create one":"Already have an account? Log in";
+  }
+}
+function showMessage(message,error=false){if(accountMessage){accountMessage.textContent=message;accountMessage.style.color=error?"#d64545":"#2f9e62";}}
 
-document.querySelectorAll(".filter-button").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".filter-button").forEach(item => {
-      item.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    activeFilter = button.dataset.filter;
-    renderLessons();
-  });
+if(accountForm)accountForm.addEventListener("submit",event=>{
+  event.preventDefault(); const username=document.getElementById("username").value.trim(),password=document.getElementById("password").value;
+  if(username.length<3||password.length<4){showMessage("Use at least 3 characters for the username and 4 for the password.",true);return;}
+  if(loginMode){if(!users[username]||users[username].password!==password){showMessage("Incorrect username or password.",true);return;}}
+  else{if(users[username]){showMessage("That username already exists. Please log in.",true);return;}users[username]={password,completed:[],stats:{lastStudyDate:null,streak:0,dailyXp:0,dailyDate:null},achievements:[]};saveUsers();}
+  currentUser=username;localStorage.setItem(currentUserKey,currentUser);accountForm.reset();showMessage(loginMode?"Logged in successfully.":"Account created successfully.");renderLessons();updateAccountView();
 });
+if(switchAccountMode)switchAccountMode.addEventListener("click",()=>{loginMode=!loginMode;if(accountMessage)accountMessage.textContent="";updateAccountView();});
+if(logoutButton)logoutButton.addEventListener("click",()=>{currentUser=null;localStorage.removeItem(currentUserKey);loginMode=true;showMessage("You have been logged out.");renderLessons();updateAccountView();});
+document.querySelectorAll(".filter-button").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));button.classList.add("active");activeFilter=button.dataset.filter;renderLessons();}));
+const searchInput=document.getElementById("lessonSearch");
+if(searchInput)searchInput.addEventListener("input",()=>{searchTerm=searchInput.value.trim();renderLessons();});
+const continueButton=document.getElementById("continueButton");
+if(continueButton)continueButton.addEventListener("click",()=>{const i=Number(continueButton.dataset.index);if(!Number.isNaN(i))showLesson(i);});
+const themeButton=document.getElementById("themeButton");
+if(themeButton)themeButton.addEventListener("click",()=>{document.body.classList.toggle("bright-mode");localStorage.setItem("studyhub_bright",document.body.classList.contains("bright-mode"));});
+function restoreTheme(){if(localStorage.getItem("studyhub_bright")==="true")document.body.classList.add("bright-mode");}
 
-// --- CLOUDFLARE WORKER STATS INTEGRATION ---
-const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev";
-const STARRED_KEY = "studyhub_starred";
-
-function setStats(views, stars) {
-  const viewsEl = document.getElementById("viewsCount");
-  const starsEl = document.getElementById("starsCount");
-  if (viewsEl && views !== undefined) viewsEl.textContent = views;
-  if (starsEl && stars !== undefined) starsEl.textContent = stars;
+const WORKER_URL="https://study4u-api.study4u-aj.workers.dev",STARRED_KEY="studyhub_starred";
+function setStats(views,stars){const v=document.getElementById("viewsCount"),s=document.getElementById("starsCount");if(v&&views!==undefined)v.textContent=views;if(s&&stars!==undefined)s.textContent=stars;}
+function setStatsStatus(m){const e=document.getElementById("statsStatus");if(e)e.textContent=m;}
+function restoreStarState(){const b=document.getElementById("starButton");if(!b)return;const starred=localStorage.getItem(STARRED_KEY)==="true";if(starred){b.classList.add("starred");b.setAttribute("aria-pressed","true");b.title="You already starred StudyHub";}}
+async function loadAndIncrementStats(){
+  try{setStatsStatus("Updating…");const response=await fetch(WORKER_URL+"/api/view",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username:currentUser||"Guest"}),cache:"no-store"});if(!response.ok)throw new Error("View request failed: "+response.status);const data=await response.json();setStats(data.views,data.stars);setStatsStatus("Live");}
+  catch(error){console.error(error);try{const response=await fetch(WORKER_URL+"/api/stats",{cache:"no-store"});const data=await response.json();setStats(data.views,data.stars);setStatsStatus("Live");}catch{setStatsStatus("Offline");}}
 }
-
-function setStatsStatus(message) {
-  const statusEl = document.getElementById("statsStatus");
-  if (statusEl) statusEl.textContent = message;
+async function addStar(){
+  const b=document.getElementById("starButton"),s=document.getElementById("starsCount");if(!b||localStorage.getItem(STARRED_KEY)==="true")return;
+  try{b.disabled=true;const r=await fetch(WORKER_URL+"/api/star",{method:"POST",cache:"no-store"});if(!r.ok)throw new Error("Star request failed");const d=await r.json();if(s)s.textContent=d.stars;localStorage.setItem(STARRED_KEY,"true");b.classList.add("starred");b.setAttribute("aria-pressed","true");b.title="Thanks for starring StudyHub ⭐";}
+  catch{b.disabled=false;b.title="Click to try again";}
 }
-
-function restoreStarState() {
-  const starBtn = document.getElementById("starButton");
-  if (!starBtn) return;
-  const starred = localStorage.getItem(STARRED_KEY) === "true";
-  if (starred) {
-    starBtn.classList.add("starred");
-    starBtn.setAttribute("aria-pressed", "true");
-    starBtn.title = "You already starred StudyHub";
-  }
-}
-
-async function loadAndIncrementStats() {
-  try {
-    setStatsStatus("Updating…");
-    const visitorUsername = currentUser || "Guest";
-    const response = await fetch(`${WORKER_URL}/api/view`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: visitorUsername }),
-      cache: "no-store"
-    });
-    if (!response.ok) throw new Error(`View request failed: ${response.status}`);
-    const data = await response.json();
-    setStats(data.views, data.stars);
-    setStatsStatus("Live");
-  } catch (error) {
-    console.error("Error updating view count:", error);
-    try {
-      const response = await fetch(`${WORKER_URL}/api/stats`, { cache: "no-store" });
-      if (!response.ok) throw new Error(`Stats request failed: ${response.status}`);
-      const data = await response.json();
-      setStats(data.views, data.stars);
-      setStatsStatus("Live");
-    } catch (fallbackError) {
-      console.error("Error loading stats:", fallbackError);
-      setStatsStatus("Offline");
-    }
-  }
-}
-
-async function addStar() {
-  const starBtn = document.getElementById("starButton");
-  const starsEl = document.getElementById("starsCount");
-  if (!starBtn || localStorage.getItem(STARRED_KEY) === "true") return;
-
-  try {
-    starBtn.disabled = true;
-    starBtn.classList.add("loading");
-    starBtn.setAttribute("aria-busy", "true");
-    starBtn.title = "Adding your star…";
-
-    const response = await fetch(`${WORKER_URL}/api/star`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-store"
-    });
-    if (!response.ok) throw new Error(`Star request failed: ${response.status}`);
-    const data = await response.json();
-    if (data.stars !== undefined && starsEl) starsEl.textContent = data.stars;
-
-    localStorage.setItem(STARRED_KEY, "true");
-    starBtn.classList.remove("loading");
-    starBtn.classList.add("starred");
-    starBtn.setAttribute("aria-pressed", "true");
-    starBtn.setAttribute("aria-busy", "false");
-    starBtn.title = "Thanks for starring StudyHub ⭐";
-  } catch (error) {
-    console.error("Error updating star count:", error);
-    starBtn.disabled = false;
-    starBtn.classList.remove("loading");
-    starBtn.setAttribute("aria-busy", "false");
-    starBtn.title = "Click to try again";
-  }
-}
-
-// Initial UI Setup & Event Listeners
-document.addEventListener("DOMContentLoaded", () => {
-  renderLessons();
-  updateAccountView();
-  loadAndIncrementStats();
-  restoreStarState();
-
-  const starBtn = document.getElementById("starButton");
-  if (starBtn) {
-    starBtn.addEventListener("click", addStar);
-  }
-});
+document.addEventListener("DOMContentLoaded",()=>{restoreTheme();updateStreak();renderLessons();updateAccountView();dailyChallenge();loadAndIncrementStats();restoreStarState();});
