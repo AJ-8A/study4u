@@ -883,18 +883,18 @@ function updateProgress(){
   const st=document.getElementById("statusText");if(st)st.textContent=!currentUser?"Not signed in":completed===lessons.length?"Grandmaster · "+getXP()+" XP 🎉":getLevel()+" · "+getXP()+" XP";
 }
 function updateAccountView(){
-  const title=document.getElementById("accountTitle"),desc=document.getElementById("accountDescription"),eyebrow=document.getElementById("accountEyebrow"),welcome=document.getElementById("welcomeText"),signInLink=document.getElementById("signInLink");
+  const title=document.getElementById("accountTitle"),desc=document.getElementById("accountDescription"),eyebrow=document.getElementById("accountEyebrow"),welcome=document.getElementById("welcomeText"),signInLink=document.getElementById("signInLink"),heroAccountButton=document.getElementById("heroAccountButton");
   if(currentUser&&users[currentUser]){
     if(eyebrow)eyebrow.textContent="Welcome back"; if(title)title.textContent=currentUser;
     if(desc)desc.textContent="Your progress is saved automatically. XP: "+getXP()+" · "+getLevel();
     if(welcome)welcome.textContent="Keep going, "+currentUser+"!"; if(logoutButton)logoutButton.classList.remove("hidden");
     if(accountForm)accountForm.classList.add("hidden"); if(switchAccountMode)switchAccountMode.classList.add("hidden");
-    if(signInLink){signInLink.textContent="✓ "+currentUser;signInLink.classList.add("signed-in");}
+    if(signInLink){signInLink.textContent="✓ "+currentUser;signInLink.classList.add("signed-in");signInLink.classList.add("hidden");} if(heroAccountButton){heroAccountButton.textContent="Continue learning";heroAccountButton.href="#lessons";}
   }else{
     currentUser=null;if(eyebrow)eyebrow.textContent="Your account";if(title)title.textContent=loginMode?"Log in":"Create an account";if(desc)desc.textContent="Save your learning progress across visits.";if(welcome)welcome.textContent="Create an account to save your progress.";if(logoutButton)logoutButton.classList.add("hidden");if(accountForm)accountForm.classList.remove("hidden");if(switchAccountMode)switchAccountMode.classList.remove("hidden");
     const submit=document.getElementById("accountSubmit");if(submit)submit.textContent=loginMode?"Log in":"Create account";
     if(switchAccountMode)switchAccountMode.textContent=loginMode?"Need an account? Create one":"Already have an account? Log in";
-    if(signInLink){signInLink.textContent="Sign in";signInLink.classList.remove("signed-in");}
+    if(signInLink){signInLink.textContent="Sign in";signInLink.classList.remove("signed-in");signInLink.classList.remove("hidden");} if(heroAccountButton){heroAccountButton.textContent="Sign in to start";heroAccountButton.href="#account";}
   }
 }
 function showMessage(message,error=false){if(accountMessage){accountMessage.textContent=message;accountMessage.style.color=error?"#d64545":"#2f9e62";}}
