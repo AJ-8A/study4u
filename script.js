@@ -795,6 +795,29 @@ function renderLevelRoadmap(completed){
   }));
 }
 
+function updateLuxuryAd(completed){
+  const levels=["Beginner","Novice","Intermediate","Advanced","Expert","Master","Grandmaster"];
+  const totals=levels.map(level=>lessons.filter(l=>l.level===level).length);
+  const done=levels.map(level=>lessons.reduce((n,l,i)=>n+(l.level===level&&completed.includes(i)?1:0),0));
+  let active=levels.findIndex((level,i)=>done[i]<totals[i]);
+  const allDone=active<0;
+  if(allDone)active=levels.length-1;
+
+  const index=document.getElementById("luxuryAdIndex");
+  const title=document.getElementById("luxuryAdTitle");
+  const copy=document.getElementById("luxuryAdCopy");
+  const left=document.getElementById("luxuryAdMetaLeft");
+  const right=document.getElementById("luxuryAdMetaRight");
+  if(!index||!title||!copy||!left||!right)return;
+
+  const finished=!allDone&&done[active]===totals[active]&&totals[active]>0;
+  index.textContent=String(active+1).padStart(2,"0")+" / 07";
+  title.textContent=allDone?"Grandmaster complete":finished?"Next set unlocked: "+(levels[active+1]||"Grandmaster"):levels[active]+" is in focus";
+  copy.textContent=allDone?"You completed every StudyHub level. The full path is yours.":finished?"Excellent. Your completed set has opened the next chapter. Keep the momentum."+"" :"A precision-built learning path. Finish this set and the next level opens automatically.";
+  left.textContent=allDone?"181 lessons mastered":done[active]+"/"+totals[active]+" complete";
+  right.textContent="LEVEL "+String(active+1).padStart(2,"0");
+}
+
 function renderLessons(){
   const completed=getCompletedLessons(), term=searchTerm.toLowerCase();
   if(!materialGrid)return;
@@ -841,6 +864,7 @@ function renderLessons(){
   const empty=document.getElementById("searchEmpty");
   if(empty) empty.hidden=subjects.length!==0;
   renderLevelRoadmap(completed);
+  updateLuxuryAd(completed);
   updateProgress(); renderDashboard(); updateAchievements();
 }
 function completeLesson(index){
