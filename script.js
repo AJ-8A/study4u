@@ -883,16 +883,18 @@ function updateProgress(){
   const st=document.getElementById("statusText");if(st)st.textContent=!currentUser?"Not signed in":completed===lessons.length?"Grandmaster · "+getXP()+" XP 🎉":getLevel()+" · "+getXP()+" XP";
 }
 function updateAccountView(){
-  const title=document.getElementById("accountTitle"),desc=document.getElementById("accountDescription"),eyebrow=document.getElementById("accountEyebrow"),welcome=document.getElementById("welcomeText");
+  const title=document.getElementById("accountTitle"),desc=document.getElementById("accountDescription"),eyebrow=document.getElementById("accountEyebrow"),welcome=document.getElementById("welcomeText"),signInLink=document.getElementById("signInLink");
   if(currentUser&&users[currentUser]){
     if(eyebrow)eyebrow.textContent="Welcome back"; if(title)title.textContent=currentUser;
     if(desc)desc.textContent="Your progress is saved automatically. XP: "+getXP()+" · "+getLevel();
     if(welcome)welcome.textContent="Keep going, "+currentUser+"!"; if(logoutButton)logoutButton.classList.remove("hidden");
     if(accountForm)accountForm.classList.add("hidden"); if(switchAccountMode)switchAccountMode.classList.add("hidden");
+    if(signInLink){signInLink.textContent="✓ "+currentUser;signInLink.classList.add("signed-in");}
   }else{
     currentUser=null;if(eyebrow)eyebrow.textContent="Your account";if(title)title.textContent=loginMode?"Log in":"Create an account";if(desc)desc.textContent="Save your learning progress across visits.";if(welcome)welcome.textContent="Create an account to save your progress.";if(logoutButton)logoutButton.classList.add("hidden");if(accountForm)accountForm.classList.remove("hidden");if(switchAccountMode)switchAccountMode.classList.remove("hidden");
     const submit=document.getElementById("accountSubmit");if(submit)submit.textContent=loginMode?"Log in":"Create account";
     if(switchAccountMode)switchAccountMode.textContent=loginMode?"Need an account? Create one":"Already have an account? Log in";
+    if(signInLink){signInLink.textContent="Sign in";signInLink.classList.remove("signed-in");}
   }
 }
 function showMessage(message,error=false){if(accountMessage){accountMessage.textContent=message;accountMessage.style.color=error?"#d64545":"#2f9e62";}}
@@ -915,6 +917,7 @@ const continueButton=document.getElementById("continueButton");
 if(continueButton)continueButton.addEventListener("click",()=>{const i=Number(continueButton.dataset.index);if(!Number.isNaN(i))showLesson(i);});
 const themeButton=document.getElementById("themeButton");
 if(themeButton)themeButton.addEventListener("click",()=>{document.body.classList.toggle("bright-mode");localStorage.setItem("studyhub_bright",document.body.classList.contains("bright-mode"));});
+updateAccountView();
 function restoreTheme(){if(localStorage.getItem("studyhub_bright")==="true")document.body.classList.add("bright-mode");}
 
 const WORKER_URL="https://study4u-api.study4u-aj.workers.dev",STARRED_KEY="studyhub_starred";
