@@ -288,3 +288,25 @@ body::before{
 @media(max-width:700px){
   html{background-attachment:scroll!important;background-position:center top!important}
 }
+
+
+/* FINAL BACKDROP PERSISTENCE FIX — KEEP WINDMILL VISIBLE AFTER PAINT */
+html{
+  background-color:#dbeaf0!important;
+  background-image:url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=92&w=2400")!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+}
+body{
+  background:transparent!important;
+  background-image:none!important;
+}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section{
+  background:rgba(255,255,255,.52)!important;
+  backdrop-filter:blur(5px)!important;
+  -webkit-backdrop-filter:blur(5px)!important;
+}
+.luxury-learning-ad{background:rgba(248,251,253,.42)!important;}
+@media(max-width:700px){html{background-attachment:scroll!important;background-position:center top!important}}
