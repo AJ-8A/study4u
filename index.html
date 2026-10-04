@@ -28,7 +28,7 @@
       </div>
 
       <div class="nav-links">
-        <a href="#account">Sign in</a>
+        <a href="#account" id="signInLink">Sign in</a>
         <a href="#lessons">Lessons</a>
         <a href="#progress">Progress</a>
         <a href="#leaderboard">Leaderboard</a>
@@ -231,25 +231,27 @@
       <div class="learning-layout">
         <div id="materialGrid" class="material-grid"></div>
         <aside class="luxury-learning-ad" aria-label="StudyHub premium learning advertisement">
+          <div class="luxury-ad-cherry"></div>
           <div class="luxury-ad-shine"></div>
-          <div class="luxury-ad-orbit orbit-a"></div>
-          <div class="luxury-ad-orbit orbit-b"></div>
-          <div class="luxury-ad-topline"><span>STUDYHUB</span><span id="luxuryAdIndex">01 / 07</span></div>
-          <div class="luxury-ad-emblem" aria-hidden="true">
-            <div class="luxury-ad-ring ring-outer"></div>
-            <div class="luxury-ad-ring ring-mid"></div>
-            <div class="luxury-ad-dial">
-              <span class="dial-mark m1"></span><span class="dial-mark m2"></span><span class="dial-mark m3"></span><span class="dial-mark m4"></span>
-              <span class="dial-hand hand-hour"></span><span class="dial-hand hand-minute"></span><span class="dial-center">✦</span>
-            </div>
+          <div class="luxury-ad-topline"><span>STUDYHUB · 2026</span><span id="luxuryAdIndex">01 / 07</span></div>
+          <div class="luxury-ad-world" aria-hidden="true">
+            <span class="world-dot d1"></span><span class="world-dot d2"></span><span class="world-dot d3"></span><span class="world-dot d4"></span>
+            <span class="world-dot d5"></span><span class="world-dot d6"></span><span class="world-dot d7"></span><span class="world-dot d8"></span>
+            <span class="world-dot d9"></span><span class="world-dot d10"></span><span class="world-dot d11"></span><span class="world-dot d12"></span>
+            <div class="world-glow"></div>
           </div>
-          <p class="luxury-ad-kicker">PRECISION LEARNING</p>
-          <h3 id="luxuryAdTitle">The next chapter is waiting.</h3>
-          <p class="luxury-ad-copy" id="luxuryAdCopy">Complete your current set. Your next level opens automatically, one precise step at a time.</p>
-          <div class="luxury-ad-rule"></div>
-          <div class="luxury-ad-meta"><span id="luxuryAdMetaLeft">181 lessons</span><span id="luxuryAdMetaRight">07 levels</span></div>
-          <button type="button" class="luxury-ad-button" onclick="document.getElementById('lessons')?.scrollIntoView({behavior:'smooth'})">Continue your path <span>↗</span></button>
-          <div class="luxury-ad-foot">EST. 2026 · LEARN WITH INTENT</div>
+          <div class="luxury-stat stat-users"><strong>181+</strong><span>Lessons crafted</span></div>
+          <div class="luxury-stat stat-levels"><strong>07</strong><span>Learning levels</span></div>
+          <div class="luxury-stat stat-progress"><strong id="luxuryAdMetaLeft">0/0</strong><span>Current set</span></div>
+          <div class="luxury-ad-copy-wrap">
+            <p class="luxury-ad-kicker">PRECISION LEARNING</p>
+            <h3 id="luxuryAdTitle">Your next chapter is waiting.</h3>
+            <p class="luxury-ad-copy" id="luxuryAdCopy">Complete your current set. Your next level opens automatically, one precise step at a time.</p>
+            <div class="luxury-ad-rule"></div>
+            <div class="luxury-ad-meta"><span id="luxuryAdMetaRight">LEVEL 01</span><span>LEARN WITH INTENT</span></div>
+            <button type="button" class="luxury-ad-button" onclick="document.getElementById('lessons')?.scrollIntoView({behavior:'smooth'})">Continue your path <span>↗</span></button>
+          </div>
+          <div class="luxury-ad-foot">CHERRY BLOSSOM NIGHT · STUDYHUB</div>
         </aside>
       </div>
     </section>
