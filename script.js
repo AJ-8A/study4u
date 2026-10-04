@@ -882,6 +882,7 @@ function completeLesson(index){
   user.completed.push(index); user.completed.sort((a,b)=>a-b); user.stats.dailyXp=(user.stats.dailyDate===todayKey()?user.stats.dailyXp:0)+xpPerLesson; user.stats.dailyDate=todayKey();
   if(!user.completionDates) user.completionDates={}; user.completionDates[index]=new Date().toISOString();
   updateStreak(); saveUsers(); renderLessons(); updateAccountView(); updateStreakUI();
+  window.publishGlobalLeaderboard?.();
   showMessage(index===lessons.length-1?"Congratulations! You completed StudyHub with "+getXP()+" XP 🎉":"Lesson completed! You earned "+xpPerLesson+" XP.",false);
 }
 function updateProgress(){
