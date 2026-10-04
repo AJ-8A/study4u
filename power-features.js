@@ -86,21 +86,62 @@
     box.querySelectorAll("[data-project]").forEach(b=>b.onclick=()=>window.showLesson?.(+b.dataset.project));
   }
 
-  function renderLeaderboard() {
-    const box=document.getElementById("leaderboardCard"); if(!box)return;
-    let users={}; try{users=JSON.parse(localStorage.getItem(usersKey)||"{}")}catch{}
-    const rows=Object.entries(users).map(([name,u])=>({name,xp:(u.completed||[]).length*100,streak:u.stats?.bestStreak||0})).sort((a,b)=>b.xp-a.xp||b.streak-a.streak).slice(0,10);
-    if(!rows.length){box.innerHTML='<p class="empty-feature">Create an account to enter your local leaderboard.</p>';return;}
-    const top=rows.slice(0,3);
-    const rest=rows.slice(3);
-    const medals=["🥇","🥈","🥉"];
-    const podium=top.length ? '<div class="leader-podium">'+top.map((r,i)=>'<div class="podium-card podium-'+(i+1)+'"><span class="podium-medal">'+medals[i]+'</span><strong>'+r.name+'</strong><b>'+r.xp+' XP</b><small>🔥 '+r.streak+' best streak</small></div>').join("")+'</div>' : "";
-    const list=rest.map((r,i)=>'<div class="leader-row"><strong>#'+(i+4)+'</strong><span>'+r.name+'</span><b>'+r.xp+' XP</b><small>🔥 '+r.streak+'</small></div>').join("");
-    box.innerHTML=podium+list;
-    const topBox=document.getElementById("topLeaderboard");
-    if(topBox) topBox.innerHTML=podium;
+
+  const WORKER_URL = "https://study4u-api.study4u-aj.workers.dev";
+
+  function localLeaderboardRows(){
+    let users={};
+    try{users=JSON.parse(localStorage.getItem(usersKey)||"{}")}catch{}
+    return Object.entries(users).map(([name,u])=>({
+      name:String(name).replace(/[<>]/g,""),
+      xp:(u.completed||[]).length*100,
+      streak:u.stats?.bestStreak||0
+    })).sort((a,b)=>b.xp-a.xp||b.streak-a.streak).slice(0,25);
   }
 
+  function renderLeaderboardRows(rows){
+    const box=document.getElementById("leaderboardCard"); if(!box)return;
+    const medals=["🥇","🥈","🥉"];
+    const top=rows.slice(0,3);
+    const podium=top.length
+      ? '<div class="leader-podium">'+top.map((r,i)=>'<div class="podium-card podium-'+(i+1)+'"><span class="podium-medal">'+medals[i]+'</span><strong>'+r.name+'</strong><b>'+r.xp+' XP</b><small>🔥 '+r.streak+' best streak</small></div>').join("")+'</div>'
+      : "";
+    const list=rows.slice(3).map((r,i)=>'<div class="leader-row"><strong>#'+(i+4)+'</strong><span>'+r.name+'</span><b>'+r.xp+' XP</b><small>🔥 '+r.streak+'</small></div>').join("");
+    box.innerHTML='<div class="leaderboard-sync"><span>🌍 Global leaderboard</span><small id="leaderboardSyncStatus">Local preview</small></div>'+podium+'<div class="leaderboard-list">'+list+'</div>';
+    const topBox=document.getElementById("topLeaderboard"); if(topBox) topBox.innerHTML=podium;
+  }
+
+  async function syncGlobalLeaderboard(){
+    renderLeaderboardRows(localLeaderboardRows());
+    try{
+      const r=await fetch(WORKER_URL+"/api/leaderboard",{method:"GET",cache:"no-store"});
+      if(!r.ok)throw new Error("leaderboard endpoint unavailable");
+      const d=await r.json();
+      const rows=Array.isArray(d.rows)?d.rows:(Array.isArray(d.leaderboard)?d.leaderboard:[]);
+      if(rows.length)renderLeaderboardRows(rows.map(x=>({
+        name:String(x.name||x.username||"Learner").replace(/[<>]/g,""),
+        xp:Number(x.xp)||0,
+        streak:Number(x.streak)||0
+      })));
+      const live=document.getElementById("leaderboardSyncStatus"); if(live)live.textContent="Live worldwide";
+    }catch{
+      const live=document.getElementById("leaderboardSyncStatus"); if(live)live.textContent="Waiting for global sync";
+    }
+  }
+
+  function publishGlobalLeaderboard(){
+    const u=user(),name=localStorage.getItem(currentUserKey); if(!u||!name)return;
+    fetch(WORKER_URL+"/api/leaderboard",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({username:name,xp:(u.completed||[]).length*100,streak:u.stats?.bestStreak||0})
+    }).catch(()=>{});
+  }
+
+  function renderLeaderboard(){
+    syncGlobalLeaderboard();
+    publishGlobalLeaderboard();
+  }
   function profile() {
     const u=user(), name=localStorage.getItem(currentUserKey)||"Guest", done=u?.completed?.length||0, xp=done*100, qs=JSON.parse(localStorage.getItem(quizKey)||'{"correct":0,"answered":0}');
     open('<div class="feature-kicker">PROFILE</div><h2 id="featureTitle">'+name+'</h2><div class="profile-hero"><strong>'+levelFor(xp)+'</strong><span>'+xp+' XP</span></div><div class="profile-grid"><div><b>'+done+'</b><small>Lessons</small></div><div><b>'+(u?.stats?.bestStreak||0)+'</b><small>Best streak</small></div><div><b>'+(qs.answered?Math.round(qs.correct/qs.answered*100):0)+'%</b><small>Quiz accuracy</small></div></div><h3>Achievements</h3><div class="profile-achievements">'+((u?.achievements||[]).length?u.achievements.map(a=>'<span>🏆 '+a+'</span>').join(""):"<span>Complete lessons to unlock achievements.</span>")+'</div>');
