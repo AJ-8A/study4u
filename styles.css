@@ -2034,3 +2034,46 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
   .top-leaderboard .podium-card small{font-size:.65rem}
   .top-leaderboard .podium-1,.top-leaderboard .podium-2,.top-leaderboard .podium-3{transform:none}
 }
+
+
+/* COLLAPSIBLE LESSON SUBJECTS */
+.lesson-subject-group{
+  margin:14px 0;
+  border:1px solid rgba(197,166,103,.22);
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(255,255,255,.025);
+}
+.lesson-subject-toggle{
+  width:100%;
+  display:grid;
+  grid-template-columns:auto 1fr minmax(100px,220px) auto;
+  align-items:center;
+  gap:15px;
+  padding:18px 20px;
+  border:0;
+  color:inherit;
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+}
+.lesson-subject-toggle:hover{background:rgba(197,166,103,.06)}
+.lesson-subject-icon{font-size:25px}
+.lesson-subject-name{display:flex;flex-direction:column;gap:4px}
+.lesson-subject-name strong{font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:400}
+.lesson-subject-name small{opacity:.55;font-size:.78rem}
+.lesson-subject-progress{height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.lesson-subject-progress i{display:block;height:100%;background:currentColor;border-radius:99px}
+.lesson-subject-arrow{font-size:20px;opacity:.65;transition:transform .2s}
+.lesson-subject-group.open .lesson-subject-arrow{transform:rotate(180deg)}
+.lesson-subject-content{padding:0 16px 16px}
+.lesson-subject-content[hidden]{display:none}
+.subject-material-grid{padding-top:0}
+.lesson-subject-group:not(.open) .lesson-subject-content{display:none}
+@media(max-width:700px){
+  .lesson-subject-toggle{grid-template-columns:auto 1fr auto;gap:10px;padding:15px}
+  .lesson-subject-progress{grid-column:2;grid-row:2;width:100%}
+  .lesson-subject-arrow{grid-column:3;grid-row:1/3}
+  .lesson-subject-name strong{font-size:1.12rem}
+  .lesson-subject-content{padding:0 10px 10px}
+}
