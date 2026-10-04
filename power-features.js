@@ -96,7 +96,7 @@
     const medals=["🥇","🥈","🥉"];
     const podium=top.length ? '<div class="leader-podium">'+top.map((r,i)=>'<div class="podium-card podium-'+(i+1)+'"><span class="podium-medal">'+medals[i]+'</span><strong>'+r.name+'</strong><b>'+r.xp+' XP</b><small>🔥 '+r.streak+' best streak</small></div>').join("")+'</div>' : "";
     const list=rest.map((r,i)=>'<div class="leader-row"><strong>#'+(i+4)+'</strong><span>'+r.name+'</span><b>'+r.xp+' XP</b><small>🔥 '+r.streak+'</small></div>').join("");
-    box.innerHTML=podium+list;
+    box.innerHTML=podium+list;\n    const topBox=document.getElementById("topLeaderboard");\n    if(topBox) topBox.innerHTML=podium;
   }
 
   function profile() {
