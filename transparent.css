@@ -1,0 +1,229 @@
+/* STUDY4U — TRANSPARENT / NO-GOLD OVERRIDE
+   Added 2026-10-04
+   Keeps the existing layout and animation, but removes opaque panels and gold styling.
+*/
+
+:root{
+  --surface:transparent!important;
+  --border:rgba(255,255,255,.16)!important;
+  --lux-gold:transparent!important;
+  --lux-gold2:transparent!important;
+  --lux-line:rgba(255,255,255,.16)!important;
+}
+
+/* Transparent glass surfaces */
+.site-header,
+.stats-badge,
+.hero-card,
+.progress-section,
+.account-section,
+.material-card,
+.clock-box,
+.dashboard-card,
+.streak-hero,
+.weekly-card,
+.subject-card,
+.continue-card,
+.challenge-card,
+.power-button,
+.analytics-card,
+.skill-tree-grid,
+.project-grid,
+.leaderboard-card,
+.feature-dialog,
+.github-promo,
+.site-footer,
+.filter-button,
+.search-box,
+.learning-layout,
+.top-leaderboard{
+  background:rgba(255,255,255,.025)!important;
+  background-image:none!important;
+  border-color:rgba(255,255,255,.14)!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.05)!important;
+  backdrop-filter:blur(14px);
+}
+
+/* No gold anywhere in the normal UI */
+.logo span,
+.nav-links a:hover,
+.eyebrow,
+.level,
+.clock-box strong,
+.luxury-ad-kicker,
+.luxury-ad-panel-kicker,
+.luxury-ad-topline,
+.luxury-ad-meta,
+.signed-in{
+  color:#9aa6ff!important;
+}
+
+.button,
+.filter-button.active,
+.filter-button:hover,
+.complete-button:hover,
+.complete-button.completed,
+.stat-button.starred{
+  background:rgba(124,131,255,.16)!important;
+  color:#edf2ff!important;
+  border-color:rgba(124,131,255,.5)!important;
+  box-shadow:0 10px 30px rgba(124,131,255,.12)!important;
+}
+
+.button{
+  background-image:none!important;
+}
+
+.progress-bar span,
+.dashboard-progress span,
+.luxury-progress-track i{
+  background:linear-gradient(90deg,#7c83ff,#69d8ff)!important;
+  box-shadow:none!important;
+}
+
+.account-form input,
+.lesson-window,
+.lesson-window details,
+.lesson-window pre{
+  background:rgba(255,255,255,.025)!important;
+}
+
+/* Remove the gold luxury/cinematic layer */
+body{
+  background:#04060d!important;
+}
+
+.luxury-learning-ad{
+  background:transparent!important;
+  border-color:rgba(255,255,255,.16)!important;
+  box-shadow:0 22px 60px rgba(0,0,0,.2)!important;
+}
+
+.luxury-learning-ad::before,
+.luxury-learning-ad::after{
+  background:transparent!important;
+}
+
+.luxury-ad-shine{
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)!important;
+}
+
+.luxury-ad-panel,
+.luxury-option,
+.luxury-stat{
+  background:rgba(8,13,24,.16)!important;
+  color:#edf2ff!important;
+  border-color:rgba(255,255,255,.16)!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.18)!important;
+  backdrop-filter:blur(16px);
+}
+
+.luxury-ad-panel::before{
+  background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 38%)!important;
+}
+
+.luxury-ad-panel h3,
+.luxury-option strong,
+.luxury-stat strong,
+.luxury-ad-progress strong{
+  color:#edf2ff!important;
+}
+
+.luxury-ad-copy,
+.luxury-option small,
+.luxury-stat span,
+.luxury-ad-progress>div:first-child{
+  color:#aeb8cc!important;
+}
+
+.luxury-option-icon{
+  background:rgba(124,131,255,.12)!important;
+  color:#9aa6ff!important;
+}
+
+.luxury-option:nth-child(2) .luxury-option-icon,
+.luxury-option:nth-child(3) .luxury-option-icon{
+  background:rgba(105,216,255,.10)!important;
+  color:#69d8ff!important;
+}
+
+.luxury-option.active{
+  border-color:rgba(124,131,255,.5)!important;
+  box-shadow:0 5px 18px rgba(124,131,255,.08)!important;
+}
+
+.luxury-option-dot,
+.luxury-option.active .luxury-option-dot{
+  color:#9aa6ff!important;
+}
+
+.luxury-ad-status{
+  background:rgba(94,230,168,.10)!important;
+  color:#5ee6a8!important;
+}
+
+.luxury-ad-button{
+  background:rgba(255,255,255,.08)!important;
+  color:#edf2ff!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:none!important;
+}
+
+.luxury-ad-button:hover{
+  background:rgba(124,131,255,.16)!important;
+}
+
+.luxury-ad-caption,
+.luxury-ad-foot{
+  color:rgba(255,255,255,.72)!important;
+}
+
+.luxury-ad-rule,
+.luxury-ad-copy-wrap{
+  border-color:rgba(255,255,255,.14)!important;
+  background:transparent!important;
+}
+
+/* Neutralize any remaining hard-coded gold decorative elements */
+.ring-outer,
+.ring-mid,
+.luxury-ad-ring,
+.luxury-ad-dial,
+.dial-mark,
+.dial-center,
+.orbit-a,
+.orbit-b{
+  border-color:rgba(255,255,255,.18)!important;
+  box-shadow:none!important;
+}
+
+.luxury-ad-dial{
+  background:rgba(255,255,255,.035)!important;
+}
+
+.dial-mark,
+.dial-center{
+  background:rgba(255,255,255,.55)!important;
+}
+
+h1 span{
+  background:linear-gradient(90deg,#9aa6ff,#69d8ff,#c084fc,#9aa6ff)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+}
+
+#starButton span[aria-hidden="true"]{
+  filter:grayscale(1);
+}
+
+/* Keep the landscape photo visible; only its UI overlay is transparent. */
+.luxury-ad-landscape{
+  background-color:transparent!important;
+}
+
+/* Prevent old gold CSS rules from repainting on hover/focus. */
+button:hover,
+a:hover{
+  text-decoration:none;
+}
