@@ -2987,3 +2987,133 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
 .luxury-learning-ad::after{
   background:linear-gradient(180deg,rgba(255,255,255,.01) 0%,rgba(255,255,255,.015) 55%,rgba(8,13,15,.16) 100%);
 }
+
+
+/* WARM JAPANESE NIGHT — REFERENCE PALETTE */
+:root{
+  --background:#090706;
+  --surface:#12100d;
+  --text:#f5ead5;
+  --muted:#b7a88f;
+  --primary:#d3a54f;
+  --primary-dark:#f0c978;
+  --border:rgba(205,157,70,.28);
+  --shadow:0 22px 60px rgba(0,0,0,.58);
+  --warm-gold:#d3a54f;
+  --warm-light:#f5d58d;
+  --warm-cream:#fff1cf;
+  --warm-pink:#e69aa6;
+}
+body{
+  background:
+    linear-gradient(180deg,rgba(7,5,4,.94),rgba(12,8,6,.97)),
+    url("https://images.unsplash.com/photo-1712239451066-ebdd7e341948?auto=format&fit=crop&fm=jpg&q=82&w=2400") center top/cover fixed!important;
+  color:var(--text)!important;
+}
+body::before{
+  background:
+    radial-gradient(circle at 72% 18%,rgba(210,160,76,.20),transparent 25%),
+    radial-gradient(circle at 18% 28%,rgba(214,124,141,.10),transparent 24%)!important;
+  filter:blur(65px)!important;
+  animation:luxBreath 9s ease-in-out infinite!important;
+}
+body::after{
+  background-image:radial-gradient(circle,rgba(235,194,113,.20) 1px,transparent 1.6px)!important;
+  background-size:110px 110px!important;
+  opacity:.13!important;
+  animation:starsDrift 28s linear infinite!important;
+}
+.site-header{
+  background:rgba(8,6,5,.82)!important;
+  border-bottom:1px solid rgba(211,165,79,.30)!important;
+  box-shadow:0 10px 40px rgba(0,0,0,.35)!important;
+}
+.logo,.logo span{color:var(--warm-light)!important}
+.nav-links a{color:#d6c7ad!important}
+.nav-links a:hover{color:var(--warm-light)!important}
+.eyebrow,.level{color:var(--warm-gold)!important}
+h1,h2,h3,.section-heading h2,.progress-section h2{color:var(--warm-cream)}
+h1 span{
+  background:linear-gradient(100deg,#9b702f,#f5d58d,#c18c3d,#ffe2a1)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+}
+.hero-text,.hero-card p,.progress-section p,.section-heading>p:last-child,.material-card p{
+  color:#c3b49c!important;
+}
+.hero-card,.progress-section,.account-section,.material-card,.dashboard-card,.weekly-card,.streak-hero,.achievement-card{
+  background:linear-gradient(145deg,rgba(25,18,13,.94),rgba(10,8,6,.95))!important;
+  border-color:rgba(211,165,79,.26)!important;
+  box-shadow:0 24px 65px rgba(0,0,0,.48),inset 0 1px rgba(255,226,161,.045)!important;
+}
+.hero-card::before,.account-section::before,.progress-section::before,.material-card::before{
+  background:linear-gradient(90deg,transparent,rgba(229,184,95,.18),transparent)!important;
+}
+.card-icon,.material-icon,.dashboard-icon{
+  background:rgba(211,165,79,.10)!important;
+  border-color:rgba(211,165,79,.28)!important;
+  color:#f2c86d!important;
+}
+.material-card:hover{
+  border-color:rgba(240,201,120,.62)!important;
+  box-shadow:0 30px 70px rgba(0,0,0,.62),0 0 35px rgba(211,165,79,.10)!important;
+}
+.filter-button{
+  background:#0f0b08!important;
+  color:#c8b99f!important;
+  border-color:rgba(211,165,79,.24)!important;
+}
+.filter-button.active,.filter-button:hover{
+  background:linear-gradient(135deg,#a87932,#d5aa58)!important;
+  border-color:#e4be72!important;
+  color:#120d08!important;
+}
+.button{
+  background:linear-gradient(135deg,#9f742f,#d9ae5b,#f0cb7d)!important;
+  color:#171006!important;
+  box-shadow:0 12px 35px rgba(211,165,79,.22)!important;
+}
+.button:hover{
+  box-shadow:0 18px 45px rgba(211,165,79,.34)!important;
+}
+.progress-bar{background:#21170e!important}
+.progress-bar span,.dashboard-progress span,.luxury-progress-track i{
+  background:linear-gradient(90deg,#9e7330,#d9ae5b,#f1d08a)!important;
+  box-shadow:0 0 18px rgba(211,165,79,.24)!important;
+}
+.account-form input{
+  background:#0d0906!important;
+  color:#f5ead5!important;
+  border-color:rgba(211,165,79,.28)!important;
+}
+.account-form input:focus{
+  border-color:#d9ae5b!important;
+  box-shadow:0 0 0 4px rgba(211,165,79,.10),0 0 30px rgba(211,165,79,.12)!important;
+}
+.clock-box,.site-footer{
+  background:#100c08!important;
+  color:#b9aa91!important;
+}
+.clock-box strong{color:#e0b766!important}
+.complete-button{
+  border-color:#c99a48!important;
+  color:#d5a653!important;
+  background:#f8f0df!important;
+}
+.complete-button:hover,.complete-button.completed{
+  background:#c99a48!important;
+  color:#120d08!important;
+}
+.stat-item strong{color:#f1d7a0!important}
+.stats-badge{
+  background:rgba(18,12,8,.84)!important;
+  border-color:rgba(211,165,79,.25)!important;
+}
+.stats-status{color:#d8b267!important}
+.text-button{color:#e69aa6!important}
+
+/* remove the old blue/cyan/purple glow */
+body .hero::before{
+  background:radial-gradient(circle,rgba(211,165,79,.17),transparent 68%)!important;
+}
