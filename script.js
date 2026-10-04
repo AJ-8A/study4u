@@ -744,6 +744,57 @@ function showLesson(index){
   modal.querySelector(".modal-complete").addEventListener("click",()=>{completeLesson(index);close();});
 }
 
+function renderSubjectCards(subject, content, completed){
+  if(!content)return;
+  const term=searchTerm.toLowerCase();
+  const completedSet=new Set(completed);
+  const items=lessons.map((lesson,index)=>({lesson,index})).filter(({lesson})=>{
+    return lesson.subject===subject &&
+      (activeFilter==="All"||activeFilter===lesson.level) &&
+      (!term || [lesson.title,lesson.subject,lesson.level,lesson.description].join(" ").toLowerCase().includes(term));
+  });
+
+  content.innerHTML=items.map(({lesson,index})=>{
+    const unlocked=isUnlocked(index,completed);
+    return '<article class="material-card '+(unlocked?"":"locked")+'"><div class="material-icon '+lesson.color+'">'+lesson.icon+'</div><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h3>'+escapeHtml(lesson.title)+'</h3><p>'+escapeHtml(lesson.description)+'</p><button class="complete-button lesson-open" data-index="'+index+'" '+(unlocked?"":"disabled")+'>'+ (unlocked?"Open lesson":"🔒 Complete the previous topic") +'</button></article>';
+  }).join("");
+
+  content.querySelectorAll(".lesson-open").forEach(b=>b.addEventListener("click",()=>showLesson(Number(b.dataset.index))));
+}
+
+function renderLevelRoadmap(completed){
+  const box=document.getElementById("levelRoadmap");
+  if(!box)return;
+
+  const levels=["Beginner","Novice","Intermediate","Advanced","Expert","Master","Grandmaster"];
+  const data=levels.map(level=>{
+    const items=lessons.map((lesson,index)=>({lesson,index})).filter(x=>x.lesson.level===level);
+    const done=items.filter(x=>completed.includes(x.index)).length;
+    return {level,total:items.length,done,pct:items.length?Math.round(done/items.length*100):0};
+  });
+  const currentIndex=Math.max(0,data.findIndex(x=>x.done<x.total));
+  const allDone=data.every(x=>x.done===x.total);
+  const activeIndex=allDone?levels.length-1:currentIndex;
+  const previousFinished=activeIndex>0 && data.slice(0,activeIndex).every(x=>x.done===x.total);
+
+  box.innerHTML='<div class="level-roadmap-head"><div><span class="eyebrow">Your next set</span><h3>'+ (allDone?"Grandmaster complete":escapeHtml(levels[activeIndex])+" level") +'</h3><p>'+ (allDone?"You completed the full curriculum.":"Finish this set to unlock the next level.") +'</p></div><div class="level-roadmap-score"><strong>'+data[activeIndex].done+'/'+data[activeIndex].total+'</strong><span>'+data[activeIndex].pct+'% complete</span></div></div>'+
+    '<div class="level-roadmap-track">'+data.map((x,i)=>{
+      const done=x.done===x.total && x.total>0;
+      const unlocked=i<=activeIndex;
+      return '<button type="button" class="level-step '+(i===activeIndex?"active ":"")+(done?"done ":"")+(unlocked?"unlocked":"locked")+'" data-level="'+escapeHtml(x.level)+'"><span>'+(done?"✓":String(i+1).padStart(2,"0"))+'</span><b>'+escapeHtml(x.level)+'</b><small>'+x.done+'/'+x.total+'</small></button>';
+    }).join("")+'</div>'+
+    '<div class="level-roadmap-note">'+(previousFinished && !allDone?"✦ New set unlocked — "+escapeHtml(levels[activeIndex])+" is ready.":"Progress is saved automatically on this device.")+'</div>';
+
+  box.querySelectorAll(".level-step.unlocked").forEach(button=>button.addEventListener("click",()=>{
+    activeFilter=button.dataset.level;
+    document.querySelectorAll(".filter-button").forEach(item=>item.classList.toggle("active",item.dataset.filter===activeFilter));
+    searchTerm="";
+    const input=document.getElementById("lessonSearch"); if(input)input.value="";
+    renderLessons();
+    document.getElementById("lessons")?.scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+}
+
 function renderLessons(){
   const completed=getCompletedLessons(), term=searchTerm.toLowerCase();
   if(!materialGrid)return;
@@ -763,29 +814,33 @@ function renderLessons(){
     const subjectTotal=items.length;
     const subjectPct=subjectTotal?Math.round(subjectDone/subjectTotal*100):0;
     const open=Boolean(term) || groupIndex===0;
-    const cards=items.map(({lesson,index})=>{
-      const unlocked=isUnlocked(index,completed);
-      return '<article class="material-card '+(unlocked?"":"locked")+'"><div class="material-icon '+lesson.color+'">'+lesson.icon+'</div><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h3>'+escapeHtml(lesson.title)+'</h3><p>'+escapeHtml(lesson.description)+'</p><button class="complete-button lesson-open" data-index="'+index+'" '+(unlocked?"":"disabled")+'>'+ (unlocked?"Open lesson":"🔒 Complete the previous topic") +'</button></article>';
-    }).join("");
     return '<section class="lesson-subject-group '+(open?"open":"")+'" data-subject-group="'+escapeHtml(subject)+'">'+
       '<button type="button" class="lesson-subject-toggle" aria-expanded="'+open+'">'+
       '<span class="lesson-subject-icon">'+({HTML:"🌐",CSS:"🎨",JavaScript:"⚡",Python:"🐍",SQL:"🗄️",Databases:"🗄️",Web:"🌍",Security:"🛡️",Algorithms:"🧩",Cloud:"☁️",AI:"🤖","Study Skills":"🧠",Project:"🚀"}[subject]||"✦")+'</span>'+
       '<span class="lesson-subject-name"><strong>'+escapeHtml(subject)+'</strong><small>'+subjectTotal+' lessons · '+subjectPct+'% complete</small></span>'+
       '<span class="lesson-subject-progress"><i style="width:'+subjectPct+'%"></i></span><span class="lesson-subject-arrow">⌄</span></button>'+
-      '<div class="lesson-subject-content" '+(open?"":"hidden")+'><div class="material-grid subject-material-grid">'+cards+'</div></div></section>';
+      '<div class="lesson-subject-content" '+(open?"":"hidden")+'><div class="material-grid subject-material-grid"></div></div></section>';
   }).join("");
 
-  document.querySelectorAll(".lesson-open").forEach(b=>b.addEventListener("click",()=>showLesson(Number(b.dataset.index))));
-  document.querySelectorAll(".lesson-subject-toggle").forEach(button=>button.addEventListener("click",()=>{
-    const group=button.closest(".lesson-subject-group"), content=group?.querySelector(".lesson-subject-content");
-    if(!group||!content)return;
-    const isOpen=group.classList.toggle("open");
-    button.setAttribute("aria-expanded",String(isOpen));
-    content.hidden=!isOpen;
-  }));
+  materialGrid.querySelectorAll(".lesson-subject-group").forEach(group=>{
+    const subject=group.dataset.subjectGroup;
+    const content=group.querySelector(".subject-material-grid");
+    if(group.classList.contains("open")) renderSubjectCards(subject,content,completed);
+
+    const button=group.querySelector(".lesson-subject-toggle");
+    button?.addEventListener("click",()=>{
+      const isOpen=group.classList.toggle("open");
+      const panel=group.querySelector(".lesson-subject-content");
+      button.setAttribute("aria-expanded",String(isOpen));
+      if(panel)panel.hidden=!isOpen;
+      if(isOpen) renderSubjectCards(subject,content,getCompletedLessons());
+      else if(content) content.innerHTML="";
+    });
+  });
 
   const empty=document.getElementById("searchEmpty");
   if(empty) empty.hidden=subjects.length!==0;
+  renderLevelRoadmap(completed);
   updateProgress(); renderDashboard(); updateAchievements();
 }
 function completeLesson(index){
@@ -830,7 +885,8 @@ if(logoutButton)logoutButton.addEventListener("click",()=>{currentUser=null;loca
 document.querySelectorAll(".filter-button").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));button.classList.add("active");activeFilter=button.dataset.filter;renderLessons();}));
 document.querySelectorAll(".subject-card").forEach(button=>button.addEventListener("click",()=>{searchTerm=button.dataset.subject;const input=document.getElementById("lessonSearch");if(input)input.value=searchTerm;document.getElementById("lessons")?.scrollIntoView({behavior:"smooth"});renderLessons();}));
 const searchInput=document.getElementById("lessonSearch");
-let searchTimer;\nif(searchInput)searchInput.addEventListener("input",()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{searchTerm=searchInput.value.trim();renderLessons();},180);});
+let searchTimer;
+if(searchInput)searchInput.addEventListener("input",()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{searchTerm=searchInput.value.trim();renderLessons();},180);});
 const continueButton=document.getElementById("continueButton");
 if(continueButton)continueButton.addEventListener("click",()=>{const i=Number(continueButton.dataset.index);if(!Number.isNaN(i))showLesson(i);});
 const themeButton=document.getElementById("themeButton");
