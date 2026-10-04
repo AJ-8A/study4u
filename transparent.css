@@ -468,3 +468,43 @@ body h1,body h2,body h3,body h4,body h5,body h6,
   text-shadow:0 1px 2px rgba(255,255,255,.65)!important;
 }
 .site-header .nav-links a,.site-header .logo,.site-header button{color:#111820!important;}
+
+
+/* GLASS TRANSPARENT BOXES — CLEAN FINAL PASS */
+:root{
+  --glass-fill:rgba(255,255,255,.16)!important;
+  --glass-fill-soft:rgba(255,255,255,.10)!important;
+  --glass-border:rgba(255,255,255,.48)!important;
+  --glass-shadow:0 10px 30px rgba(30,55,70,.10)!important;
+}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,
+.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,
+.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,
+.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,
+.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,
+.learning-dashboard,.achievements-section,.master-quote,.subjects-section,
+.continue-section,.challenge-section,.power-section,.analytics-section,
+.skill-section,.projects-section,.leaderboard-section,.weekly-section,
+.lesson-window,.achievement,.subject-button,.lesson-card,.power-card,
+.analytics-card,.project-card,.leaderboard-item,.challenge-card,.weekly-card,
+.material-card,.feature-card,.dialog-content,.modal-content{
+  background:var(--glass-fill)!important;
+  border:1px solid var(--glass-border)!important;
+  box-shadow:var(--glass-shadow)!important;
+  backdrop-filter:blur(10px) saturate(115%)!important;
+  -webkit-backdrop-filter:blur(10px) saturate(115%)!important;
+}
+/* Nested boxes stay lighter instead of becoming solid white */
+.hero-card *, .dashboard-card *, .material-card *, .subject-card *,
+.continue-card *, .challenge-card *, .weekly-card *, .analytics-card *,
+.project-card *, .leaderboard-card *{box-shadow:none;}
+.search-box input,.account-form input,.account-form select,.account-form textarea,
+.filter-button,.lesson-window details,.lesson-window pre{
+  background:var(--glass-fill-soft)!important;
+  border:1px solid rgba(255,255,255,.40)!important;
+  color:#111820!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+.luxury-learning-ad{background:rgba(255,255,255,.18)!important;}
+.site-footer{background:rgba(255,255,255,.12)!important;}
