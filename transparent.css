@@ -418,3 +418,34 @@ body::before{
   display:none!important;
   background-image:none!important;
 }
+
+
+/* FINAL CLEAN BACKDROP — REMOVE ALL CHERRY BLOSSOM SOURCES */
+html{
+  background:#dbeaf0!important;
+  background-image:none!important;
+}
+body,
+body.bright-mode{
+  background:transparent!important;
+  background-image:none!important;
+}
+body::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(rgba(255,255,255,.02),rgba(255,255,255,.02)),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=92&w=2400") center center / cover no-repeat!important;
+  opacity:1!important;
+  filter:none!important;
+}
+.luxury-ad-cherry,
+.luxury-ad-landscape{
+  display:none!important;
+  background-image:none!important;
+  opacity:0!important;
+}
