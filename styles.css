@@ -2304,3 +2304,154 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
   .luxury-learning-ad{min-height:365px;padding:23px 20px 20px}
   .luxury-learning-ad h3{font-size:1.8rem}
 }
+
+
+/* CINEMATIC LUXURY AD — WATCH-INSPIRED, ORIGINAL STUDYHUB DESIGN */
+.luxury-learning-ad{
+  isolation:isolate;
+  min-height:500px;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(218,184,94,.12),transparent 22%),
+    radial-gradient(circle at 90% 0%,rgba(255,255,255,.95),transparent 32%),
+    linear-gradient(145deg,#fff 0%,#faf8f2 52%,#eee9df 100%);
+}
+.luxury-ad-shine{
+  position:absolute;
+  z-index:0;
+  width:130%;
+  height:55px;
+  left:-115%;
+  top:47%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),rgba(216,183,96,.18),transparent);
+  transform:rotate(-28deg);
+  animation:luxurySweep 5.5s cubic-bezier(.2,.7,.2,1) infinite;
+  pointer-events:none;
+}
+@keyframes luxurySweep{
+  0%,62%{left:-115%;opacity:0}
+  68%{opacity:.2}
+  84%{left:120%;opacity:.8}
+  100%{left:140%;opacity:0}
+}
+.luxury-ad-orbit{
+  position:absolute;
+  z-index:0;
+  border:1px solid rgba(169,132,49,.13);
+  border-radius:50%;
+  pointer-events:none;
+}
+.orbit-a{width:390px;height:390px;left:50%;top:225px;transform:translate(-50%,-50%);animation:orbitSpin 18s linear infinite}
+.orbit-b{width:300px;height:300px;left:50%;top:225px;transform:translate(-50%,-50%);border-style:dashed;animation:orbitSpinReverse 13s linear infinite}
+@keyframes orbitSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes orbitSpinReverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+
+.luxury-ad-emblem{
+  position:relative;
+  z-index:2;
+  width:158px;
+  height:158px;
+  margin:25px auto 20px;
+  display:grid;
+  place-items:center;
+  filter:drop-shadow(0 16px 20px rgba(91,68,26,.15));
+  animation:emblemFloat 4s ease-in-out infinite;
+}
+@keyframes emblemFloat{
+  0%,100%{transform:translateY(0) rotate(-.4deg)}
+  50%{transform:translateY(-5px) rotate(.4deg)}
+}
+.luxury-ad-ring{
+  position:absolute;
+  border-radius:50%;
+  box-sizing:border-box;
+}
+.ring-outer{
+  inset:0;
+  border:1px solid rgba(143,106,31,.65);
+  box-shadow:inset 0 0 0 4px rgba(255,255,255,.7),0 0 0 8px rgba(168,130,46,.07);
+}
+.ring-mid{
+  inset:10px;
+  border:1px solid rgba(170,133,52,.45);
+  border-top-color:#8e6821;
+  border-bottom-color:#d8b768;
+  animation:luxuryRotate 8s linear infinite;
+}
+@keyframes luxuryRotate{to{transform:rotate(360deg)}}
+.luxury-ad-dial{
+  position:relative;
+  width:108px;height:108px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 28%,#fff,#f7f2e6 48%,#ddd3c0 100%);
+  border:1px solid rgba(79,59,22,.22);
+  box-shadow:inset 0 0 0 5px rgba(255,255,255,.75),inset 0 0 28px rgba(83,61,23,.08);
+}
+.luxury-ad-dial::before,.luxury-ad-dial::after{
+  content:"";
+  position:absolute;
+  inset:17px;
+  border:1px solid rgba(151,113,37,.15);
+  border-radius:50%;
+}
+.luxury-ad-dial::after{inset:28px;border-color:rgba(151,113,37,.08)}
+.dial-mark{
+  position:absolute;
+  width:2px;height:8px;
+  background:#7d5e25;
+  left:50%;top:6px;
+  transform-origin:1px 48px;
+}
+.m1{transform:rotate(0deg)}.m2{transform:rotate(90deg)}.m3{transform:rotate(180deg)}.m4{transform:rotate(270deg)}
+.dial-hand{
+  position:absolute;
+  left:50%;
+  bottom:50%;
+  width:2px;
+  transform-origin:50% 100%;
+  border-radius:99px;
+  background:#252018;
+}
+.hand-hour{height:29px;transform:rotate(35deg)}
+.hand-minute{height:39px;transform:rotate(137deg);width:1px}
+.dial-center{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:8px;height:8px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:#b28a3c;
+  color:#fff;
+  font-size:5px;
+  box-shadow:0 0 0 3px rgba(178,138,60,.12);
+}
+.luxury-ad-kicker,.luxury-learning-ad h3,.luxury-ad-copy,.luxury-ad-rule,.luxury-ad-meta,.luxury-ad-button,.luxury-ad-foot,.luxury-ad-topline{z-index:3}
+.luxury-learning-ad h3{transition:opacity .35s,transform .35s}
+.luxury-ad-copy{transition:opacity .35s}
+.luxury-ad-button{box-shadow:0 10px 22px rgba(20,20,20,.12)}
+.luxury-ad-button::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.22) 48%,transparent 75%);
+  transform:translateX(-120%);
+  animation:buttonGlint 4.8s ease-in-out infinite;
+}
+@keyframes buttonGlint{
+  0%,55%{transform:translateX(-120%)}
+  72%,100%{transform:translateX(120%)}
+}
+.luxury-learning-ad:hover .luxury-ad-emblem{animation-duration:2.2s}
+.luxury-learning-ad:hover .orbit-a{animation-duration:8s}
+.luxury-learning-ad:hover .orbit-b{animation-duration:6s}
+
+@media(prefers-reduced-motion:reduce){
+  .luxury-ad-shine,.luxury-ad-orbit,.luxury-ad-emblem,.luxury-ad-ring,.luxury-ad-button::before{animation:none}
+}
+@media(max-width:600px){
+  .luxury-learning-ad{min-height:470px}
+  .luxury-ad-emblem{width:140px;height:140px}
+  .luxury-ad-dial{width:96px;height:96px}
+  .luxury-ad-orbit{display:none}
+}
