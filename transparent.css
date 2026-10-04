@@ -258,3 +258,33 @@ body::before{
 @media(max-width:700px){
   html,body{background-attachment:scroll!important;background-position:center top!important}
 }
+
+
+/* BACKDROP VISIBILITY FIX — WINDMILL LANDSCAPE MUST SHOW BEHIND THE WHOLE SITE */
+html{
+  min-height:100%!important;
+  background-color:#dfeef4!important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=90&w=2400")!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+}
+body{
+  min-height:100vh!important;
+  background:transparent!important;
+  background-image:none!important;
+}
+body::before{
+  display:none!important;
+}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section{
+  background:rgba(255,255,255,.64)!important;
+  backdrop-filter:blur(6px)!important;
+  -webkit-backdrop-filter:blur(6px)!important;
+}
+@media(max-width:700px){
+  html{background-attachment:scroll!important;background-position:center top!important}
+}
