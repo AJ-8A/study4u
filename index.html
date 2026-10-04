@@ -231,28 +231,51 @@
       <div class="learning-layout">
         <div id="materialGrid" class="material-grid"></div>
         <aside class="luxury-learning-ad" aria-label="StudyHub premium learning advertisement">
-          <div class="luxury-ad-cherry"></div>
-          <div class="luxury-ad-shine"></div>
-          <div class="luxury-ad-topline"><span>STUDYHUB · 2026</span><span id="luxuryAdIndex">01 / 07</span></div>
-          <div class="luxury-ad-world" aria-hidden="true">
-            <span class="world-dot d1"></span><span class="world-dot d2"></span><span class="world-dot d3"></span><span class="world-dot d4"></span>
-            <span class="world-dot d5"></span><span class="world-dot d6"></span><span class="world-dot d7"></span><span class="world-dot d8"></span>
-            <span class="world-dot d9"></span><span class="world-dot d10"></span><span class="world-dot d11"></span><span class="world-dot d12"></span>
-            <div class="world-glow"></div>
-          </div>
-          <div class="luxury-stat stat-users"><strong>181+</strong><span>Lessons crafted</span></div>
-          <div class="luxury-stat stat-levels"><strong>07</strong><span>Learning levels</span></div>
-          <div class="luxury-stat stat-progress"><strong id="luxuryAdMetaLeft">0/0</strong><span>Current set</span></div>
-          <div class="luxury-ad-copy-wrap">
-            <p class="luxury-ad-kicker">PRECISION LEARNING</p>
-            <h3 id="luxuryAdTitle">Your next chapter is waiting.</h3>
-            <p class="luxury-ad-copy" id="luxuryAdCopy">Complete your current set. Your next level opens automatically, one precise step at a time.</p>
-            <div class="luxury-ad-rule"></div>
-            <div class="luxury-ad-meta"><span id="luxuryAdMetaRight">LEVEL 01</span><span>LEARN WITH INTENT</span></div>
-            <button type="button" class="luxury-ad-button" onclick="document.getElementById('lessons')?.scrollIntoView({behavior:'smooth'})">Continue your path <span>↗</span></button>
-          </div>
-          <div class="luxury-ad-foot">CHERRY BLOSSOM NIGHT · STUDYHUB</div>
-        </aside>
+  <div class="luxury-ad-landscape" aria-hidden="true"></div>
+  <div class="luxury-ad-sky-glow" aria-hidden="true"></div>
+  <div class="luxury-ad-topline"><span>STUDYHUB / JOURNEY</span><span id="luxuryAdIndex">01 / 07</span></div>
+
+  <div class="luxury-ad-panel">
+    <div class="luxury-ad-panel-head">
+      <div>
+        <span class="luxury-ad-panel-kicker">NEXT CHAPTER</span>
+        <h3 id="luxuryAdTitle">Choose your next level</h3>
+      </div>
+      <span class="luxury-ad-status" id="luxuryAdStatus">READY</span>
+    </div>
+
+    <p class="luxury-ad-copy" id="luxuryAdCopy">Your learning path is prepared. Complete the current set to open the next chapter.</p>
+
+    <div class="luxury-ad-options">
+      <div class="luxury-option active">
+        <span class="luxury-option-icon">✦</span>
+        <div><strong id="luxuryOptionLevel">Beginner</strong><small>Current focus</small></div>
+        <span class="luxury-option-dot">✓</span>
+      </div>
+      <div class="luxury-option">
+        <span class="luxury-option-icon">◇</span>
+        <div><strong>Practice</strong><small>Build confidence</small></div>
+        <span class="luxury-option-dot">›</span>
+      </div>
+      <div class="luxury-option">
+        <span class="luxury-option-icon">◈</span>
+        <div><strong>Next set</strong><small id="luxuryOptionNext">Locked until complete</small></div>
+        <span class="luxury-option-dot">›</span>
+      </div>
+    </div>
+
+    <div class="luxury-ad-progress">
+      <div><span>SET PROGRESS</span><strong id="luxuryAdMetaLeft">0 / 0</strong></div>
+      <div class="luxury-progress-track"><i id="luxuryAdProgressBar" style="width:0%"></i></div>
+    </div>
+
+    <button type="button" class="luxury-ad-button" onclick="document.getElementById('lessons')?.scrollIntoView({behavior:'smooth'})">
+      Continue learning <span>↗</span>
+    </button>
+  </div>
+
+  <div class="luxury-ad-caption"><span>LEARN WITH INTENT</span><span>EST. 2026</span></div>
+</aside>
       </div>
     </section>
   </main>
