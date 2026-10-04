@@ -803,19 +803,27 @@ function updateLuxuryAd(completed){
   const allDone=active<0;
   if(allDone)active=levels.length-1;
 
+  const next=Math.min(active+1,levels.length-1);
+  const pct=totals[active]?Math.round(done[active]/totals[active]*100):100;
+  const finished=!allDone&&done[active]===totals[active]&&totals[active]>0;
   const index=document.getElementById("luxuryAdIndex");
   const title=document.getElementById("luxuryAdTitle");
   const copy=document.getElementById("luxuryAdCopy");
   const left=document.getElementById("luxuryAdMetaLeft");
-  const right=document.getElementById("luxuryAdMetaRight");
-  if(!index||!title||!copy||!left||!right)return;
+  const bar=document.getElementById("luxuryAdProgressBar");
+  const level=document.getElementById("luxuryOptionLevel");
+  const nextEl=document.getElementById("luxuryOptionNext");
+  const status=document.getElementById("luxuryAdStatus");
+  if(!index||!title||!copy||!left||!bar||!level||!nextEl||!status)return;
 
-  const finished=!allDone&&done[active]===totals[active]&&totals[active]>0;
   index.textContent=String(active+1).padStart(2,"0")+" / 07";
-  title.textContent=allDone?"Grandmaster complete":finished?"Next set unlocked: "+(levels[active+1]||"Grandmaster"):levels[active]+" is in focus";
-  copy.textContent=allDone?"You completed every StudyHub level. The full path is yours.":finished?"Excellent. Your completed set has opened the next chapter. Keep the momentum."+"" :"A precision-built learning path. Finish this set and the next level opens automatically.";
-  left.textContent=allDone?"181 lessons mastered":done[active]+"/"+totals[active]+" complete";
-  right.textContent="LEVEL "+String(active+1).padStart(2,"0");
+  title.textContent=allDone?"Every chapter mastered":finished?"Next chapter unlocked":"Choose your next level";
+  copy.textContent=allDone?"You have completed the entire StudyHub journey.":finished?"Beautiful work. "+levels[next]+" is now ready for you.":"Complete "+levels[active]+" and the next level opens automatically.";
+  level.textContent=allDone?"Grandmaster":levels[active];
+  nextEl.textContent=finished?levels[next]+" unlocked":allDone?"Full path complete":"Locked until complete";
+  status.textContent=allDone?"MASTERED":finished?"UNLOCKED":"IN PROGRESS";
+  left.textContent=allDone?"181 / 181":done[active]+" / "+totals[active];
+  bar.style.width=pct+"%";
 }
 
 function renderLessons(){
