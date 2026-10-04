@@ -449,3 +449,22 @@ body::before{
   background-image:none!important;
   opacity:0!important;
 }
+
+
+/* TEXT CONTRAST FIX — DARK CRISP LETTERS ON GLASS */
+body{color:#17202a!important;}
+body p,body span,body small,body li,body label,body dt,body dd,
+.hero-text,.hero-text p,.material-card p,.dashboard-card p,
+.subject-card p,.continue-card p,.challenge-card p,.weekly-card p,
+.stats-badge,.clock-box,.site-footer,.search-box input,
+.account-section,.progress-section,.learning-dashboard,
+.lessons-section,.subjects-section,.continue-section,.challenge-section,
+.weekly-section,.analytics-section,.skill-section,.projects-section,
+.leaderboard-section{color:#17202a!important;text-shadow:0 1px 2px rgba(255,255,255,.55)!important;}
+body h1,body h2,body h3,body h4,body h5,body h6,
+.hero-text h1,.hero-text h2,.material-card h3,.dashboard-card h3,
+.subject-card h3,.continue-card h3,.challenge-card h3,.weekly-card h3{
+  color:#0b1117!important;
+  text-shadow:0 1px 2px rgba(255,255,255,.65)!important;
+}
+.site-header .nav-links a,.site-header .logo,.site-header button{color:#111820!important;}
