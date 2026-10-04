@@ -830,7 +830,7 @@ if(logoutButton)logoutButton.addEventListener("click",()=>{currentUser=null;loca
 document.querySelectorAll(".filter-button").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));button.classList.add("active");activeFilter=button.dataset.filter;renderLessons();}));
 document.querySelectorAll(".subject-card").forEach(button=>button.addEventListener("click",()=>{searchTerm=button.dataset.subject;const input=document.getElementById("lessonSearch");if(input)input.value=searchTerm;document.getElementById("lessons")?.scrollIntoView({behavior:"smooth"});renderLessons();}));
 const searchInput=document.getElementById("lessonSearch");
-if(searchInput)searchInput.addEventListener("input",()=>{searchTerm=searchInput.value.trim();renderLessons();});
+let searchTimer;\nif(searchInput)searchInput.addEventListener("input",()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{searchTerm=searchInput.value.trim();renderLessons();},180);});
 const continueButton=document.getElementById("continueButton");
 if(continueButton)continueButton.addEventListener("click",()=>{const i=Number(continueButton.dataset.index);if(!Number.isNaN(i))showLesson(i);});
 const themeButton=document.getElementById("themeButton");
