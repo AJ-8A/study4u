@@ -226,6 +226,70 @@
     </section>
   </main>
 
+<!-- StudyHub Power Features -->
+<section class="power-section container" id="power">
+  <div class="section-heading">
+    <p class="eyebrow">Power features</p>
+    <h2>Train like a pro.</h2>
+    <p>Test yourself, see the full journey, and turn your progress into a real learning record.</p>
+  </div>
+  <div class="power-actions">
+    <button class="power-button" id="openQuizMode" type="button"><span>🧪</span><b>Quiz Arena</b><small>10 random questions</small></button>
+    <button class="power-button" id="openProfile" type="button"><span>👤</span><b>My Profile</b><small>Stats & achievements</small></button>
+    <button class="power-button" id="openSkillTree" type="button"><span>🗺️</span><b>Skill Tree</b><small>See your path</small></button>
+    <button class="power-button" id="openProjects" type="button"><span>🚀</span><b>Projects</b><small>Build real things</small></button>
+  </div>
+</section>
+
+<section class="analytics-section container" id="analytics">
+  <div class="section-heading">
+    <p class="eyebrow">Learning analytics</p>
+    <h2>Your numbers.</h2>
+  </div>
+  <div class="analytics-grid">
+    <div class="analytics-card"><span>Completed</span><strong id="statCompleted">0</strong><small>lessons</small></div>
+    <div class="analytics-card"><span>Experience</span><strong id="statXp">0</strong><small>XP earned</small></div>
+    <div class="analytics-card"><span>Best streak</span><strong id="statBest">0</strong><small>days</small></div>
+    <div class="analytics-card"><span>Quiz accuracy</span><strong id="statAccuracy">—</strong><small>arena answers</small></div>
+  </div>
+  <div class="analytics-bars" id="subjectAnalytics"></div>
+</section>
+
+<section class="skill-section container" id="skillTree">
+  <div class="section-heading">
+    <p class="eyebrow">Skill map</p>
+    <h2>Build your tree.</h2>
+    <p>Every subject shows how far you have travelled through the curriculum.</p>
+  </div>
+  <div class="skill-tree-grid" id="skillTreeGrid"></div>
+</section>
+
+<section class="projects-section container" id="projects">
+  <div class="section-heading">
+    <p class="eyebrow">Build, don't just read</p>
+    <h2>Project lab.</h2>
+    <p>Finish a project after learning the concepts behind it.</p>
+  </div>
+  <div class="project-grid" id="projectGrid"></div>
+</section>
+
+<section class="leaderboard-section container" id="leaderboard">
+  <div class="section-heading">
+    <p class="eyebrow">Competition</p>
+    <h2>Leaderboard.</h2>
+    <p>Local ranking on this device. Cloud ranking can be connected to the StudyHub API later.</p>
+  </div>
+  <div class="leaderboard-card" id="leaderboardCard"></div>
+</section>
+
+<div class="feature-modal" id="featureModal" aria-hidden="true">
+  <div class="feature-backdrop" data-close-feature></div>
+  <div class="feature-dialog" role="dialog" aria-modal="true" aria-labelledby="featureTitle">
+    <button class="feature-close" type="button" data-close-feature aria-label="Close">×</button>
+    <div id="featureContent"></div>
+  </div>
+</div>
+
     <section class="github-promo" aria-label="Follow AJ on GitHub">
       <div class="github-promo-glow"></div>
       <div class="github-promo-content">
@@ -248,5 +312,6 @@
 
   <script src="extra-lessons.js"></script>
   <script src="script.js"></script>
+  <script src="power-features.js"></script>
 </body>
 </html>
