@@ -633,3 +633,150 @@ body h1,body h2,body h3,body h4,body h5,body h6,
     font-size:.72rem!important;
   }
 }
+
+/* WHOLE WEBSITE — UNIFIED TRANSPARENT GLASS SYSTEM */
+:root{
+  --site-glass:rgba(255,255,255,.13)!important;
+  --site-glass-strong:rgba(255,255,255,.20)!important;
+  --site-glass-border:rgba(255,255,255,.40)!important;
+  --site-glass-shadow:0 10px 28px rgba(24,48,62,.09)!important;
+}
+
+/* Main structural surfaces stay transparent */
+.container,
+main,
+section,
+.learning-layout,
+.material-grid,
+.continue-grid,
+.subject-grid,
+.challenge-grid,
+.weekly-grid,
+.analytics-grid,
+.project-grid,
+.skill-tree-grid{
+  background:transparent!important;
+  background-image:none!important;
+}
+
+/* Primary cards / panels across the entire site */
+.hero-card,
+.stats-badge,
+.progress-section,
+.account-section,
+.material-card,
+.clock-box,
+.dashboard-card,
+.streak-hero,
+.weekly-card,
+.subject-card,
+.continue-card,
+.challenge-card,
+.power-button,
+.analytics-card,
+.skill-tree-grid,
+.project-grid,
+.project-card,
+.leaderboard-card,
+.feature-dialog,
+.github-promo,
+.master-quote,
+.learning-dashboard,
+.top-leaderboard,
+.achievements-section,
+.lessons-section,
+.subjects-section,
+.continue-section,
+.challenge-section,
+.power-section,
+.analytics-section,
+.skill-section,
+.projects-section,
+.leaderboard-section,
+.weekly-section,
+.lesson-window,
+.profile-hero,
+.profile-grid,
+.quiz-input,
+.quiz-feedback,
+.daily-challenge,
+.power-card,
+.achievement,
+.level-roadmap,
+.level-roadmap-head{
+  background:var(--site-glass)!important;
+  background-image:none!important;
+  border-color:var(--site-glass-border)!important;
+  box-shadow:var(--site-glass-shadow)!important;
+  backdrop-filter:blur(12px) saturate(115%)!important;
+  -webkit-backdrop-filter:blur(12px) saturate(115%)!important;
+}
+
+/* Secondary controls and small surfaces */
+.search-box,
+.filter-button,
+.account-form input,
+.account-form select,
+.account-form textarea,
+.lesson-window details,
+.lesson-window pre,
+.stat-button,
+.button,
+.outline-button,
+.power-button,
+.complete-button,
+.logout-button,
+.github-promo-button{
+  background:rgba(255,255,255,.11)!important;
+  background-image:none!important;
+  border-color:rgba(255,255,255,.40)!important;
+  box-shadow:0 5px 16px rgba(24,48,62,.07)!important;
+  backdrop-filter:blur(9px) saturate(115%)!important;
+  -webkit-backdrop-filter:blur(9px) saturate(115%)!important;
+}
+
+/* Header / footer become glass instead of solid panels */
+.site-header,
+.site-footer{
+  background:rgba(255,255,255,.12)!important;
+  background-image:none!important;
+  backdrop-filter:blur(14px) saturate(120%)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(120%)!important;
+  border-color:rgba(255,255,255,.38)!important;
+}
+
+/* Keep the luxury ad translucent while preserving its artwork */
+.luxury-learning-ad{
+  background:rgba(255,255,255,.16)!important;
+  background-image:none!important;
+  border-color:rgba(255,255,255,.42)!important;
+  box-shadow:0 12px 34px rgba(24,48,62,.10)!important;
+  backdrop-filter:blur(8px) saturate(112%)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(112%)!important;
+}
+
+/* Prevent nested elements from becoming opaque white blocks */
+.hero-card > *,
+.dashboard-card > *,
+.material-card > *,
+.subject-card > *,
+.continue-card > *,
+.challenge-card > *,
+.weekly-card > *,
+.analytics-card > *,
+.project-card > *,
+.leaderboard-card > *,
+.learning-dashboard > *,
+.account-section > *,
+.progress-section > *{
+  background-color:transparent!important;
+}
+
+/* Mobile: preserve spacing without creating solid wrappers */
+@media(max-width:700px){
+  .container,main,section,.learning-layout,.material-grid,.continue-grid,
+  .subject-grid,.challenge-grid,.weekly-grid,.analytics-grid,
+  .project-grid,.skill-tree-grid{
+    background:transparent!important;
+  }
+}
