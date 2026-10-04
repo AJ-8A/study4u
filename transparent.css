@@ -310,3 +310,49 @@ body{
 }
 .luxury-learning-ad{background:rgba(248,251,253,.42)!important;}
 @media(max-width:700px){html{background-attachment:scroll!important;background-position:center top!important}}
+
+
+/* ULTIMATE WINDMILL BACKDROP — DEDICATED FIXED LAYER */
+html{
+  min-height:100%!important;
+  background:#dbeaf0!important;
+}
+html::before{
+  content:""!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.05)),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=92&w=2400")!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  will-change:transform!important;
+}
+body{
+  position:relative!important;
+  min-height:100vh!important;
+  background:transparent!important;
+  background-image:none!important;
+  isolation:isolate!important;
+}
+body::before{display:none!important;}
+body::after{display:none!important;}
+body > *{
+  position:relative!important;
+  z-index:1!important;
+}
+/* Keep page sections translucent enough for the landscape to remain visible */
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section{
+  background:rgba(255,255,255,.46)!important;
+  backdrop-filter:blur(4px)!important;
+  -webkit-backdrop-filter:blur(4px)!important;
+}
+.luxury-learning-ad{
+  background:rgba(248,251,253,.36)!important;
+}
+@media(max-width:700px){
+  html::before{background-position:center top!important;}
+}
