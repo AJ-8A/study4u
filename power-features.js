@@ -141,5 +141,5 @@
   document.getElementById("openProjects")?.addEventListener("click",()=>document.getElementById("projects")?.scrollIntoView({behavior:"smooth"}));
 
   renderStats(); renderTree(); renderProjects(); renderLeaderboard();
-  setInterval(()=>{renderStats();renderTree();renderProjects();renderLeaderboard();},1500);
+  setInterval(()=>{renderStats();renderLeaderboard();},10000);
 })();
