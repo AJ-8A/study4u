@@ -356,3 +356,42 @@ body > *{
 @media(max-width:700px){
   html::before{background-position:center top!important;}
 }
+
+
+/* DEFINITIVE WINDMILL LAYER — BODY STACKING CONTEXT */
+html{
+  background:#dbeaf0!important;
+}
+html::before{display:none!important;}
+body{
+  position:relative!important;
+  min-height:100vh!important;
+  background:transparent!important;
+  background-image:none!important;
+  isolation:isolate!important;
+}
+body::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(rgba(255,255,255,.07),rgba(255,255,255,.07)),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=92&w=2400") center center / cover no-repeat!important;
+}
+body::after{display:none!important;}
+body > *{
+  position:relative!important;
+  z-index:1!important;
+}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section{
+  background:rgba(255,255,255,.42)!important;
+  backdrop-filter:blur(4px)!important;
+  -webkit-backdrop-filter:blur(4px)!important;
+}
+.luxury-learning-ad{background:rgba(248,251,253,.34)!important;}
+@media(max-width:700px){
+  body::before{position:fixed!important;background-position:center top!important;}
+}
