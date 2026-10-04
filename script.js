@@ -747,15 +747,45 @@ function showLesson(index){
 function renderLessons(){
   const completed=getCompletedLessons(), term=searchTerm.toLowerCase();
   if(!materialGrid)return;
-  materialGrid.innerHTML=lessons.map((lesson,index)=>{
-    const unlocked=isUnlocked(index,completed);
+
+  const grouped={};
+  lessons.forEach((lesson,index)=>{
     const visible=(activeFilter==="All"||activeFilter===lesson.level) &&
       (!term || [lesson.title,lesson.subject,lesson.level,lesson.description].join(" ").toLowerCase().includes(term));
-    if(!visible)return "";
-    return '<article class="material-card '+(unlocked?"":"locked")+'"><div class="material-icon '+lesson.color+'">'+lesson.icon+'</div><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h3>'+escapeHtml(lesson.title)+'</h3><p>'+escapeHtml(lesson.description)+'</p><button class="complete-button lesson-open" data-index="'+index+'" '+(unlocked?"":"disabled")+'>'+ (unlocked?"Open lesson":"🔒 Complete the previous topic") +'</button></article>';
+    if(!visible)return;
+    (grouped[lesson.subject] ||= []).push({lesson,index});
+  });
+
+  const subjects=Object.keys(grouped);
+  materialGrid.innerHTML=subjects.map((subject,groupIndex)=>{
+    const items=grouped[subject];
+    const subjectDone=items.filter(x=>completed.includes(x.index)).length;
+    const subjectTotal=items.length;
+    const subjectPct=subjectTotal?Math.round(subjectDone/subjectTotal*100):0;
+    const open=Boolean(term) || groupIndex===0;
+    const cards=items.map(({lesson,index})=>{
+      const unlocked=isUnlocked(index,completed);
+      return '<article class="material-card '+(unlocked?"":"locked")+'"><div class="material-icon '+lesson.color+'">'+lesson.icon+'</div><span class="level">'+escapeHtml(lesson.level)+' · '+escapeHtml(lesson.subject)+'</span><h3>'+escapeHtml(lesson.title)+'</h3><p>'+escapeHtml(lesson.description)+'</p><button class="complete-button lesson-open" data-index="'+index+'" '+(unlocked?"":"disabled")+'>'+ (unlocked?"Open lesson":"🔒 Complete the previous topic") +'</button></article>';
+    }).join("");
+    return '<section class="lesson-subject-group '+(open?"open":"")+'" data-subject-group="'+escapeHtml(subject)+'">'+
+      '<button type="button" class="lesson-subject-toggle" aria-expanded="'+open+'">'+
+      '<span class="lesson-subject-icon">'+({HTML:"🌐",CSS:"🎨",JavaScript:"⚡",Python:"🐍",SQL:"🗄️",Databases:"🗄️",Web:"🌍",Security:"🛡️",Algorithms:"🧩",Cloud:"☁️",AI:"🤖","Study Skills":"🧠",Project:"🚀"}[subject]||"✦")+'</span>'+
+      '<span class="lesson-subject-name"><strong>'+escapeHtml(subject)+'</strong><small>'+subjectTotal+' lessons · '+subjectPct+'% complete</small></span>'+
+      '<span class="lesson-subject-progress"><i style="width:'+subjectPct+'%"></i></span><span class="lesson-subject-arrow">⌄</span></button>'+
+      '<div class="lesson-subject-content" '+(open?"":"hidden")+'><div class="material-grid subject-material-grid">'+cards+'</div></div></section>';
   }).join("");
+
   document.querySelectorAll(".lesson-open").forEach(b=>b.addEventListener("click",()=>showLesson(Number(b.dataset.index))));
-  const empty=document.getElementById("searchEmpty"); if(empty) empty.hidden=materialGrid.children.length!==0;
+  document.querySelectorAll(".lesson-subject-toggle").forEach(button=>button.addEventListener("click",()=>{
+    const group=button.closest(".lesson-subject-group"), content=group?.querySelector(".lesson-subject-content");
+    if(!group||!content)return;
+    const isOpen=group.classList.toggle("open");
+    button.setAttribute("aria-expanded",String(isOpen));
+    content.hidden=!isOpen;
+  }));
+
+  const empty=document.getElementById("searchEmpty");
+  if(empty) empty.hidden=subjects.length!==0;
   updateProgress(); renderDashboard(); updateAchievements();
 }
 function completeLesson(index){
