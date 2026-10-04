@@ -142,6 +142,8 @@
     syncGlobalLeaderboard();
     publishGlobalLeaderboard();
   }
+
+  window.publishGlobalLeaderboard = publishGlobalLeaderboard;
   function profile() {
     const u=user(), name=localStorage.getItem(currentUserKey)||"Guest", done=u?.completed?.length||0, xp=done*100, qs=JSON.parse(localStorage.getItem(quizKey)||'{"correct":0,"answered":0}');
     open('<div class="feature-kicker">PROFILE</div><h2 id="featureTitle">'+name+'</h2><div class="profile-hero"><strong>'+levelFor(xp)+'</strong><span>'+xp+' XP</span></div><div class="profile-grid"><div><b>'+done+'</b><small>Lessons</small></div><div><b>'+(u?.stats?.bestStreak||0)+'</b><small>Best streak</small></div><div><b>'+(qs.answered?Math.round(qs.correct/qs.answered*100):0)+'%</b><small>Quiz accuracy</small></div></div><h3>Achievements</h3><div class="profile-achievements">'+((u?.achievements||[]).length?u.achievements.map(a=>'<span>🏆 '+a+'</span>').join(""):"<span>Complete lessons to unlock achievements.</span>")+'</div>');
