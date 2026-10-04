@@ -2638,3 +2638,84 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
 @media(prefers-reduced-motion:reduce){
   .luxury-ad-cherry,.world-glow,.world-dot,.luxury-stat{animation:none}
 }
+
+
+/* FINAL REFERENCE MATCH — CLEAN WHITE WORLD-MAP AD */
+.luxury-ad-cherry{display:none!important}
+.luxury-learning-ad{
+  min-height:575px;
+  background:#fff;
+  border:1px solid rgba(20,30,70,.07);
+  box-shadow:0 22px 50px rgba(30,40,80,.12);
+}
+.luxury-learning-ad::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.96) 63%);
+  pointer-events:none;
+}
+.luxury-ad-world{
+  z-index:2;
+  top:48px;
+  width:100%;
+  height:270px;
+  opacity:.72;
+  overflow:hidden;
+}
+.luxury-ad-world::before{
+  inset:0 -18px;
+  background-image:radial-gradient(circle,rgba(130,145,235,.72) 1.15px,transparent 1.35px);
+  background-size:6px 6px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 48%,#000 0%,#000 57%,transparent 76%);
+  mask-image:radial-gradient(ellipse at 50% 48%,#000 0%,#000 57%,transparent 76%);
+  transform:scaleX(1.55) scaleY(1.1);
+}
+.world-glow{opacity:.45}
+.luxury-stat{
+  z-index:6;
+  min-width:128px;
+  padding:18px 20px;
+  border:0;
+  border-radius:3px;
+  box-shadow:0 9px 24px rgba(40,45,75,.13);
+}
+.luxury-stat strong{font-size:1.55rem;color:#111}
+.luxury-stat span{font-size:.68rem;color:#596579}
+.stat-users{left:12px;top:116px}
+.stat-levels{right:12px;top:155px}
+.stat-progress{top:240px}
+.luxury-ad-copy-wrap{
+  z-index:9;
+  left:22px;right:22px;
+  bottom:28px;
+  padding-top:15px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.76),#fff 24%);
+}
+.luxury-ad-copy-wrap .luxury-ad-kicker{
+  color:#7180d8;
+  letter-spacing:.18em;
+}
+.luxury-ad-copy-wrap .luxury-learning-ad h3{
+  font-family:Inter,sans-serif;
+  font-weight:700;
+  font-size:1.55rem;
+  letter-spacing:-.035em;
+}
+.luxury-ad-copy-wrap .luxury-ad-copy{color:#596579}
+.luxury-ad-button{
+  background:#151515;
+  border-color:#151515;
+}
+.luxury-ad-button:hover{background:#30364a;border-color:#30364a}
+.luxury-ad-foot{color:#8a92a4}
+@media(max-width:600px){
+  .luxury-learning-ad{min-height:520px}
+  .luxury-ad-world{top:54px;height:240px}
+  .luxury-stat{min-width:100px;padding:13px}
+  .luxury-stat strong{font-size:1.12rem}
+  .stat-users{left:7px;top:125px}
+  .stat-levels{right:7px;top:158px}
+  .stat-progress{top:215px}
+}
