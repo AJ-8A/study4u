@@ -227,7 +227,21 @@
       </div>
 
       <p id="searchEmpty" class="search-empty" hidden>No lessons match your search. Try another topic.</p>
-      <div id="materialGrid" class="material-grid"></div>
+      <div id="levelRoadmap" class="level-roadmap" aria-label="Learning level roadmap"></div>
+      <div class="learning-layout">
+        <div id="materialGrid" class="material-grid"></div>
+        <aside class="luxury-learning-ad" aria-label="StudyHub premium learning panel">
+          <div class="luxury-ad-topline"><span>STUDYHUB</span><span>01 / 07</span></div>
+          <div class="luxury-ad-seal"><span>✦</span></div>
+          <p class="luxury-ad-kicker">PRECISION LEARNING</p>
+          <h3>The next chapter is waiting.</h3>
+          <p class="luxury-ad-copy">Complete your current set. Your next level opens automatically, one precise step at a time.</p>
+          <div class="luxury-ad-rule"></div>
+          <div class="luxury-ad-meta"><span>181 lessons</span><span>7 levels</span></div>
+          <button type="button" class="luxury-ad-button" onclick="document.getElementById('lessons')?.scrollIntoView({behavior:'smooth'})">Continue your path <span>↗</span></button>
+          <div class="luxury-ad-foot">EST. 2026 · LEARN WITH INTENT</div>
+        </aside>
+      </div>
     </section>
   </main>
 
