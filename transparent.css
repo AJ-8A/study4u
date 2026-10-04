@@ -1,8 +1,240 @@
-/* STUDY4U — WINDMILL LANDSCAPE BACKGROUND */
+/* STUDY4U — CLEAR WHITE TRANSPARENT THEME */
+:root{
+  --surface:transparent!important;
+  --border:rgba(0,0,0,.12)!important;
+  --lux-gold:transparent!important;
+  --lux-gold2:transparent!important;
+  --lux-line:rgba(0,0,0,.12)!important;
+}
+html,body{background:#fff!important;color:#111!important;}
+body::before,body::after{background:transparent!important;background-image:none!important;box-shadow:none!important;}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section,.luxury-learning-ad,.luxury-ad-panel,.luxury-option,.luxury-stat,.luxury-ad-landscape,.luxury-ad-sky-glow{
+  background:transparent!important;background-image:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+h1,h2,h3,h4,p,.hero-text,.section-heading p,.dashboard-label,.dashboard-meta,.dashboard-card small,.streak-stats span,.weekly-card p,.subject-card b,.subject-card small,.continue-card p,.challenge-copy p,.luxury-ad-copy,.luxury-option small,.luxury-ad-progress>div:first-child,.luxury-ad-caption,.luxury-ad-topline,.luxury-ad-panel-kicker{color:#222!important;}
+.nav-links a,.logo,.logo span,.footer-brand,.footer-tagline,.footer-copy,.stat-label,.stats-status{color:#111!important;}
+*{--gold:transparent!important;--gold-light:transparent!important;--gold-dark:transparent!important;}
+h1 span{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;color:#111!important;}
+.eyebrow,.level,.clock-box strong,.luxury-ad-kicker,.luxury-ad-panel-kicker,.luxury-ad-topline,.luxury-ad-meta,.signed-in{color:#555!important;}
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.luxury-learning-ad,.luxury-ad-panel,.luxury-option,.luxury-stat{border-color:rgba(0,0,0,.12)!important;}
+.button,.outline-button,.power-button,.github-promo-button,.luxury-ad-button,.filter-button.active,.filter-button:hover,.complete-button:hover,.complete-button.completed,.stat-button.starred{background:transparent!important;background-image:none!important;color:#111!important;border:1px solid rgba(0,0,0,.28)!important;box-shadow:none!important;}
+.button:hover,.outline-button:hover,.power-button:hover,.github-promo-button:hover,.luxury-ad-button:hover{background:rgba(0,0,0,.045)!important;}
+.account-form input,.lesson-window,.lesson-window details,.lesson-window pre,.search-box input{background:transparent!important;color:#111!important;border-color:rgba(0,0,0,.18)!important;box-shadow:none!important;}
+.progress-bar,.dashboard-progress,.luxury-progress-track{background:rgba(0,0,0,.08)!important;}
+.progress-bar span,.dashboard-progress span,.luxury-progress-track i{background:#111!important;box-shadow:none!important;}
+.luxury-ad-panel::before,.luxury-learning-ad::before,.luxury-learning-ad::after,.github-promo-glow,.luxury-ad-shine{background:transparent!important;box-shadow:none!important;}
+.luxury-ad-panel h3,.luxury-option strong,.luxury-stat strong,.luxury-ad-progress strong{color:#111!important;}
+.luxury-option-icon{background:transparent!important;color:#111!important;}
+.luxury-option.active{background:transparent!important;border-color:rgba(0,0,0,.3)!important;box-shadow:none!important;}
+.luxury-option-dot,.luxury-option.active .luxury-option-dot{color:#111!important;}
+.luxury-ad-status{background:transparent!important;color:#111!important;border:1px solid rgba(0,0,0,.18)!important;}
+.luxury-ad-caption{color:#555!important;}
+.ring-outer,.ring-mid,.luxury-ad-ring,.luxury-ad-dial,.dial-mark,.dial-center,.orbit-a,.orbit-b{border-color:rgba(0,0,0,.16)!important;box-shadow:none!important;background:transparent!important;}
+#starButton span[aria-hidden="true"]{font-size:0!important;}
+#starButton span[aria-hidden="true"]::after{content:"☆";font-size:1rem;color:#111;}
+[style*="gold"],[style*="#d4af37"],[style*="#FFD700"],[style*="#ffd700"]{color:#111!important;background:transparent!important;border-color:rgba(0,0,0,.14)!important;}
+
+
+/* LUXURY AD — BRIGHT WHITE, CLEAR, PREMIUM, ZERO GOLD */
+.luxury-learning-ad{
+  position:relative!important;
+  min-height:600px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:#fff!important;
+  border:1px solid rgba(18,28,42,.10)!important;
+  border-radius:18px!important;
+  box-shadow:0 22px 55px rgba(30,45,65,.12)!important;
+}
+.luxury-ad-landscape{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background-image:
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 48%,rgba(255,255,255,.34)) ,
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=88&w=1600")!important;
+  background-size:cover!important;
+  background-position:center!important;
+  filter:brightness(1.38) saturate(.78) contrast(.90)!important;
+  opacity:.88!important;
+  animation:luxuryBrightBreath 14s ease-in-out infinite alternate!important;
+}
+@keyframes luxuryBrightBreath{
+  from{transform:scale(1.02)}
+  to{transform:scale(1.055) translate3d(-.3%,-.3%,0)}
+}
+.luxury-ad-sky-glow{
+  display:block!important;
+  position:absolute!important;
+  inset:-25%!important;
+  z-index:1!important;
+  background:radial-gradient(circle at 76% 18%,rgba(255,255,255,.92),transparent 32%)!important;
+  mix-blend-mode:screen!important;
+  opacity:.9!important;
+}
+.luxury-learning-ad::after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.16) 48%,rgba(255,255,255,.78) 100%)!important;
+  pointer-events:none!important;
+}
+.luxury-ad-topline{
+  z-index:8!important;
+  color:#17202a!important;
+  border-bottom:1px solid rgba(20,30,45,.10)!important;
+  text-shadow:none!important;
+}
+.luxury-ad-panel{
+  z-index:9!important;
+  background:rgba(255,255,255,.90)!important;
+  border:1px solid rgba(20,30,45,.10)!important;
+  border-radius:14px!important;
+  box-shadow:0 20px 42px rgba(30,45,65,.16),0 1px 0 rgba(255,255,255,.9) inset!important;
+  backdrop-filter:blur(16px) saturate(1.05)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(1.05)!important;
+}
+.luxury-ad-panel::before{
+  display:block!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.78),transparent 45%)!important;
+}
+.luxury-ad-panel-kicker{color:#687587!important}
+.luxury-ad-panel h3,.luxury-option strong,.luxury-ad-progress strong{color:#111820!important}
+.luxury-ad-copy,.luxury-option small{color:#687587!important}
+.luxury-ad-status{
+  background:#eef8f3!important;
+  color:#257653!important;
+  border:1px solid rgba(37,118,83,.14)!important;
+}
+.luxury-option{
+  background:rgba(255,255,255,.84)!important;
+  border:1px solid rgba(30,45,60,.10)!important;
+}
+.luxury-option.active{
+  background:#fff!important;
+  border-color:rgba(74,126,164,.35)!important;
+  box-shadow:0 5px 16px rgba(40,70,95,.08)!important;
+}
+.luxury-option-icon{background:#edf6ff!important;color:#4f91bd!important}
+.luxury-option:nth-child(2) .luxury-option-icon{background:#f5f0ff!important;color:#806bc0!important}
+.luxury-option:nth-child(3) .luxury-option-icon{background:#eef8f3!important;color:#4c9975!important}
+.luxury-option-dot,.luxury-option.active .luxury-option-dot{color:#4f91bd!important}
+.luxury-progress-track{background:#e9eef2!important}
+.luxury-progress-track i{background:linear-gradient(90deg,#72acd0,#78c29d)!important}
+.luxury-ad-panel .luxury-ad-button{
+  background:#111820!important;
+  color:#fff!important;
+  border:1px solid #111820!important;
+  box-shadow:0 10px 22px rgba(17,24,32,.18)!important;
+}
+.luxury-ad-panel .luxury-ad-button:hover{
+  background:#273746!important;
+  border-color:#273746!important;
+}
+.luxury-ad-caption{
+  color:rgba(25,35,45,.70)!important;
+  text-shadow:none!important;
+}
+
+
+/* FINAL LUXURY AD REPAIR — RESTORE THE MISSING VISUAL LAYERS */
+.luxury-learning-ad{
+  min-height:620px!important;
+  background:#f8fbfd!important;
+}
+.luxury-ad-landscape{
+  opacity:.94!important;
+  filter:brightness(1.18) saturate(.82) contrast(.92)!important;
+}
+.luxury-learning-ad::after{
+  background:linear-gradient(180deg,rgba(255,255,255,.03) 0%,rgba(255,255,255,.08) 42%,rgba(255,255,255,.92) 100%)!important;
+}
+.luxury-ad-sky-glow{
+  opacity:.72!important;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(255,255,255,.95),transparent 28%),
+    radial-gradient(circle at 22% 26%,rgba(205,225,239,.42),transparent 30%)!important;
+}
+/* premium floating information chips */
+.luxury-learning-ad::before{
+  content:"LEARN • BUILD • GROW"!important;
+  position:absolute!important;
+  z-index:7!important;
+  left:18px!important;
+  top:76px!important;
+  padding:7px 10px!important;
+  border:1px solid rgba(20,35,50,.10)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.78)!important;
+  color:#526273!important;
+  font-size:.48rem!important;
+  font-weight:800!important;
+  letter-spacing:.15em!important;
+  box-shadow:0 8px 18px rgba(30,45,65,.08)!important;
+  backdrop-filter:blur(10px)!important;
+}
+.luxury-ad-topline{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  font-weight:800!important;
+}
+.luxury-ad-topline span:last-child{
+  padding:5px 8px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.72)!important;
+  border:1px solid rgba(20,35,50,.08)!important;
+}
+/* restore a stronger glass panel while keeping the landscape visible */
+.luxury-ad-panel{
+  top:72px!important;
+  right:18px!important;
+  width:min(292px,calc(100% - 36px))!important;
+  padding:20px!important;
+  background:rgba(255,255,255,.91)!important;
+}
+.luxury-ad-panel-head{margin-bottom:2px!important}
+.luxury-ad-panel h3{font-size:1.12rem!important}
+.luxury-ad-copy{font-size:.67rem!important}
+.luxury-option{min-height:46px!important}
+.luxury-ad-progress{margin-top:15px!important}
+.luxury-ad-panel .luxury-ad-button{
+  min-height:40px!important;
+  font-weight:750!important;
+  cursor:pointer!important;
+}
+.luxury-ad-caption{
+  bottom:14px!important;
+  font-weight:700!important;
+}
+/* subtle decorative horizon line */
+.luxury-learning-ad .luxury-ad-landscape::after{
+  content:""!important;
+  position:absolute!important;
+  left:7%!important;
+  right:7%!important;
+  bottom:20%!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(70,95,115,.28),transparent)!important;
+}
+/* mobile: keep every important element visible */
+@media(max-width:600px){
+  .luxury-learning-ad{min-height:530px!important}
+  .luxury-learning-ad::before{top:68px!important;left:12px!important;font-size:.42rem!important}
+  .luxury-ad-panel{top:58px!important;right:12px!important;width:calc(100% - 24px)!important;padding:15px!important}
+  .luxury-ad-panel h3{font-size:1rem!important}
+  .luxury-ad-copy{font-size:.61rem!important}
+}
+
+
+/* GLOBAL WINDMILL LANDSCAPE — KEEP ALL ORIGINAL STUDY4U STYLING */
 html,body{
   background-color:#f6fafc!important;
   background-image:
-    linear-gradient(rgba(255,255,255,.30),rgba(255,255,255,.30)),
+    linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)),
     url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=88&w=2000")!important;
   background-size:cover!important;
   background-position:center top!important;
@@ -15,16 +247,13 @@ body::before{
   inset:0!important;
   z-index:-1!important;
   pointer-events:none!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.72) 48%,rgba(255,255,255,.88))!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.48) 48%,rgba(255,255,255,.68))!important;
 }
-.site-header,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section,.site-footer{
-  background:rgba(255,255,255,.84)!important;
+.site-header,.stats-badge,.hero-card,.progress-section,.account-section,.material-card,.clock-box,.dashboard-card,.streak-hero,.weekly-card,.subject-card,.continue-card,.challenge-card,.power-button,.analytics-card,.skill-tree-grid,.project-grid,.leaderboard-card,.feature-dialog,.github-promo,.site-footer,.filter-button,.search-box,.learning-layout,.top-leaderboard,.learning-dashboard,.achievements-section,.master-quote,.subjects-section,.continue-section,.challenge-section,.power-section,.analytics-section,.skill-section,.projects-section,.leaderboard-section,.weekly-section{
+  background:rgba(255,255,255,.76)!important;
   box-shadow:0 10px 32px rgba(35,55,70,.08)!important;
-  backdrop-filter:blur(8px)!important;
-  -webkit-backdrop-filter:blur(8px)!important;
-}
-.luxury-learning-ad{
-  background:rgba(255,255,255,.18)!important;
+  backdrop-filter:blur(7px)!important;
+  -webkit-backdrop-filter:blur(7px)!important;
 }
 @media(max-width:700px){
   html,body{background-attachment:scroll!important;background-position:center top!important}
