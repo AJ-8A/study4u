@@ -2971,3 +2971,19 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
 @media(prefers-reduced-motion:reduce){
   .luxury-ad-landscape,.luxury-ad-sky-glow,.luxury-ad-panel{animation:none}
 }
+
+/* BRIGHTER LANDSCAPE — MAKE THE MOUNTAINS + WIND TURBINES CLEAR */
+.luxury-ad-landscape{
+  filter:brightness(1.32) saturate(1.12) contrast(.94);
+  background-image:
+    linear-gradient(180deg,rgba(255,255,255,.02) 0%,rgba(255,255,255,.01) 58%,rgba(8,14,16,.16) 100%),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=88&w=1600");
+  background-position:center center;
+}
+.luxury-ad-sky-glow{
+  background:radial-gradient(circle at 72% 18%,rgba(255,235,205,.58),transparent 30%);
+  opacity:.9;
+}
+.luxury-learning-ad::after{
+  background:linear-gradient(180deg,rgba(255,255,255,.01) 0%,rgba(255,255,255,.015) 55%,rgba(8,13,15,.16) 100%);
+}
