@@ -395,3 +395,26 @@ body > *{
 @media(max-width:700px){
   body::before{position:fixed!important;background-position:center top!important;}
 }
+
+
+/* REMOVE CHERRY BLOSSOM BACKDROP COMPLETELY — WINDMILL ONLY */
+body,
+body::before,
+html{
+  background-image:none!important;
+}
+body::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(rgba(255,255,255,.07),rgba(255,255,255,.07)),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=92&w=2400") center center / cover no-repeat!important;
+}
+.luxury-ad-cherry{
+  display:none!important;
+  background-image:none!important;
+}
