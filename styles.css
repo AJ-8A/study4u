@@ -3631,3 +3631,272 @@ button,a{transition:transform .22s ease,background .22s ease,border-color .22s e
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
 }
+
+/* =========================================================
+   PEAK LUXURY v2 — cinematic editorial / watch-grade finish
+   ========================================================= */
+:root{
+  --lux-ink:#071115;
+  --lux-paper:#eef3f0;
+  --lux-muted:#708087;
+  --lux-line:rgba(255,255,255,.32);
+  --lux-glass:rgba(236,242,239,.17);
+  --lux-glass-heavy:rgba(244,247,245,.72);
+  --lux-shadow:0 28px 90px rgba(2,10,14,.28);
+}
+body{
+  background:
+    linear-gradient(180deg,rgba(5,12,15,.66) 0%,rgba(5,13,17,.22) 24%,rgba(4,12,16,.10) 50%,rgba(4,10,13,.72) 100%),
+    url("https://images.unsplash.com/photo-1584335204568-b440757daca1?auto=format&fit=crop&fm=jpg&q=95&w=2400") center top/cover fixed!important;
+  color:#f2f5f3!important;
+}
+body:has(.site-header)::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 52% 8%,rgba(255,255,255,.25),transparent 26%),
+    linear-gradient(90deg,rgba(255,255,255,.05),transparent 20%,transparent 80%,rgba(255,255,255,.04));
+  mix-blend-mode:screen;
+  opacity:.55;
+}
+.site-header{
+  background:linear-gradient(180deg,rgba(6,12,15,.76),rgba(6,12,15,.38))!important;
+  border-bottom:1px solid rgba(255,255,255,.24)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.06),0 18px 55px rgba(0,0,0,.18)!important;
+}
+.navbar{
+  width:min(1180px,94%)!important;
+  min-height:78px!important;
+}
+.logo{
+  font-size:1.45rem!important;
+  letter-spacing:-.045em!important;
+  text-shadow:0 2px 20px rgba(0,0,0,.25);
+}
+.logo,.logo span{color:#f2f5f2!important}
+.logo span{color:#c6d0cc!important}
+.nav-links a{color:rgba(239,245,242,.74)!important;font-size:.72rem!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+.nav-links a:hover{color:#fff!important}
+.logout-button{
+  background:rgba(242,246,244,.15)!important;
+  color:#eef4f1!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  backdrop-filter:blur(12px);
+}
+
+/* Remove the heavy container frame around the podium. */
+.top-leaderboard{
+  width:min(1120px,92%)!important;
+  margin:24px auto 0!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+}
+.top-leaderboard .leader-podium{
+  max-width:790px!important;
+  gap:12px!important;
+}
+.podium-card{
+  min-height:150px!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,rgba(245,249,247,.60),rgba(221,231,227,.27))!important;
+  border:1px solid rgba(255,255,255,.48)!important;
+  box-shadow:0 22px 55px rgba(3,14,19,.17),inset 0 1px rgba(255,255,255,.42)!important;
+  backdrop-filter:blur(22px) saturate(1.1)!important;
+}
+.podium-card strong{font-family:Georgia,"Times New Roman",serif!important;font-size:1.18rem!important}
+.podium-card b{font-family:Inter,sans-serif!important;font-size:.88rem!important}
+.podium-card small{font-family:Inter,sans-serif!important;opacity:.72}
+.podium-medal{filter:drop-shadow(0 5px 8px rgba(0,0,0,.15));font-size:1.55rem!important}
+
+/* Hero becomes the cinematic signature section. */
+.hero{
+  width:min(1180px,92%)!important;
+  min-height:72vh!important;
+  grid-template-columns:minmax(0,1.18fr) minmax(320px,.58fr)!important;
+  gap:7vw!important;
+  padding-top:90px!important;
+  padding-bottom:120px!important;
+}
+.hero > div:first-child{position:relative;z-index:2}
+.hero .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:rgba(236,244,241,.72)!important;
+}
+.hero .eyebrow::before{
+  content:"";
+  width:38px;
+  height:1px;
+  background:linear-gradient(90deg,#dfe8e4,transparent);
+}
+.hero h1{
+  font-size:clamp(4rem,8.3vw,8.5rem)!important;
+  line-height:.84!important;
+  letter-spacing:-.065em!important;
+  max-width:900px!important;
+  margin-top:16px!important;
+  color:#f5f7f5!important;
+  text-shadow:0 12px 42px rgba(0,0,0,.30),0 2px 1px rgba(0,0,0,.16)!important;
+}
+.hero h1 span{color:rgba(229,237,233,.86)!important;-webkit-text-fill-color:rgba(229,237,233,.86)!important}
+.hero-text{font-size:.93rem!important;max-width:530px!important;color:rgba(238,245,242,.74)!important}
+.hero-card{
+  border-radius:24px!important;
+  padding:30px!important;
+  background:linear-gradient(145deg,rgba(18,27,30,.70),rgba(8,14,17,.48))!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.10)!important;
+  backdrop-filter:blur(20px)!important;
+  color:#edf3f0!important;
+}
+.hero-card h2{color:#f0f5f2!important;font-family:Georgia,"Times New Roman",serif!important;font-size:1.7rem!important;font-weight:500!important}
+.hero-card p{color:rgba(229,238,234,.72)!important}
+.hero-card .card-icon{background:rgba(255,255,255,.08)!important;color:#eef5f1!important}
+.hero-card .progress-bar{background:rgba(255,255,255,.12)!important}
+.hero-card .progress-bar span{background:linear-gradient(90deg,#dfe9e5,#8fa79e)!important}
+
+/* Editorial sections: dark glass on image, not opaque white boxes. */
+.section-heading h2,.progress-section h2,.dashboard-heading h2,.weekly-card h2,
+.challenge-card h2,.continue-card h2,.power-section h2,.analytics-section h2,
+.skill-section h2,.projects-section h2,.leaderboard-section h2,.account-section h2{
+  font-size:clamp(2rem,4vw,3.5rem)!important;
+  color:#f0f5f2!important;
+  text-shadow:0 8px 28px rgba(0,0,0,.22);
+}
+.section-heading>p:last-child,.progress-section p,.weekly-card p,.challenge-card p,
+.continue-card p,.dashboard-card small,.material-card p{
+  color:rgba(228,238,234,.70)!important;
+}
+.eyebrow{color:rgba(221,232,227,.62)!important;letter-spacing:.18em!important}
+
+/* All functional cards use one coherent luxury glass material. */
+.progress-section,.account-section,.material-card,.dashboard-card,.weekly-card,
+.streak-hero,.achievement-card,.subject-card,.continue-card,.challenge-card,
+.power-button,.analytics-card,.skill-node,.project-card,.leaderboard-card{
+  background:linear-gradient(145deg,rgba(222,232,228,.20),rgba(11,20,24,.28))!important;
+  border:1px solid rgba(255,255,255,.23)!important;
+  box-shadow:0 22px 65px rgba(2,11,15,.20),inset 0 1px rgba(255,255,255,.09)!important;
+  backdrop-filter:blur(18px) saturate(1.08)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.08)!important;
+}
+.material-card:hover,.subject-card:hover,.power-button:hover,.skill-node:hover,.project-card:hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(255,255,255,.48)!important;
+  box-shadow:0 30px 80px rgba(1,10,14,.28),0 0 35px rgba(216,232,225,.06)!important;
+}
+.material-card h3,.dashboard-card strong,.subject-card b,.continue-card h2,
+.challenge-card h2,.power-button b,.analytics-card strong,.skill-node b,
+.project-card h3,.leader-row{color:#eef4f1!important}
+.material-icon,.dashboard-icon,.card-icon{
+  background:rgba(255,255,255,.08)!important;
+  border-color:rgba(255,255,255,.20)!important;
+  color:#e7efeb!important;
+}
+.level{color:#c4d0cc!important}
+
+/* Lesson accordion gets the exact clean horizontal rhythm from the reference. */
+.lesson-subject-group{margin:14px 0!important}
+.lesson-subject-toggle{
+  min-height:88px!important;
+  border-radius:20px!important;
+  padding:18px 24px!important;
+  background:linear-gradient(90deg,rgba(223,232,228,.19),rgba(18,29,33,.24))!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  box-shadow:0 15px 45px rgba(2,11,15,.13),inset 0 1px rgba(255,255,255,.08)!important;
+  color:#edf3f0!important;
+  backdrop-filter:blur(18px)!important;
+}
+.lesson-subject-toggle:hover{background:rgba(239,245,242,.25)!important;border-color:rgba(255,255,255,.40)!important}
+.lesson-subject-name strong{color:#edf3f0!important;font-size:1.28rem!important;font-weight:500!important}
+.lesson-subject-name small{color:rgba(220,232,227,.58)!important}
+.lesson-subject-progress{background:rgba(255,255,255,.11)!important}
+.lesson-subject-progress i{background:linear-gradient(90deg,#dce7e2,#718b82)!important}
+.lesson-subject-arrow{color:#dce7e3!important}
+
+/* Forms and controls */
+.search-box,.account-form input,.filter-button,.clock-box{
+  background:rgba(226,235,231,.14)!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  color:#edf4f1!important;
+  backdrop-filter:blur(14px)!important;
+}
+.search-box input,.account-form input{color:#f1f6f4!important}
+.search-box input::placeholder{color:rgba(223,234,230,.48)!important}
+.filter-button{color:rgba(233,241,237,.70)!important}
+.filter-button:hover,.filter-button.active{
+  background:rgba(241,246,243,.82)!important;
+  color:#12242a!important;
+  border-color:rgba(255,255,255,.72)!important;
+}
+.complete-button{
+  background:rgba(239,245,242,.12)!important;
+  color:#edf4f1!important;
+  border-color:rgba(255,255,255,.25)!important;
+}
+.complete-button:hover,.complete-button.completed{
+  background:#edf3f0!important;
+  color:#102127!important;
+}
+
+/* Ad becomes an art-directed magazine card. */
+.luxury-learning-ad{
+  border-radius:24px!important;
+  border:1px solid rgba(255,255,255,.32)!important;
+  box-shadow:0 32px 90px rgba(0,0,0,.28)!important;
+}
+.luxury-ad-panel{
+  background:rgba(242,246,244,.72)!important;
+  border:1px solid rgba(255,255,255,.70)!important;
+  box-shadow:0 25px 65px rgba(3,12,16,.18)!important;
+}
+
+/* Footer should feel like the closing page of a luxury editorial. */
+.github-promo{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(7,17,21,.86),rgba(17,29,33,.70))!important;
+  border-top:1px solid rgba(255,255,255,.22)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+}
+.github-promo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 75% 30%,rgba(220,235,228,.13),transparent 28%);
+  pointer-events:none;
+}
+.github-promo-button{background:#eef3f0!important;color:#12242a!important}
+.site-footer{background:rgba(3,9,12,.86)!important;border-top:1px solid rgba(255,255,255,.14)!important}
+
+/* More premium spacing and rhythm */
+.achievements-section,.progress-section,.learning-dashboard,.streak-hero,.weekly-section,
+.subjects-section,.continue-section,.challenge-section,.section,.power-section,
+.analytics-section,.skill-section,.projects-section,.leaderboard-section{
+  margin-top:110px!important;
+  margin-bottom:110px!important;
+}
+.section-heading{margin-bottom:34px!important}
+
+/* mobile */
+@media(max-width:900px){
+  .hero{padding-top:65px!important;min-height:auto!important}
+  .hero h1{font-size:clamp(3.6rem,15vw,6rem)!important}
+  .achievements-section,.progress-section,.learning-dashboard,.streak-hero,.weekly-section,
+  .subjects-section,.continue-section,.challenge-section,.section,.power-section,
+  .analytics-section,.skill-section,.projects-section,.leaderboard-section{
+    margin-top:72px!important;margin-bottom:72px!important;
+  }
+}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(3.25rem,17vw,5.2rem)!important}
+  .hero-card{padding:22px!important}
+  .lesson-subject-toggle{min-height:78px!important;padding:15px 16px!important}
+  .lesson-subject-name strong{font-size:1.05rem!important}
+  .top-leaderboard .leader-podium{grid-template-columns:1fr!important}
+  .podium-card{min-height:125px!important}
+}
