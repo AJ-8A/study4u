@@ -91,7 +91,12 @@
     let users={}; try{users=JSON.parse(localStorage.getItem(usersKey)||"{}")}catch{}
     const rows=Object.entries(users).map(([name,u])=>({name,xp:(u.completed||[]).length*100,streak:u.stats?.bestStreak||0})).sort((a,b)=>b.xp-a.xp||b.streak-a.streak).slice(0,10);
     if(!rows.length){box.innerHTML='<p class="empty-feature">Create an account to enter your local leaderboard.</p>';return;}
-    box.innerHTML=rows.map((r,i)=>'<div class="leader-row"><strong>#'+(i+1)+'</strong><span>'+r.name+'</span><b>'+r.xp+' XP</b><small>🔥 '+r.streak+'</small></div>').join("");
+    const top=rows.slice(0,3);
+    const rest=rows.slice(3);
+    const medals=["🥇","🥈","🥉"];
+    const podium=top.length ? '<div class="leader-podium">'+top.map((r,i)=>'<div class="podium-card podium-'+(i+1)+'"><span class="podium-medal">'+medals[i]+'</span><strong>'+r.name+'</strong><b>'+r.xp+' XP</b><small>🔥 '+r.streak+' best streak</small></div>').join("")+'</div>' : "";
+    const list=rest.map((r,i)=>'<div class="leader-row"><strong>#'+(i+4)+'</strong><span>'+r.name+'</span><b>'+r.xp+' XP</b><small>🔥 '+r.streak+'</small></div>').join("");
+    box.innerHTML=podium+list;
   }
 
   function profile() {
