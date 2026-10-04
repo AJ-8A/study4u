@@ -2002,3 +2002,35 @@ body.bright-mode .material-card,body.bright-mode .dashboard-card{
 .podium-3{transform:translateY(15px)}
 .leaderboard-section{padding-bottom:70px}
 @media(max-width:600px){.leader-podium{grid-template-columns:1fr;gap:10px}.podium-card,.podium-1,.podium-2,.podium-3{transform:none;min-height:125px}.site-header .nav-links{gap:12px}.site-header .nav-links a{font-size:.62rem}}
+
+
+/* TOP LEADERBOARD — visible at the very top */
+.top-leaderboard{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px 20px 18px;
+  border-bottom:1px solid rgba(229,204,145,.18);
+  background:rgba(8,7,6,.72);
+  backdrop-filter:blur(12px);
+}
+.top-leaderboard>#topLeaderboard{
+  width:min(1120px,100%);
+  margin:0 auto;
+}
+.top-leaderboard .leader-podium{
+  padding:0;
+  background:none;
+}
+.top-leaderboard .podium-card{
+  min-height:145px;
+}
+@media(max-width:600px){
+  .top-leaderboard{padding:10px 12px 14px}
+  .top-leaderboard .leader-podium{grid-template-columns:repeat(3,1fr);gap:7px}
+  .top-leaderboard .podium-card{min-height:105px;padding:12px 6px}
+  .top-leaderboard .podium-medal{font-size:1.45rem}
+  .top-leaderboard .podium-card strong{font-size:.92rem}
+  .top-leaderboard .podium-card b{font-size:.8rem}
+  .top-leaderboard .podium-card small{font-size:.65rem}
+  .top-leaderboard .podium-1,.top-leaderboard .podium-2,.top-leaderboard .podium-3{transform:none}
+}
